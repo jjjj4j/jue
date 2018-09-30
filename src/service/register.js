@@ -1,14 +1,13 @@
-import data from './data'
+import { URL } from './data'
 
-var paramReg = /{(.+?)}/g,
-    URL = data.URL
+let paramReg = /{(.+?)}/g
 
 export default function (url, controller, method) {
-  var name = [],
-      _url_ = url.replace(paramReg, function () {
-        name.push(arguments[1])
-        return '([0-9a-zA-Z\\-]+)'
-      })
+  let name = []
+  let _url_ = url.replace(paramReg, function () {
+    name.push(arguments[1])
+    return '([0-9a-zA-Z\\-]+)'
+  })
   _url_ = method ? '^' + method + '\\|' + _url_ + '$' : '^' + _url_ + '$'
   
   URL[_url_] = {

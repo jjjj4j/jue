@@ -1,5 +1,5 @@
-import {isEmpty, isChar, isPlainObject} from '@/util/core'
-import {each} from '@/util/array'
+import { isEmpty, isChar, isPlainObject } from './core'
+import { each } from './array'
 
 export function json2str (json) {
   return JSON.stringify(json)

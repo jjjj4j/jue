@@ -1,4 +1,10 @@
+import { isArray, extend, isChar, isFunction, isPlainObject, isDefined } from './core'
+import { map } from './array'
+
 /**
+ * @slot 相应的slot将会替换此元素，并进行渲染
+ * @data.slot 如果组件是其他组件的子组件，需为插槽指定名称
+ *
  * 用于vue模板的配置化生成
  * 以下是标签模板 用与构造formItem的item
  *
@@ -8,16 +14,28 @@
  * data: {
  *   ref: '',
  *   key: '',
+ *   class: {
+ *     foo: true,
+ *     bar: false
+ *   },
+ *   style: {
+ *     color: 'red',
+ *     fontSize: '14px'
+ *   },
  *   attrs: {
  *     id: '',
  *     name: ''
  *   },
  *   props: {},
+ *   domProps: {
+ *     innerHTML: 'baz'
+ *   },
  *   on: {
  *     click: function () {}
  *   },
  *   slot: 'name'
  * },
+ * slot: 'name',
  * show: function(){},
  * change: function(){},
  * children: [],
@@ -25,16 +43,32 @@
  *}
  *
  * */
-var init = function ($$, item, customRender) {
-  var createFunction = item.createFunction,
-      renderFunction = customRender[createFunction] || tplFunction[createFunction]
+export function init ($$, $factory, item, customRender) {
+  let createFunction = item.createFunction
+  let renderFunction = customRender[createFunction] || tplFunction[createFunction]
   if (renderFunction) {
-    return renderFunction.call(this, $$, item, customRender)
+    return renderFunction.call(this, $$, $factory, item, customRender)
   } else {
-    // $.extend({}, item.data) 为了解决 vue 2.5.16 会清空 data.on 的问题
-    return $$(item.tag, $.extend({}, item.data), (item.children || []).map((child) => {
-      return child.tag ? init.call(this, $$, child, customRender) : child
-    }))
+    let slot = item.slot
+    if (isDefined(slot)) {
+      if (isChar(slot)) {
+        return $factory.$slots[item.slot]
+      }
+      if (isFunction(slot)) {
+        slot = slot()
+      }
+      if (isPlainObject(slot)) {
+        return $factory.$scopedSlots[slot.name || 'default'](slot.data)
+      }
+    }
+    
+    let children = item.children || []
+    if (isArray(children)) {
+      children = map(children, (child) => {
+        return (child.tag || child.slot) ? init.call(this, $$, $factory, child, customRender) : child
+      })
+    }
+    return $$(item.tag, item.data, children)
   }
 }
 
@@ -42,18 +76,18 @@ var init = function ($$, item, customRender) {
  * 模板工厂函数
  * 会先检查自定义工厂函数(customRender),在没有找到匹配时，才会调用(tplFunction)
  * */
-let tplFunction = {
-  comp ($$, item, customRender) {
-    let me = this,
-        show = item.show || (() => true),
-        itemData = {
-          style: {},
-          props: {
-            checked: item.label,
-            label: item.label
-          }
-        },
-        childData = $.extend({}, item.data)
+const tplFunction = {
+  comp4form ($$, $factory, item, customRender) {
+    let me = this
+    let show = item.show || (() => true)
+    let itemData = {
+      style: {},
+      props: {
+        checked: item.label,
+        label: item.label
+      }
+    }
+    let childData = extend({}, item.data)
     
     if (!show.call(me)) {
       itemData.style.display = 'none'
@@ -62,7 +96,7 @@ let tplFunction = {
     itemData.class = {}
     item.class ? (itemData.class[item.class] = !0) : (itemData.class[item.class] = !1)
     
-    return init.call(me, $$, {
+    return init.call(me, $$, $factory, {
       tag: 'el-form-item',
       data: itemData,
       children: [
@@ -74,36 +108,33 @@ let tplFunction = {
       ]
     }, customRender)
   },
-  formItem ($$, item, customRender) {
+  formItem ($$, $factory, item, customRender) {
     let me = this
     // 在 model 属性变更时，重新绑定观察者
     if (item.name && !(item.name in me.model)) {
       me.$set(me.model, item.name, item.default || '')
     }
     let show = item.show || (() => true),
-        props = {
-          value: me.model[item.name]
-        },
-        event = {
-          input (value) {
-            window.clearTimeout(item.to)
-            item.to = window.setTimeout(() => {
-              me.model[item.name] = value
-            }, $.isIE9() ? 300 : 100)
-          }
-        },
-        itemData = {
-          style: {},
-          props: {
-            rules: item.rules,
-            label: item.label,
-            prop: item.name
-          }
-        },
-        childData = $.extend(true, {
-          props: props,
-          on: event
-        }, item.data)
+      props = {
+        value: me.model[item.name]
+      },
+      event = {
+        input (value) {
+          me.model[item.name] = value
+        }
+      },
+      itemData = {
+        style: {},
+        props: {
+          rules: item.rules,
+          label: item.label,
+          prop: item.name
+        }
+      },
+      childData = extend(true, {
+        props: props,
+        on: event
+      }, item.data)
     
     if (item.name) {
       itemData.class = {}
@@ -131,18 +162,15 @@ let tplFunction = {
       props['on-text'] = props['off-text'] = ''
     } else if (item.tag === 'el-select') {
       props['filterable'] = !0
-      if (item.customFilterMethod) {
-        props['filterMethod'] = $.el.selectFilterMethod
-      }
       if (item.multiple) {
         props['multiple'] = !0
       }
     }
     
-    //兄弟节点
+    // 兄弟节点
     item.siblings = item.siblings || []
     
-    //添加字段说明
+    // 添加字段说明
     item.tips = []
     if (item.tip) {
       let text = item.tip
@@ -152,13 +180,13 @@ let tplFunction = {
           class: 'tip'
         }
       }
-      if ($.isFunction(text)) {
+      if (isFunction(text)) {
         text = text()
       }
-      if ($.isPlainObject(text)) {
+      if (isPlainObject(text)) {
         tip = text
-      } else if ($.isArray(text)) {
-        tip.children = $.map(text, (tip) => {
+      } else if (isArray(text)) {
+        tip.children = map(text, (tip) => {
           return {
             tag: 'span',
             data: {
@@ -176,7 +204,7 @@ let tplFunction = {
       }
     }
     
-    return init.call(me, $$, {
+    return init.call(me, $$, $factory, {
       tag: 'el-form-item',
       data: itemData,
       children: [
@@ -190,9 +218,9 @@ let tplFunction = {
   }
 }
 
-window.init = init
-export default window.formFactoryRender = function (list, customRender, $$, slot) {
-  return init.call(this, $$, {
+export function formFactoryRender (list, customRender, $$, $factory) {
+  let slot = $factory.$slots.default
+  return init.call(this, $$, $factory, {
     tag: 'el-form',
     data: {
       ref: 'form',
@@ -203,4 +231,8 @@ export default window.formFactoryRender = function (list, customRender, $$, slot
     },
     children: slot ? list.concat([slot]) : list
   }, customRender)
+}
+
+export function factoryRender (item, customRender, $$, $factory) {
+  return init.call(this, $$, $factory, item, customRender)
 }

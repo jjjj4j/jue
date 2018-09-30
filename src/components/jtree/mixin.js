@@ -42,7 +42,7 @@ export default {
       pageSize: 10,
       totalSize: 0,
       topChecked: !1,
-      checkedCache: [], //针对分页设置
+      checkedCache: [], // 针对分页设置
       active: active || {},
       filter,
       isShow,
@@ -87,7 +87,7 @@ export default {
         delete node.ajaxing
       }
       if (
-          isDelAttr &&
+        isDelAttr &&
           node.jtype === _CHILD_
       ) {
         delete node.open
@@ -147,7 +147,7 @@ export default {
         if (data && data.length > 0) {
           for (let i = 0; i < data.length; i++) {
             let node = data[i],
-                children = this.getChildren(node)
+              children = this.getChildren(node)
             openList.push(node)
             if (this.getOpen(node) && children) {
               getList(children, node)
@@ -189,12 +189,12 @@ export default {
     },
     getNodeIndex (list, node) {
       let getNodeIndex = this.getNodeIndex,
-          flag = true
+        flag = true
       if (list && list.length > 0) {
         list.forEach((obj, i) => {
           if (node === obj) {
             list.splice(i, 1)
-            return flag = false
+            return (flag = false)
           } else {
             return getNodeIndex(this.getChildren(obj), node)
           }
@@ -217,9 +217,9 @@ export default {
     },
     setPermit (node, status) {
       if (
-          node.jtype === _CHILD_ ||
+        node.jtype === _CHILD_ ||
           (
-              !(this.ajax && this.ajax.open) &&
+            !(this.ajax && this.ajax.open) &&
               !this.pagination
           )
       ) {
@@ -535,10 +535,10 @@ export default {
     },
     initIndex (array, deep, isOpen, delFlag, callback) {
       this.initIndexPrototype(
-          this.getIndex(),
-          this.getChildren,
-          this.getOpen,
-          array, deep, isOpen, delFlag
+        this.getIndex(),
+        this.getChildren,
+        this.getOpen,
+        array, deep, isOpen, delFlag
       )
       if (callback) {
         callback()
@@ -557,9 +557,9 @@ export default {
     },
     toggleOpen (node) {
       let children = this.getChildren(node),
-          indexList = this.getIndex(),
-          openList = this.getOpenList(children),
-          length = openList.length
+        indexList = this.getIndex(),
+        openList = this.getOpenList(children),
+        length = openList.length
       
       if (this.getOpen(node)) {
         indexList.splice(node.j + 1, length)
@@ -666,7 +666,7 @@ export default {
       }
       
       if (
-          me.ajax &&
+        me.ajax &&
           me.ajax.open &&
           node.jtype !== _FOLDER_ &&
           !node.open && !$.isUndefined(node.open) &&
@@ -934,9 +934,9 @@ export default {
     },
     getLine (node) {
       let str = [],
-          lineY = {
-            'line-y': true
-          }
+        lineY = {
+          'line-y': true
+        }
       for (let i = 0; i < node.deep; i++) {
         str.push(lineY)
       }
@@ -1049,15 +1049,15 @@ export default {
     },
     blockList () {
       let step = this.step,
-          nodeHeight = this.nodeHeight,
-          indexList = this.indexList,
-          scrollTop = this.scrollTop
+        nodeHeight = this.nodeHeight,
+        indexList = this.indexList,
+        scrollTop = this.scrollTop
       
       return (() => {
         let index = ~~(scrollTop / nodeHeight),
-            start = index,
-            end = index + step,
-            list = indexList.slice(start, end + 1)
+          start = index,
+          end = index + step,
+          list = indexList.slice(start, end + 1)
         
         return $.for(list, (node) => {
           node.i = (this.currentPage - 1) * this.pageSize + start + 1

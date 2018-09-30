@@ -1,39 +1,55 @@
 <template>
-  <div class="ajax">Text: {{text}}</div>
+  <div class="md5">
+    <div>
+      <input type="text" v-model="md5"/>
+      <div>md5加密: {{md5Text}}</div>
+    </div>
+    <div>
+      <input type="text" v-model="psw"/>
+      <div>密码强度检测: {{pswText}}</div>
+    </div>
+    <div>
+      <input type="text" v-model="base64"/>
+      <div>base64加密: {{base64Text}}</div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { roll, random16 } from '@/util/core'
-import { array2tree } from '@/util/array'
+import { MD5 } from '@/util/md5'
+import { score } from '@/util/psw'
+import { encoder } from '@/util/base64'
 
 export default {
   data () {
     return {
-      text: '正在生成数据'
+      md5: '123456',
+      psw: '123456',
+      base64: '123456'
     }
   },
-  mounted () {
-    let i = 0, list = [], cache = []
-    let id, node
-    console.time('data create')
-    for (; i < 500000; i++) {
-      id = random16(16)
-      node = {
-        id,
-        name: random16(16),
-        pId: cache[roll(cache.length)]
-      }
-      cache.push(id)
-      list.push(node)
+  computed: {
+    md5Text () {
+      return MD5(this.md5)
+    },
+    pswText () {
+      return score(this.psw)
+    },
+    base64Text () {
+      return encoder(this.base64)
     }
-    console.timeEnd('data create')
-
-    console.time('data parse')
-    let tree = array2tree(list)
-    console.log(tree)
-    console.timeEnd('data parse')
-
-    this.text = `一共生成${list.length}条数据，根节点有${tree.list.length}条`
   }
 }
 </script>
+<style lang="less">
+  .md5 {
+    &> div {
+      margin-bottom: 20px;
+
+      div> {
+        margin-top: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+</style>

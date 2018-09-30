@@ -1,10 +1,10 @@
-import {each} from '@/util/array'
-import {isArray, isFunction} from '@/util/core'
+import { each } from './array'
+import { isArray, isFunction } from './core'
 
 export function chain (...args) {
   let list = []
   let sync = []
-  
+
   each(args, (event) => {
     if (isArray(event)) {
       let next = function (rst) {
@@ -19,7 +19,7 @@ export function chain (...args) {
       list.push(event)
     }
   })
-  
+
   return Promise.all(list).then((rst) => {
     return each(sync, (event) => event(rst)), rst
   }).catch((error) => {

@@ -1,14 +1,20 @@
+import { each, map } from '@/util/array'
+import { isArray, isDefined, isFunction } from '@/util/core'
+import { tpl } from '@/util/char'
+import { getUser, setUser } from '@/util/storage'
+import { json2str } from '@/util/json'
+import { listService } from './api'
+
 import log from './log'
 import Prefix from './prefix'
-import listService from './api'
 import Vue from 'vue'
 
-let URLS = listService(),
-    Service = {},
-    is404 = !1,
-    isTimeout = !0
+let URLS = listService()
+let Service = {}
+let is404 = !1
+let isTimeout = !0
 
-$.each(URLS, function (i, v) {
+each(URLS, function (v) {
   if (Service[v[0]]) {
     throw new Error('接口名称：' + v[0] + ' 已被占用，请修改')
   }
@@ -16,19 +22,19 @@ $.each(URLS, function (i, v) {
     let param, prefix, fnList = []
     let requestFilter = [
       function (param) {
-        if (!$.isUndefined(param.currentPage)) {
+        if (isDefined(param.currentPage)) {
           param.page = param.currentPage
         }
       }
     ]
     let responseFilter = [
       function (result) {
-        if (!$.isUndefined(result.data)) {
+        if (isDefined(result.data)) {
           let data = result.data
-          if (!$.isUndefined(data.count)) {
+          if (isDefined(data.count)) {
             data.totalSize = data.count
           }
-          if (!$.isUndefined(data.page)) {
+          if (isDefined(data.page)) {
             data.currentPage = data.page
           }
         }
@@ -36,14 +42,14 @@ $.each(URLS, function (i, v) {
     ]
     let filter = function (param, list) {
       if (param) {
-        $.map(list, (fn) => {
+        map(list, (fn) => {
           fn(param)
         })
       }
       return param
     }
-    $.each(arguments, function (i, obj) {
-      if ($.isFunction(obj)) {
+    each(arguments, function (i, obj) {
+      if (isFunction(obj)) {
         fnList.push(obj)
       } else if (obj instanceof log) {
         obj.push(v[0])
@@ -57,7 +63,7 @@ $.each(URLS, function (i, v) {
       if (param) {
         filter(param, requestFilter)
       }
-      let url = $.isArray(param) ? v[1] : $.tpl(v[1], param)
+      let url = isArray(param) ? v[1] : tpl(v[1], param)
       let isText = v[3] === 'text/plain'
       let error = (message) => {
         return (new Vue()).$notify.error({
@@ -65,7 +71,7 @@ $.each(URLS, function (i, v) {
           message
         })
       }
-      let error404 = $.tpl('数据获取失败，请检测网络连接', {
+      let error404 = tpl('数据获取失败，请检测网络连接', {
         api: v[0]
       })
       let settings = {
@@ -77,13 +83,13 @@ $.each(URLS, function (i, v) {
         timeout: 600000
       }
       let clearUserInfo = () => {
-        let user = $.db.getUser()
+        let user = getUser()
         delete user.tokenKey
-        $.db.setUser(user)
+        setUser(user)
       }
 
       if (isText) {
-        settings.data = $.json2str(param)
+        settings.data = json2str(param)
         settings.contentType = v[3]
       }
 
@@ -97,7 +103,7 @@ $.each(URLS, function (i, v) {
             if (!isTimeout) {
               let time = 3
               let msg = '登录超时，{time}秒后自动跳转到登录页面'
-              let $error = error($.tpl(msg, {time}))
+              let $error = error(tpl(msg, { time }))
 
               /* 删除用户tokenKey,防止重新调转到index.html */
               clearUserInfo()
@@ -105,7 +111,7 @@ $.each(URLS, function (i, v) {
               /* 添加定时器 */
               setInterval(() => {
                 if (time > 1) {
-                  $error.message = $.tpl(msg, {
+                  $error.message = tpl(msg, {
                     time: --time
                   })
                 } else {
@@ -118,14 +124,14 @@ $.each(URLS, function (i, v) {
             }
             isTimeout = !0
           } else {
-            fnList[1] ? fnList[1](r) : error($.tpl('{msg}', {
+            fnList[1] ? fnList[1](r) : error(tpl('{msg}', {
               msg: r.data.message,
               api: v[0]
             }))
           }
           reject(r)
         }
-      }, (r) => {
+      }, () => {
         if (!is404) {
           is404 = !!error(error404)
           setTimeout(() => {

@@ -1,53 +1,47 @@
 <template>
-  <div class="factory-render">
-    <p>
-      {{model.name}}
-      {{model.sex}}
-      {{model.gbId}}
-      {{model.roles}}
-    </p>
+  <div class="form-render">
     <factory-render :init="renderInit"></factory-render>
   </div>
 </template>
 
 <script>
-import { factoryRender } from '@/util/render'
+import fieldFactory from './field'
+import { formFactoryRender } from '@/util/render'
 
 export default {
   data () {
     return {
-      model: {
-        name: 'zj',
-        sex: '男',
-        gbId: '',
-        roles: ''
-      }
+      model: {},
+      list: []
     }
   },
+  created () {
+    Service.pageGroup({
+      id: '00000000-0000-0000-0000-000000000000'
+    }).then((r) => {
+      this.list = r.data.list
+    })
+  },
   computed: {
+    fields () {
+      return fieldFactory(this)
+    },
     renderInit () {
-      let me = this
-      return factoryRender.bind(this, {
-        tag: 'div',
-        children: [{
-          tag: 'el-input',
-          data: {
-            on: {
-              input (e) {
-                me.model.name = e.target.value
-              }
-            }
-          }
-        }, {
-          tag: 'el-input',
-          data: {
-            attrs: {
-              value: me.model.sex
-            }
-          }
-        }]
-      }, {})
+      return formFactoryRender.bind(this, this.fields, {})
     }
   }
 }
 </script>
+<style>
+  .form-render label {
+    display: block;
+    text-align: right;
+  }
+  .form-render textarea {
+    width: 500px;
+    height: 200px;
+  }
+  .form-render .el-form-item__content {
+    margin: -20px 0 20px 140px!important;
+  }
+</style>

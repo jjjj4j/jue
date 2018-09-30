@@ -16,7 +16,7 @@ export default {
     let i = 0, list = [], cache = []
     let id, node
     console.time('data create')
-    for (; i < 500000; i++) {
+    for (; i < 100000; i++) {
       id = random16(16)
       node = {
         id,
@@ -30,7 +30,6 @@ export default {
 
     console.time('data parse')
     let tree = array2tree(list)
-    console.log(tree)
     console.timeEnd('data parse')
 
     this.text = `一共生成${list.length}条数据，根节点有${tree.list.length}条`

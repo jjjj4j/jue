@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {chain} from '@/util/ajax'
+import { chain } from '@/util/ajax'
 import Timer from '@/util/Timer'
 
 export default {
@@ -16,7 +16,7 @@ export default {
     chain(
       [
         (rst) => new Promise((resolve, reject) => {
-          new Timer('3', () => {
+          Timer('3', () => {
             resolve(rst.push('3') && rst)
             this.text = rst.join()
           })
@@ -24,25 +24,25 @@ export default {
           return rst
         }),
         (rst) => new Promise((resolve, reject) => {
-          new Timer('4', () => {
+          Timer('4', () => {
             resolve(rst.push('4') && rst)
             this.text = rst.join()
           })
         }),
         (rst) => new Promise((resolve, reject) => {
-          new Timer('5', () => {
+          Timer('5', () => {
             resolve(rst.push('5') && rst)
             this.text = rst.join()
           })
         })
       ],
       new Promise((resolve, reject) => {
-        new Timer('1', () => {
+        Timer('1', () => {
           resolve('1')
         })
       }),
       new Promise((resolve, reject) => {
-        new Timer('2', () => {
+        Timer('2', () => {
           resolve('2')
         })
       })

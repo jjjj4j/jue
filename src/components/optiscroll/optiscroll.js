@@ -2,8 +2,8 @@ import './optiscroll.css'
 import { extend, isDefined } from '@/util/core'
 import { each } from '@/util/array'
 import Timer from '@/util/Timer'
+import Bar from './scrollbar.js'
 import { instances, scrollbarSpec, isTouch, throttle } from './globals'
-import Bar from './scrollbar2.js'
 
 let scrollMinUpdateInterval = 1000 / 40
 let checkFrequency = 1000
@@ -25,12 +25,6 @@ function checkLoop () {
 }
 
 export default {
-  data () {
-    this.cache = {}
-    return {
-      classes: [this.classPrefix.replace('-', ''), 'is-enabled']
-    }
-  },
   props: {
     contentHeight: {
       type: Function,
@@ -47,7 +41,14 @@ export default {
     draggableTracks: { type: Boolean, default: true },
     autoUpdate: { type: Boolean, default: true },
     classPrefix: { type: String, default: 'optiscroll-' },
-    rtl: { type: Boolean, default: false }
+    rtl: { type: Boolean, default: false },
+    step: { type: Number, default: 40 }
+  },
+  data () {
+    this.cache = {}
+    return {
+      classes: [this.classPrefix.replace('-', ''), 'is-enabled']
+    }
   },
   computed: {
     vBar () { return this.$refs.vBar },
@@ -198,7 +199,7 @@ export default {
     },
     wheel (ev) {
       let {
-        scrollEl, preventParentScroll, scrollAnimation, vBar, realTimeRendering,
+        scrollEl, realTimeRendering, preventParentScroll, scrollAnimation, step, vBar,
         cache: { v: cacheV, h: cacheH, scrollH, scrollW, clientH, clientW }
       } = this
       let preventScroll = preventParentScroll && isTouch
@@ -215,7 +216,7 @@ export default {
         if (realTimeRendering) {
           let { wheelDelta } = ev
           let { position, update } = vBar
-          position(position() - (wheelDelta > 0 ? 40 : -40), (v0, v1) => {
+          position(position() - (wheelDelta > 0 ? step : -step), (v0, v1) => {
             if (v0 !== v1) {
               update() || this.fireCustomEvent('scroll')
             }
@@ -231,8 +232,8 @@ export default {
         scrollbarH: extend({}, h),
   
         // scroll position
-        scrollTop: v.position * sH,
-        scrollLeft: h.position * sW,
+        scrollTop: (v.position || 0) * sH,
+        scrollLeft: (h.position || 0) * sW,
         scrollBottom: (1 - v.position - v.size) * sH,
         scrollRight: (1 - h.position - h.size) * sW,
   

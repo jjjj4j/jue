@@ -1,9 +1,9 @@
-import data from './data'
-
-let db = data.db
+import { parseInt, extend, isArray, isChar, isDefined, random16 } from '@/util/core'
+import { map } from '@/util/array'
+import { db } from './data'
 
 export default {
-  'fr': function (data) {
+  fr (data) {
     data = data || {}
     data.message = '成功'
     return {
@@ -11,125 +11,100 @@ export default {
       data: data
     }
   },
-  'fa': function (code) {
+  fa (code) {
     return {
       code: code || 400,
       data: {
-        message: 'error'
+        message: '错误'
       }
     }
   },
-  'random': function () {
-    let length = arguments.length
-    let max = (length).toString(16)
-    let index = $.random16((max + '').length, 0, length - 1)
-    return arguments[$.int('0x' + index)]
-  },
-  'getFirst': function (modal) {
-    for (let key in db[modal]) {
-      return db[modal][key]
+  first (modal) {
+    if (db[modal] && db[modal].length > 0) {
+      return db[modal][0]
     }
   },
-  'getModal': function (modal) {
-    return db[modal]
+  getById (modal, id) {
+    return this.getByAttr(modal, [['id', id]])
   },
-  'getObj': function (modal, id) {
-    return $.extend(true, {}, db[modal][id])
+  getByAttr (modal, attrs, filter) {
+    let list = this.getAllByAttr(modal, attrs, filter)
+    if (list.length > 0) {
+      return list[0]
+    }
   },
-  'getModalTemplate': function (modal) {
-    return $.extend({}, this.getFirst(modal))
-  },
-  'getByAttr': function (modal, attrs, filter) {
+  getAllByAttr (modal, attrs, filter) {
     let data = db[modal]
-    c : for (let id in data) {
-      let obj = data[id]
+    let list = []
+    /* eslint-disable no-labels */
+    iterator: for (let index in data) {
+      let obj = data[index]
       if (attrs) {
         for (let i = 0; i < attrs.length; i++) {
-          let key = attrs[i][0],
-              value = attrs[i][1]
-          if (obj[key] != value) {
-            continue c
+          let key = attrs[i][0], value = attrs[i][1]
+          if (obj[key] !== value) {
+            continue iterator
           }
         }
       }
       if (filter && !filter.call(obj)) {
-        continue c
+        continue iterator
       }
-      return obj
-    }
-  },
-  'getAllByAttr': function (modal, attrs, filter) {
-    let data = $.extend(true, {}, db[modal]),
-        list = []
-    c : for (let id in data) {
-      let obj = data[id]
-      if (attrs) {
-        for (let i = 0; i < attrs.length; i++) {
-          let key = attrs[i][0],
-              value = attrs[i][1]
-          if (obj[key] != value) {
-            continue c
-          }
-        }
-      }
-      if (filter && !filter.call(obj)) {
-        continue c
-      }
-      list.push(obj)
+      list.push(extend(true, {}, obj))
     }
     return list
   },
-  'page': function (modal, args, attrs) {
-    let data = $.extend(true, {}, db[modal]),
-        list = [],
-        filter = function (obj) {
-          if (args.search) {
-            if (typeof args.searchType != 'undefined') {
-              if (obj.searchType != args.searchType) {
-                return false
-              }
-            }
-            for (let attrName in obj) {
-              let attr = obj[attrName]
-              if (typeof attr === 'string' && attr.indexOf(args.search) >= 0) {
-                return true
-              }
-            }
+  page (modal, args, attrs) {
+    let data = db[modal]
+    let list = []
+    let filter = function (obj) {
+      if (args.search) {
+        if (isDefined(args.searchType)) {
+          if (obj.searchType !== args.searchType) {
             return false
           }
-          return true
         }
-
-    c : for (let id in data) {
-      let obj = data[id]
+        for (let attrName in obj) {
+          let attr = obj[attrName]
+          if (typeof attr === 'string' && attr.indexOf(args.search) >= 0) {
+            return true
+          }
+        }
+        return false
+      }
+      return true
+    }
+  
+    iterator : for (let index in data) {
+      let obj = data[index]
       if (filter(obj)) {
         if (attrs) {
           for (let i = 0; i < attrs.length; i++) {
-            let key = attrs[i][0],
-                value = attrs[i][1]
-            if ($.isArray(value)) {
+            let key = attrs[i][0], value = attrs[i][1]
+            if (isArray(value)) {
               let flag = true
               value.forEach(function (v) {
-                if (obj[key] == v) {
-                  return flag = false
+                if (obj[key] === v) {
+                  return (flag = false)
                 }
               })
               if (flag) {
-                continue c
+                continue iterator
               }
-            } else if (obj[key] != value) {
-              continue c
+            } else if (obj[key] !== value) {
+              continue iterator
             }
           }
         }
-        list.push(obj)
+        list.push(extend(true, {}, obj))
       }
     }
 
-    let currentPage = $.int(args.currentPage),
-        pageSize = $.int(args.pageSize),
-        start = ((currentPage || 1) - 1) * (pageSize || 10),
-        end = start + (pageSize || 10)
+    let currentPage = parseInt(args.currentPage)
+    let pageSize = parseInt(args.pageSize)
+    let start = ((currentPage || 1) - 1) * (pageSize || 10)
+    let end = start + (pageSize || 10)
+    
     return this.fr({
       currentPage: currentPage || 1,
       totalSize: list.length,
@@ -137,57 +112,54 @@ export default {
       list: list.slice(start, end)
     })
   },
-  'get': function (modal, id) {
+  get (modal, id) {
     return this.fr({
-      object: $.extend(true, {}, db[modal][id])
+      object: this.getById(modal, id)
     })
   },
-  'save': function (modal, obj, flag) {
-    let old = db[modal][obj.id]
-    if (old) {
-      $.extend(old, obj)
-    } else {
-      obj.id = $.uuid()
-      old = obj
-    }
-    db[modal][obj.id] = $.str2json($.json2str(old))
-    //return flag ? {id: obj.id} : this.fr({id: old.id})
-    return this.fr({id: flag ? obj.id : old.id})
-  },
-  'getGroupChildren': function (modal, args) {
-    let d = this.getAllByAttr('groups', [])
-    let arr = []
-    for (let i = 0; i < d.length; i++) {
-      if (d[i].parentId == args.id) {
-        arr.push(d[i])
-      }
-    }
-    return arr
-  },
-  // modal为数据文件名 可传数组或字符串  多个页面调用同一接口时可传数组
-  'del': function (modal, id) {
-    if (modal instanceof Array) {
-      for (let i = 0; i < modal.length; i++) {
-        if (db[modal[i]][id]) {
-          delete db[modal[i]][id]
+  save (modal, obj) {
+    let data = db[modal], old
+    let rst = {}
+    
+    if (obj.id) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].id === obj.id) {
+          old = data[i]
+          break
         }
       }
+      if (old) {
+        extend(old, obj)
+      } else {
+        data.push(extend(true, {}, obj))
+      }
     } else {
-      delete db[modal][id]
+      rst.id = obj.id = random16(8)
+      data.push(extend(true, {}, obj))
     }
+
+    return this.fr(rst)
+  },
+  del (modal, ids) {
+    let data = db[modal]
+    let i = data.length - 1
+    
+    if (isChar(ids)) {
+      ids = [ids]
+    }
+
+    for (; i >= 0; i--) {
+      if (ids.indexOf(data[i].id) >= 0) {
+        data.splice(i, 1)
+      }
+    }
+  
     return this.fr()
   },
-  'delByAttr': function (modal, attrs) {
-    let list = this.getAllByAttr(modal, attrs)
-    list.forEach(function (obj) {
-      delete db[modal][obj.id]
-    })
-    return this.fr()
-  },
-  'delByIds': function (modal, ids) {
-    for (let i = 0; i < ids.length; i++) {
-      delete db[modal][ids[i]]
-    }
+  delByAttr (modal, attrs) {
+    this.del(modal, map(this.getAllByAttr(modal, attrs), (obj) => {
+      return obj.id
+    }))
     return this.fr()
   }
 }

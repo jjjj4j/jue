@@ -52,8 +52,7 @@
    output: MD5 hash (as Hex Uppercase String)
 */
 /* eslint-disable */
-window.MD5 = function (data) {
-  
+export function MD5 (data) {
   // convert number to (unsigned) 32 bit hex, zero filled string
   function to_zerofilled_hex (n) {
     var t1 = (n >>> 0).toString(16)
@@ -164,21 +163,21 @@ window.MD5 = function (data) {
   var databytes = null
   // String
   var type_mismatch = null
-  if (typeof data == 'string') {
+  if (typeof data === 'string') {
     // convert string to array bytes
     databytes = str_to_bytes(data)
   } else if (data.constructor == Array) {
     if (data.length === 0) {
       // if it's empty, just assume array of bytes
       databytes = data
-    } else if (typeof data[0] == 'string') {
+    } else if (typeof data[0] === 'string') {
       databytes = chars_to_bytes(data)
-    } else if (typeof data[0] == 'number') {
+    } else if (typeof data[0] === 'number') {
       databytes = data
     } else {
       type_mismatch = typeof data[0]
     }
-  } else if (typeof ArrayBuffer != 'undefined') {
+  } else if (typeof ArrayBuffer !== 'undefined') {
     if (data instanceof ArrayBuffer) {
       databytes = typed_to_plain(new Uint8Array(data))
     } else if ((data instanceof Uint8Array) || (data instanceof Int8Array)) {
@@ -206,19 +205,18 @@ window.MD5 = function (data) {
   return do_digest()
   
   function do_digest () {
-    
     // function update partial state for each run
     function updateRun (nf, sin32, dw32, b32) {
       var temp = d
       d = c
       c = b
-      //b = b + rol(a + (nf + (sin32 + dw32)), b32)
+      // b = b + rol(a + (nf + (sin32 + dw32)), b32)
       b = _add(b,
-          rol(
-              _add(a,
-                  _add(nf, _add(sin32, dw32))
-              ), b32
-          )
+        rol(
+          _add(a,
+            _add(nf, _add(sin32, dw32))
+          ), b32
+        )
       )
       a = temp
     }
@@ -340,6 +338,4 @@ window.MD5 = function (data) {
     // Done! Convert buffers to 128 bit (LE)
     return int128le_to_hex(h3, h2, h1, h0).toUpperCase()
   }
-  
 }
-

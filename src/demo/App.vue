@@ -3,6 +3,12 @@
     <div class="ui-left">
       <router-link to="/ajax">Ajax</router-link>
       <router-link to="/tree">Tree</router-link>
+      <router-link to="/browser">Browser</router-link>
+      <router-link to="/md5">MD5 & PSW & BASE64</router-link>
+      <router-link to="/factory-render">FactoryRender</router-link>
+      <router-link to="/form">FormRender</router-link>
+      <router-link to="/keyboard">Keyboard</router-link>
+      <router-link to="/scrollbar">ScrollBar</router-link>
     </div>
     <router-view class="ui-center"></router-view>
   </div>
@@ -32,6 +38,7 @@
     bottom: 0;
     width: 200px;
     padding: 20px;
+    font-size: 12px;
     box-sizing: border-box;
     background-color: #232a31;
   }

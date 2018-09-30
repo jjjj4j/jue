@@ -1,15 +1,14 @@
 <template>
   <div class="keyboard">
     <div class="reference"></div>
+    <div class="reference dep45"></div>
     <div class="context">
-      <div class="ellipse b0" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b1" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b2" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b3" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b4" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b5" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b6" @click="click"><span class="arrow"></span></div>
-      <div class="ellipse b7" @click="click"><span class="arrow"></span></div>
+      <div class="ellipse"
+           :class="`b${key}`"
+           @click="click(value)"
+           v-for="(value, key) in keys">
+        <span class="arrow"></span>
+      </div>
       <div class="center"></div>
     </div>
   </div>
@@ -20,12 +19,21 @@
 export default {
   data () {
     return {
-      text: '正在生成数据'
+      keys: {
+        0: '0',
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7'
+      }
     }
   },
   methods: {
-    click () {
-      console.log('click')
+    click (v) {
+      console.log('click' + v)
     }
   },
   mounted () {
@@ -41,26 +49,23 @@ export default {
   }
 
   .keyboard {
-    margin-left: 300px;
-    width: 201px;
-    height: 201px;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    padding: 0;
+    overflow: hidden;
 
     .reference {
-      &:extend(.util-content);
+      transform: rotate(22.5deg);
+      border: 200px solid #00000054;
+      border-top-color: #00000036;
+      border-right-color: #00000061;
+      border-bottom-color: #00000036;
 
-      width: 1000px;
-      height: 1px;
-      background-color: #000;
-      top: 121px;
-      left: 200px;
-
-      &:after {
-        &:extend(.util-content);
-        width: 1px;
-        height: 1000px;
-        background-color: #000;
-        top: -121px;
-        left: 221px;
+      &.dep45 {
+        position: absolute;
+        top: 0;
+        transform: rotate(67.5deg);
       }
     }
 
@@ -75,60 +80,71 @@ export default {
 
     .context {
       position: relative;
+      top: -250px;
+      left: 150px;
+      width: 100px;
+      height: 100px;
     }
 
     .center {
       position: absolute;
-      top: 40px;
-      left: 40px;
-      width: 120px;
-      height: 120px;
+      top: 25px;
+      left: 25px;
+      width: 50px;
+      height: 50px;
       background-color: #333;
       z-index: 9000;
     }
 
     .b0 {
       top: -3px;
-      left: 81px;
+      left: 40px;
     }
 
     .b1 {
-      top: 20px;
-      left: 136px;
+      top: 8px;
+      left: 66px;
       transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
     }
 
     .b2 {
-      top: 75px;
-      left: 158px;
+      top: 35px;
+      left: 76px;
       transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
     }
 
     .b3 {
-      top: 130px;
-      left: 136px;
+      top: 62px;
+      left: 66px;
       transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
     }
 
     .b4 {
-      top: 153px;
-      left: 81px;
+      top: 73px;
+      left: 40px;
       transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
     }
     .b5 {
-      top: 130px;
-      left: 26px;
+      top: 62px;
+      left: 13px;
       transform: rotate(225deg);
+      -ms-transform: rotate(225deg);
     }
     .b6 {
-      top: 75px;
-      left: 1px;
+      top: 35px;
+      left: 2px;
       transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
     }
     .b7 {
-      top: 20px;
-      left: 25px;
+      top: 8px;
+      left: 13px;
       transform: rotate(315deg);
+      -ms-transform: rotate(315deg);
     }
 
     .arrow {
@@ -136,15 +152,15 @@ export default {
       display: block;
       width: 0;
       margin: 4px auto;
-      border: 10px solid transparent;
-      border-bottom: 18px solid #c1c1c1;
+      border: 5px solid transparent;
+      border-bottom: 9px solid #c1c1c1;
       z-index: 1000;
     }
 
     .ellipse {
       position: absolute;
-      width: 40px;
-      height: 50px;
+      width: 20px;
+      height: 30px;
 
       &:hover {
         cursor: pointer;
@@ -165,18 +181,20 @@ export default {
       &:after {
         &:extend(.util-content);
         width: 20px;
-        height: 50px;
+        height: 30px;
         top: 0;
-        left: -8px;
+        left: -5px;
         transform:rotate(-22.5deg);
+        -ms-transform: rotate(-22.5deg);
       }
       &:before {
         &:extend(.util-content);
         width: 20px;
-        height: 50px;
+        height: 30px;
         top: 0;
-        left: 29px;
+        left: 5px;
         transform:rotate(22.5deg);
+        -ms-transform: rotate(22.5deg);
       }
     }
   }

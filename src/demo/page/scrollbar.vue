@@ -1,190 +1,101 @@
 <template>
-  <div class="keyboard">
-    <div class="reference"></div>
-    <div class="context">
-      <div class="ellipse"
-           :class="`b${key}`"
-           @click="click(value)"
-           v-for="(value, key) in keys">
-        <span class="arrow"></span>
-      </div>
-      <div class="center"></div>
+  <div class="scrollbar">
+    <div>
+      <span>滚动条插件:</span>
+      <Optiscroll ref="s0">
+        <div style="width: 1000px; display: block;">
+          东方网力科技股份有限公司是全球视频监控管理平台的领导厂商，用创新科技推动全球AI城市的涌现与发展。
+
+          东方网力科技股份有限公司成立于2000年9月，总部位于中国北京，2014年1月在深交所创业板上市，股票代码：300367。公司在中国境内21个区域及美国、东南亚等设有分公司或办事处，全球员工约1400人，其中技术人员超过800人，分布于国内六大研发中心和美国硅谷。公司拥有自主研发专利60个，软件著作权111项，研发投入保持在年销售收入的10%以上。公司连续多年保持30%左右的快速增长，2017年总收入约18亿元，归母净利润约3.8亿元，期末总资产超过60亿元。
+
+          在安防IT化时代，东方网力于2003年提出“Building Video Internet”的愿景。今天，这一愿景已在中国城市率先实现，每天有超过千万台的摄像机联网应用保障着城市的安全，东方网力亦成为全球视频联网和视频大数据应用的引领者和重要推动者。公司"视云天下"产品广泛应用于城市公共安全、智能交通、智慧城市、轨道交通、智能建筑、家庭安防等多个行业。在全国平安城市建设中，通过东方网力联网平台接入的视频总量累计已超过159万路，东方网力为国内8个省级联网平台、63个市级联网平台提供服务，约占该市场1/3份额；视频侦查产品为国内13个省级用户、39个市级用户提供服务；并成功为北京奥运会、上海世博会、广州亚运会、北京APEC会议、2017年金砖国家峰会、天津全运会、内蒙古自治区成立七十周年及建军90周年阅兵等特大型活动提供安保服务。旗下子公司华启智能是国内高铁、地铁乘客信息系统（PIS）领导厂商。公司成功入选"国家重点软件企业"，通过CMMI5级评估认证，并连续多年荣获a&s《安全自动化》"中国安防十大民族品牌"，是中国平安城市建设推荐品牌和中国安防最具影响力的品牌之一。世界知名调研机构IHS报告显示，东方网力在2016年视频监控管理平台产品中市场占有率位居中国第一、世界第三。
+
+          2016年，安防进入人工智能时代。雪亮工程、公安大数据、智能感知网等一系列国家和地方政策的出台，给整个安防产业带来巨大的机遇。随着AI技术的不断发展，尤其是视频AI技术的逐步成熟，在安防行业应用开始呈腾飞之势。公司推出的智能安防社区解决方案在上海试点成功并得到推广，标志着东方网力在推动警务流程再造和社会治理领域有了跨越式发展。同时，图像解析系统应用于 “公安部视频图像信息综合应用平台”项目建设，此平台是公安行业在“十三五”期间，规划建设视频图像应用系统项目中的顶层平台，这是对公司产品技术等综合实力的肯定，意味着公司在视频智能领域再一次走在了行业的前列。伴随着前沿科技的不断落地，东方网力确定了 "N科技 AI城市 用创新科技推动全球AI城市的涌现与发展"的崭新使命，在全球范围内加大了深度学习、视频结构化、AI智能摄像机方面的研发和产业化投入。从视频到数据，从AI到DI，从软件到服务，城市正成为产业互联网最大的应用场景。东方网力将把握住产业发展机遇，以城市视频为核心，不断创新，构建城市级的数据平台，期待在下一个五年，成为城市数据平台产品及服务的引领者。
+
+          公司是一群志趣相投的人为实现理想而形成的一组契约，一直以来，我们坚信公司的成功=战略*组织。组织是保障公司使命和愿景落地不可或缺的一环，公司一直努力实现业务发展与组织建设的完美契合，将东方网力打造成为一个追求卓越，不断进取的商业组织；一个价值观驱动、强文化的企业。在为全球AI城市的涌现与发展贡献价值同时，共享财富与光荣，共同感受生命的厚度与默契。
+
+          <div id="boy">再来一遍</div>
+
+          东方网力科技股份有限公司是全球视频监控管理平台的领导厂商，用创新科技推动全球AI城市的涌现与发展。
+
+          东方网力科技股份有限公司成立于2000年9月，总部位于中国北京，2014年1月在深交所创业板上市，股票代码：300367。公司在中国境内21个区域及美国、东南亚等设有分公司或办事处，全球员工约1400人，其中技术人员超过800人，分布于国内六大研发中心和美国硅谷。公司拥有自主研发专利60个，软件著作权111项，研发投入保持在年销售收入的10%以上。公司连续多年保持30%左右的快速增长，2017年总收入约18亿元，归母净利润约3.8亿元，期末总资产超过60亿元。
+
+          在安防IT化时代，东方网力于2003年提出“Building Video Internet”的愿景。今天，这一愿景已在中国城市率先实现，每天有超过千万台的摄像机联网应用保障着城市的安全，东方网力亦成为全球视频联网和视频大数据应用的引领者和重要推动者。公司"视云天下"产品广泛应用于城市公共安全、智能交通、智慧城市、轨道交通、智能建筑、家庭安防等多个行业。在全国平安城市建设中，通过东方网力联网平台接入的视频总量累计已超过159万路，东方网力为国内8个省级联网平台、63个市级联网平台提供服务，约占该市场1/3份额；视频侦查产品为国内13个省级用户、39个市级用户提供服务；并成功为北京奥运会、上海世博会、广州亚运会、北京APEC会议、2017年金砖国家峰会、天津全运会、内蒙古自治区成立七十周年及建军90周年阅兵等特大型活动提供安保服务。旗下子公司华启智能是国内高铁、地铁乘客信息系统（PIS）领导厂商。公司成功入选"国家重点软件企业"，通过CMMI5级评估认证，并连续多年荣获a&s《安全自动化》"中国安防十大民族品牌"，是中国平安城市建设推荐品牌和中国安防最具影响力的品牌之一。世界知名调研机构IHS报告显示，东方网力在2016年视频监控管理平台产品中市场占有率位居中国第一、世界第三。
+
+          2016年，安防进入人工智能时代。雪亮工程、公安大数据、智能感知网等一系列国家和地方政策的出台，给整个安防产业带来巨大的机遇。随着AI技术的不断发展，尤其是视频AI技术的逐步成熟，在安防行业应用开始呈腾飞之势。公司推出的智能安防社区解决方案在上海试点成功并得到推广，标志着东方网力在推动警务流程再造和社会治理领域有了跨越式发展。同时，图像解析系统应用于 “公安部视频图像信息综合应用平台”项目建设，此平台是公安行业在“十三五”期间，规划建设视频图像应用系统项目中的顶层平台，这是对公司产品技术等综合实力的肯定，意味着公司在视频智能领域再一次走在了行业的前列。伴随着前沿科技的不断落地，东方网力确定了 "N科技 AI城市 用创新科技推动全球AI城市的涌现与发展"的崭新使命，在全球范围内加大了深度学习、视频结构化、AI智能摄像机方面的研发和产业化投入。从视频到数据，从AI到DI，从软件到服务，城市正成为产业互联网最大的应用场景。东方网力将把握住产业发展机遇，以城市视频为核心，不断创新，构建城市级的数据平台，期待在下一个五年，成为城市数据平台产品及服务的引领者。
+
+          公司是一群志趣相投的人为实现理想而形成的一组契约，一直以来，我们坚信公司的成功=战略*组织。组织是保障公司使命和愿景落地不可或缺的一环，公司一直努力实现业务发展与组织建设的完美契合，将东方网力打造成为一个追求卓越，不断进取的商业组织；一个价值观驱动、强文化的企业。在为全球AI城市的涌现与发展贡献价值同时，共享财富与光荣，共同感受生命的厚度与默契。
+        </div>
+      </Optiscroll>
+    </div>
+    <div>
+      <span>即时渲染滚动条插件:</span>
+      <optiscroll ref="s1"
+                  :step="10"
+                  :autoUpdate="false"
+                  :realTimeRendering="true"
+                  :contentHeight="contentHeight" @scroll="scroll">
+        <code style="width: 700px; height: 100%; display: block;">滚动条高度: {{size}}</code>
+      </optiscroll>
     </div>
   </div>
 </template>
-
 <script>
-
 export default {
   data () {
     return {
-      keys: {
-        0: '0',
-        1: '1',
-        2: '2',
-        3: '3',
-        4: '4',
-        5: '5',
-        6: '6',
-        7: '7'
-      }
+      size: 0,
+      height: 1000
     }
   },
   methods: {
-    click (v) {
-      console.log('click' + v)
+    scroll (e) {
+      this.size = e
+    },
+    contentHeight () {
+      return this.height
     }
   },
   mounted () {
-
+    this.$refs.s0.scrollIntoView(document.getElementById('boy'), 1000, 260)
+    this.$refs.s1.scrollTo(0, 500)
   }
 }
 </script>
 <style lang="less">
-  .util-content {
-    position: absolute;
-    display: block;
-    content: '';
+  #boy {
+    position:relative;
+    width:100px;
+    margin: 20px 0;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    background-color:#555;
   }
 
-  .keyboard {
-    margin-left: 300px;
-    width: 201px;
-    height: 201px;
+  .scrollbar {
+    > div {
+      margin-bottom: 20px;
 
-    .reference {
-      &:extend(.util-content);
-
-      width: 800px;
-      height: 1px;
-      background-color: #000;
-      top: 121px;
-      left: 200px;
-
-      &:after {
-        &:extend(.util-content);
-        width: 1px;
-        height: 600px;
-        background-color: #000;
-        top: -121px;
-        left: 221px;
+      > span {
+        color: #555;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 2;
       }
     }
 
-    .context,
-    .center {
-      width: 100%;
-      height: 100%;
-      border-radius: 100%;
-      background-color: #555;
-      overflow: hidden;
+    .optiscroll {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #c1c1c1;
+      border-radius: 2px;
     }
 
-    .context {
-      position: relative;
-    }
-
-    .center {
-      position: absolute;
-      top: 40px;
-      left: 40px;
-      width: 120px;
-      height: 120px;
-      background-color: #333;
-      z-index: 9000;
-    }
-
-    .b0 {
-      top: -3px;
-      left: 81px;
-    }
-
-    .b1 {
-      top: 20px;
-      left: 136px;
-      transform: rotate(45deg);
-    }
-
-    .b2 {
-      top: 75px;
-      left: 158px;
-      transform: rotate(90deg);
-    }
-
-    .b3 {
-      top: 130px;
-      left: 136px;
-      transform: rotate(135deg);
-    }
-
-    .b4 {
-      top: 153px;
-      left: 81px;
-      transform: rotate(180deg);
-    }
-    .b5 {
-      top: 130px;
-      left: 26px;
-      transform: rotate(225deg);
-    }
-    .b6 {
-      top: 75px;
-      left: 1px;
-      transform: rotate(270deg);
-    }
-    .b7 {
-      top: 20px;
-      left: 25px;
-      transform: rotate(315deg);
-    }
-
-    .arrow {
-      position: relative;
-      display: block;
-      width: 0;
-      margin: 4px auto;
-      border: 10px solid transparent;
-      border-bottom: 18px solid #c1c1c1;
-      z-index: 1000;
-    }
-
-    .ellipse {
-      position: absolute;
-      width: 40px;
-      height: 50px;
-
-      &:hover {
-        cursor: pointer;
-        background-color: #333;
-
-        > .arrow{
-          border-bottom-color: #fff;
-        }
-
-        &:after {
-          background-color: #333;
-        }
-        &:before {
-          background-color: #333;
-        }
-      }
-
-      &:after {
-        &:extend(.util-content);
-        width: 20px;
-        height: 50px;
-        top: 0;
-        left: -8px;
-        transform:rotate(-22.5deg);
-      }
-      &:before {
-        &:extend(.util-content);
-        width: 20px;
-        height: 50px;
-        top: 0;
-        left: 29px;
-        transform:rotate(22.5deg);
-      }
+    .optiscroll-content {
+      padding: 10px;
+      color: #555;
+      line-height: 1.414;
     }
   }
 </style>

@@ -1,7 +1,7 @@
-import {isArray, isChar} from './core'
+import { isArray, isChar } from './core'
 
-export default class {
-  constructor (value, separator = '') {
+class StringBuffer {
+  constructor (value, separator) {
     this.cache = []
     this.separator = separator
 
@@ -23,4 +23,8 @@ export default class {
   val () {
     return this.cache.join(this.separator)
   }
+}
+
+export default function (value, separator = '') {
+  return new StringBuffer(value, separator)
 }

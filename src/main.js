@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import '@/static/comp'
+import '@/static/el-comp'
+import '@/service/controller-prod'
+
 Vue.config.productionTip = false
 
 new Vue({

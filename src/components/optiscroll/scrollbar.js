@@ -7,12 +7,22 @@ let evTypes = window.PointerEvent ? ['pointerdown'] : ['touchstart', 'mousedown'
 let rtlMode = scrollbarSpec.rtl
 
 export default {
-  data () {
-    this.isVertical = this.which === 'v'
-    this.scrollProp = this.isVertical ? 'scrollTop' : 'scrollLeft'
-    this.scrollbarCache = this.cache[this.which] = {
-      [this.scrollProp]: 0
+  props: {
+    which: {
+      type: String,
+      default: 'v'
     }
+  },
+  data () {
+    this.instance = this.$parent
+    this.rtl = this.instance.rtl
+    this.cache = this.instance.cache
+    this.minTrackSize = this.instance.minTrackSize
+    this.maxTrackSize = this.instance.maxTrackSize
+    this.classPrefix = this.instance.classPrefix
+    this.isVertical = this.which === 'v'
+    this.scrollProp = `scroll${this.isVertical ? 'Top' : 'Left'}`
+    this.scrollbarCache = this.cache[this.which] = { [this.scrollProp]: 0 }
     return {
       style: {
         marginRight: 0,
@@ -22,9 +32,6 @@ export default {
     }
   },
   computed: {
-    instance () {
-      return this.$parent
-    },
     evSuffixes () {
       return this.isVertical ? ['top', 'bottom'] : ['left', 'right']
     },
@@ -33,31 +40,6 @@ export default {
     },
     scrollSize () {
       return `scroll${this.isVertical ? 'H' : 'W'}`
-    }
-  },
-  props: {
-    rtl: {
-      type: Boolean,
-      default: !1
-    },
-    cache: {
-      type: Object
-    },
-    which: {
-      type: String,
-      default: 'v'
-    },
-    classPrefix: {
-      type: String,
-      default: 'optiscroll-'
-    },
-    minTrackSize: {
-      type: Number,
-      default: 5
-    },
-    maxTrackSize: {
-      type: Number,
-      default: 95
     }
   },
   render ($$) {
@@ -103,8 +85,7 @@ export default {
         enabled, cache, clientSize, scrollSize, scrollbarCache, trackEl, position
       } = this
       let flag = true
-      let newSize, oldSize
-      let newDim, newRelPos, deltaPos
+      let newSize, oldSize, newRelPos, deltaPos, newDim
       
       if (!enabled && cache[clientSize] === cache[scrollSize]) { return }
       
@@ -215,12 +196,12 @@ export default {
       this.evType = ev.type.match(evTypesMatcher)[1]
       let { scrollbarCache, position, evType } = this
       let { pageX, pageY } = ev.touches ? ev.touches[0] : ev
-    
+     
       extend(scrollbarCache, {
         x: pageX,
         y: pageY
       })
-    
+
       this.scroll = position()
       this.bind(true, evType)
     },

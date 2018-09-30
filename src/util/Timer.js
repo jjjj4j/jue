@@ -1,4 +1,5 @@
-import {each} from '@/util/array'
+import { each } from './array'
+import { fire } from './core'
 
 const cache = {}, win = window
 
@@ -6,25 +7,32 @@ const create = function (fn, step, handle) {
   return win['set' + handle](fn, step)
 }
 const destroy = function (timer, handle) {
-  win['clear' + handle](timer)
+  return win['clear' + handle](timer)
 }
 
-export default class {
-  constructor (np, fn, step = 1000, interval) {
+class Timer {
+  constructor (np, fn, step, interval) {
     this.namespace = np
     this.handle = interval ? 'Interval' : 'Timeout'
     this.timer = create(fn, step, this.handle)
-
-    cache[np] && cache[np].stop()
-    cache[np] = this
   }
-
-  stop () {
+  
+  destroy () {
     delete cache[this.namespace]
-    destroy(this.timer, this.handle)
+    return destroy(this.timer, this.handle)
   }
+}
 
-  static destroy (list = cache) {
-    each(list, (timer) => timer.stop())
+TimerFactory.destroy = function (list = cache) {
+  each(list, (timer) => timer.destroy())
+}
+
+export default function TimerFactory (np, fn, step = 1000, immediately = !1, interval) {
+  let timer = cache[np]
+  if (timer) {
+    timer.destroy()
+  } else if (immediately) {
+    fire(fn)
   }
+  return (cache[np] = new Timer(np, fn, step, interval))
 }

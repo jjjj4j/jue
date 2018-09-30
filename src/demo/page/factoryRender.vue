@@ -1,24 +1,41 @@
 <template>
-  <div class="browser">
-    <ul>
-      <li>当前浏览器版本</li>
-      <li>isIE9: {{isIE9}}</li>
-      <li>is4plugin: {{is4plugin}}</li>
-      <li>browser: {{browser}}</li>
-    </ul>
+  <div class="factory-render">
+    <factory-render :init="renderInit">
+      <div slot="exp">具名插槽展示</div>
+      <div slot="exp2" slot-scope="{text}">具名插槽作用域解构：{{text}}</div>
+      <div slot-scope="data">插槽作用域：{{data}}</div>
+    </factory-render>
   </div>
 </template>
 
 <script>
-import { isIE9, is4plugin, browser } from '@/util/browser'
-import { json2str } from '@/util/json'
+import { factoryRender } from '@/util/render'
 
 export default {
-  data () {
-    return {
-      isIE9: isIE9,
-      is4plugin: is4plugin,
-      browser: json2str(browser)
+  computed: {
+    renderInit () {
+      return factoryRender.bind(this, {
+        tag: 'div',
+        children: ['这是一个FactoryRender创建的DIV', {
+          tag: 'div',
+          slot: 'exp'
+        }, {
+          slot: {
+            name: 'exp2',
+            data: {
+              text: 'PVM'
+            }
+          }
+        }, {
+          slot () {
+            return {
+              data: {
+                id: 'PVM2'
+              }
+            }
+          }
+        }]
+      }, {})
     }
   }
 }

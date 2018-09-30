@@ -1,8 +1,8 @@
-import Scrollbar from './optiscroll.js'
+import Optiscroll from './optiscroll.js'
 
-Scrollbar.name = 'Scrollbar'
-Scrollbar.install = function (Vue) {
-  Vue.component(Scrollbar.name, Scrollbar)
+Optiscroll.name = 'Optiscroll'
+Optiscroll.install = function (Vue) {
+  Vue.component(Optiscroll.name, Optiscroll)
 }
 
-export default Scrollbar
+export default Optiscroll

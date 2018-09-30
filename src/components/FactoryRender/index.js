@@ -1,8 +1,13 @@
-import FormFactory from './formFactory.vue'
-
-/* istanbul ignore next */
-FormFactory.install = function (Vue) {
-  Vue.component(FormFactory.name, FormFactory)
+export default{
+  name: 'FactoryRender',
+  functional: false,
+  render: function ($$) {
+    return this.init($$, this)
+  },
+  props: {
+    init: Function
+  },
+  install (Vue) {
+    Vue.component(this.name, this)
+  }
 }
-
-export default FormFactory

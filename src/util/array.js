@@ -1,4 +1,4 @@
-import { isArray, isUndefined } from '@/util/core'
+import { isArray, isUndefined } from './core'
 
 export function each (obj, callback) {
   let length, i = 0

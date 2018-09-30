@@ -87,7 +87,7 @@ export function repeat (value, length) {
 
 function random (type, length, min, max) {
   let Min = min || 0
-  let Range = isDefined(max) ? (max - Min) : (parseInt(new StringBuffer([1, repeat(0, length)]).val(), type) - Min - 1)
+  let Range = isDefined(max) ? (max - Min) : (parseInt(StringBuffer([1, repeat(0, length)]).val(), type) - Min - 1)
   return (Min + Math.round(Math.random() * Range)).toString(type)
 }
 
@@ -122,3 +122,65 @@ export function roll (max = 100, type = 10) {
 }
 
 export function noop () {}
+
+export function fire (fn, ...args) {
+  if (fn) {
+    return fn.apply(this, args)
+  }
+}
+
+let rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g
+export function trim (text) {
+  return isEmpty(text) ? '' : parseChar(text).replace(rtrim, '')
+}
+
+export function extend (...args) {
+  let options, name, src, copy, copyIsArray, clone
+  let target = args[0] || {}
+  let i = 1
+  let length = args.length
+  let deep = false
+  
+  if (isBoolean(target)) {
+    deep = target
+    target = args[i] || {}
+    i++
+  }
+
+  if (typeof target !== 'object' && !isFunction(target)) {
+    target = {}
+  }
+
+  if (i === length) {
+    target = this
+    i--
+  }
+  
+  for (; i < length; i++) {
+    if ((options = args[i]) != null) {
+      for (name in options) {
+        src = target[name]
+        copy = options[name]
+        
+        if (target === copy) {
+          continue
+        }
+
+        if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
+          if (copyIsArray) {
+            copyIsArray = false
+            clone = src && isArray(src) ? src : []
+          } else {
+            clone = src && isPlainObject(src) ? src : {}
+          }
+
+          target[name] = extend(deep, clone, copy)
+        } else if (copy !== undefined) {
+          target[name] = copy
+        }
+      }
+    }
+  }
+
+  return target
+}
