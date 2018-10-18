@@ -49,6 +49,9 @@ export default {
     ).then((rst) => {
       this.text = rst.join()
     })
+  },
+  destroyed () {
+    Timer.destroy()
   }
 }
 </script>

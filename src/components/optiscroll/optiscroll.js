@@ -1,5 +1,5 @@
 import './optiscroll.css'
-import { extend, isDefined } from '@/util/core'
+import { extend, isDefined, AutoIncrementID } from '@/util/core'
 import { each } from '@/util/array'
 import Timer from '@/util/Timer'
 import Bar from './scrollbar.js'
@@ -46,6 +46,11 @@ export default {
   },
   data () {
     this.cache = {}
+    this.TimerName = [
+      AutoIncrementID('ScrollCheckLoop'),
+      AutoIncrementID('ScrollTimerStop'),
+      AutoIncrementID('OptiscrollWheelEvent')
+    ]
     return {
       classes: [this.classPrefix.replace('-', ''), 'is-enabled']
     }
@@ -109,14 +114,14 @@ export default {
     return $$('div', $root, children)
   },
   mounted () {
-    let { autoUpdate, $el } = this
+    let { autoUpdate, $el, TimerName } = this
     let index = instances.indexOf(this)
     this.scrollEl = $el.firstElementChild
     if (autoUpdate) {
       if (index < 0) {
         instances.push(this)
       }
-      checkTimer = checkTimer || Timer('ScrollCheckLoop', checkLoop.bind(this), checkFrequency, !0, !0)
+      checkTimer = checkTimer || Timer(TimerName[0], checkLoop.bind(this), checkFrequency, !0, !0)
     } else {
       this.update()
     }
@@ -168,7 +173,7 @@ export default {
     scroll (ev) {
       let {
         cache, vBar, hBar, scrollStop, fireCustomEvent,
-        realTimeRendering, scrollStopDelay
+        realTimeRendering, scrollStopDelay, TimerName
       } = this
       let { scrollTop, scrollLeft } = ev.target
       
@@ -184,7 +189,7 @@ export default {
 
       fireCustomEvent('scroll')
       
-      cache.timerStop = Timer('ScrollTimerStop', scrollStop, scrollStopDelay, !0)
+      cache.timerStop = Timer(TimerName[1], scrollStop, scrollStopDelay, !0)
     },
     touchStart (ev) {
       pauseCheck = false
@@ -199,7 +204,7 @@ export default {
     },
     wheel (ev) {
       let {
-        scrollEl, realTimeRendering, preventParentScroll, scrollAnimation, step, vBar,
+        scrollEl, realTimeRendering, preventParentScroll, scrollAnimation, step, vBar, TimerName,
         cache: { v: cacheV, h: cacheH, scrollH, scrollW, clientH, clientW }
       } = this
       let preventScroll = preventParentScroll && isTouch
@@ -214,13 +219,16 @@ export default {
         }
       } else {
         if (realTimeRendering) {
-          let { wheelDelta } = ev
-          let { position, update } = vBar
-          position(position() - (wheelDelta > 0 ? step : -step), (v0, v1) => {
-            if (v0 !== v1) {
-              update() || this.fireCustomEvent('scroll')
-            }
-          })
+          ev.preventDefault()
+          Timer(TimerName[2], () => {
+            let { wheelDelta } = ev
+            let { position, update } = vBar
+            position(position() - (wheelDelta > 0 ? step : -step), (v0, v1) => {
+              if (v0 !== v1) {
+                update() || this.fireCustomEvent('scroll')
+              }
+            })
+          }, 10)
         }
       }
     },
@@ -372,6 +380,7 @@ export default {
     }
   },
   destroyed () {
+    Timer.destroy(this.TimerName)
     window.requestAnimationFrame(() => {
       let index = instances.indexOf(this)
       if (index > -1) {

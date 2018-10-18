@@ -6,9 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit",
     "library": "node library",
-    "wepack-init": "vue inspect > webpack.config.js"
+    "test:unit": "vue-cli-service test:unit",
+    "webpack-init": "vue inspect > webpack.config.js"
   },
   "dependencies": {
     "ajv": "^6.0.0",
@@ -30,7 +30,7 @@
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
-    "element-ui": "^2.4.6",
+    "element-ui": "^2.4.8",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.17"

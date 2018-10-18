@@ -47,7 +47,7 @@
         class="el-select__input"
         :class="[selectSize ? `is-${ selectSize }` : '']"
         :disabled="selectDisabled"
-        :autocomplete="autoComplete"
+        :autocomplete="autoComplete || autocomplete"
         @focus="handleFocus"
         @blur="softFocus = false"
         @click.stop
@@ -74,7 +74,7 @@
       :placeholder="currentPlaceholder"
       :name="name"
       :id="id"
-      :auto-complete="autoComplete"
+      :autocomplete="autoComplete || autocomplete"
       :size="selectSize"
       :disabled="selectDisabled"
       :readonly="readonly"
@@ -94,10 +94,10 @@
       <template slot="prefix" v-if="$slots.prefix">
         <slot name="prefix"></slot>
       </template>
-      <i slot="suffix"
-       :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"
-       @click="handleIconClick"
-      ></i>
+      <template slot="suffix">
+        <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
+        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
+      </template>
     </el-input>
     <transition
       name="el-zoom-in-top"
@@ -107,13 +107,13 @@
         ref="popper"
         :append-to-body="popperAppendToBody"
         v-show="isHide">
-        <el-scrollbar
+        <component
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
           view-class="el-select-dropdown__list"
           ref="scrollbar"
-          :data="data"
           :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
+          :is="scrollbarName"
           v-show="options.length > 0 && !loading">
           <el-option
             :value="query"
@@ -121,7 +121,7 @@
             v-if="showNewOption">
           </el-option>
           <slot></slot>
-        </el-scrollbar>
+        </component>
         <p
           class="el-select-dropdown__empty"
           v-if="emptyText &&
@@ -141,30 +141,29 @@ import ElInput from 'element-ui/packages/input'
 import ElSelectMenu from './select-dropdown.vue'
 import ElOption from './option.vue'
 import ElTag from 'element-ui/packages/tag'
-import ElScrollbar from './scrollbar'
+import ElScrollbar from 'element-ui/packages/scrollbar'
+import Scrollbar from './scrollbar'
 import debounce from 'throttle-debounce/debounce'
 import Clickoutside from 'element-ui/src/utils/clickoutside'
-import { addClass, removeClass, hasClass } from 'element-ui/src/utils/dom'
 import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event'
 import { t } from 'element-ui/src/locale'
 import scrollIntoView from 'element-ui/src/utils/scroll-into-view'
 import { getValueByPath, valueEquals } from 'element-ui/src/utils/util'
 import NavigationMixin from './navigation-mixin'
 import { isKorean } from 'element-ui/src/utils/shared'
-
-const sizeMap = {
-  'medium': 36,
-  'small': 32,
-  'mini': 28
-}
+import { isNumber, noop } from '@/util/core'
 
 export default {
-  mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
-
   name: 'ElSelect',
-
   componentName: 'ElSelect',
-
+  components: {
+    ElInput,
+    ElSelectMenu,
+    ElOption,
+    ElTag
+  },
+  mixins: [Emitter, Locale, Focus('reference'), NavigationMixin],
+  directives: { Clickoutside },
   inject: {
     elForm: {
       default: ''
@@ -174,14 +173,110 @@ export default {
       default: ''
     }
   },
-
   provide () {
     return {
       'select': this
     }
   },
+  props: {
+    name: String,
+    id: String,
+    value: {
+      required: true
+    },
+    lightSpeed: { type: Boolean, default: true },
+    options: {
+      type: Array,
+      default () { return [] }
+    },
+    autocomplete: {
+      type: String,
+      default: 'off'
+    },
+    /** @Deprecated in next major version */
+    autoComplete: {
+      type: String,
+      validator (val) {
+        process.env.NODE_ENV !== 'production' &&
+        console.warn('[Element Warn][Select]\'auto-complete\' property will be deprecated in next major version. please use \'autocomplete\' instead.')
+        return true
+      }
+    },
+    automaticDropdown: Boolean,
+    size: String,
+    disabled: Boolean,
+    clearable: Boolean,
+    filterable: Boolean,
+    allowCreate: Boolean,
+    loading: Boolean,
+    popperClass: String,
+    remote: Boolean,
+    loadingText: String,
+    noMatchText: String,
+    noDataText: String,
+    remoteMethod: Function,
+    filterMethod: Function,
+    multiple: Boolean,
+    multipleLimit: {
+      type: Number,
+      default: 0
+    },
+    placeholder: {
+      type: String,
+      default () {
+        return t('el.select.placeholder')
+      }
+    },
+    defaultFirstOption: Boolean,
+    reserveKeyword: Boolean,
+    valueKey: {
+      type: String,
+      default: 'value'
+    },
+    collapseTags: Boolean,
+    popperAppendToBody: {
+      type: Boolean,
+      default: true
+    }
+  },
+
+  data () {
+    return {
+      cachedOptions: [],
+      createdLabel: null,
+      createdSelected: false,
+      selected: this.multiple ? [] : {},
+      inputLength: 20,
+      inputWidth: 0,
+      initialInputHeight: 0,
+      cachedPlaceHolder: '',
+      optionsCount: 0,
+      filteredOptionsCount: 0,
+      visible: false,
+      softFocus: false,
+      selectedLabel: '',
+      hoverIndex: -1,
+      query: '',
+      previousQuery: null,
+      inputHovering: false,
+      currentPlaceholder: '',
+      menuVisibleOnFocus: false,
+      isOnComposition: false,
+      isSilentBlur: false
+    }
+  },
 
   computed: {
+    scrollbar () {
+      let scrollbar = this.$refs.scrollbar
+      if (scrollbar) {
+        scrollbar.query = scrollbar.query || noop
+      }
+      return scrollbar
+    },
+    scrollbarName () {
+      return this.lightSpeed ? Scrollbar : ElScrollbar
+    },
     isHide () {
       return this.visible && this.emptyText !== false
     },
@@ -195,15 +290,19 @@ export default {
       return !this.filterable || this.multiple || !isIE && !this.visible
     },
 
-    iconClass () {
+    showClose () {
+      let hasValue = this.multiple
+        ? this.value.length > 0
+        : this.value !== undefined && this.value !== null && this.value !== ''
       let criteria = this.clearable &&
           !this.selectDisabled &&
           this.inputHovering &&
-          !this.multiple &&
-          this.value !== undefined &&
-          this.value !== null &&
-          this.value !== ''
-      return criteria ? 'circle-close is-show-close' : (this.remote && this.filterable ? '' : 'arrow-up')
+          hasValue
+      return criteria
+    },
+
+    iconClass () {
+      return this.remote && this.filterable ? '' : (this.visible ? 'arrow-up is-reverse' : 'arrow-up')
     },
 
     debounce () {
@@ -246,91 +345,6 @@ export default {
     }
   },
 
-  components: {
-    ElInput,
-    ElSelectMenu,
-    ElOption,
-    ElTag,
-    ElScrollbar
-  },
-
-  directives: { Clickoutside },
-
-  props: {
-    name: String,
-    data: Array,
-    id: String,
-    value: {
-      required: true
-    },
-    autoComplete: {
-      type: String,
-      default: 'off'
-    },
-    automaticDropdown: Boolean,
-    size: String,
-    disabled: Boolean,
-    clearable: Boolean,
-    filterable: Boolean,
-    allowCreate: Boolean,
-    loading: Boolean,
-    popperClass: String,
-    remote: Boolean,
-    loadingText: String,
-    noMatchText: String,
-    noDataText: String,
-    remoteMethod: Function,
-    filterMethod: Function,
-    multiple: Boolean,
-    multipleLimit: {
-      type: Number,
-      default: 0
-    },
-    placeholder: {
-      type: String,
-      default () {
-        return t('el.select.placeholder')
-      }
-    },
-    defaultFirstOption: Boolean,
-    reserveKeyword: Boolean,
-    valueKey: {
-      type: String,
-      default: 'value'
-    },
-    collapseTags: Boolean,
-    popperAppendToBody: {
-      type: Boolean,
-      default: true
-    }
-  },
-
-  data () {
-    return {
-      options: [],
-      cachedOptions: [],
-      createdLabel: null,
-      createdSelected: false,
-      selected: this.multiple ? [] : {},
-      inputLength: 20,
-      inputWidth: 0,
-      cachedPlaceHolder: '',
-      optionsCount: 0,
-      filteredOptionsCount: 0,
-      visible: false,
-      softFocus: false,
-      selectedLabel: '',
-      hoverIndex: -1,
-      query: '',
-      previousQuery: null,
-      inputHovering: false,
-      currentPlaceholder: '',
-      menuVisibleOnFocus: false,
-      isOnComposition: false,
-      isSilentBlur: false
-    }
-  },
-
   watch: {
     selectDisabled () {
       this.$nextTick(() => {
@@ -366,7 +380,6 @@ export default {
 
     visible (val) {
       if (!val) {
-        this.handleIconHide()
         this.broadcast('ElSelectDropdown', 'destroyPopper')
         if (this.$refs.input) {
           this.$refs.input.blur()
@@ -395,7 +408,6 @@ export default {
           }
         }
       } else {
-        this.handleIconShow()
         this.broadcast('ElSelectDropdown', 'updatePopper')
         if (this.filterable) {
           this.query = this.remote ? '' : this.selectedLabel
@@ -404,6 +416,7 @@ export default {
             this.$refs.input.focus()
           } else {
             if (!this.remote) {
+              this.scrollbar.query('')
               this.broadcast('ElOption', 'queryChange', '')
               this.broadcast('ElOptionGroup', 'queryChange')
             }
@@ -449,10 +462,10 @@ export default {
         this.previousQuery === null &&
           (typeof this.filterMethod === 'function' || typeof this.remoteMethod === 'function')
       ) {
-        this.previousQuery = val
+        this.scrollbar.query(this.previousQuery = val)
         return
       }
-      this.previousQuery = val
+      this.scrollbar.query(this.previousQuery = val)
       this.$nextTick(() => {
         if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper')
       })
@@ -479,25 +492,13 @@ export default {
       }
     },
 
-    handleIconHide () {
-      let icon = this.$el.querySelector('.el-input__icon')
-      if (icon) {
-        removeClass(icon, 'is-reverse')
-      }
-    },
-
-    handleIconShow () {
-      let icon = this.$el.querySelector('.el-input__icon')
-      if (icon && !hasClass(icon, 'el-icon-circle-close')) {
-        addClass(icon, 'is-reverse')
-      }
-    },
-
     scrollToOption (option) {
-      const target = Array.isArray(option) && option[0] ? option[0].$el : option.$el
-      if (this.$refs.popper && target) {
-        const menu = this.$refs.popper.$el.querySelector('.el-select-dropdown__wrap')
-        scrollIntoView(menu, target)
+      if (!this.lightSpeed) {
+        const target = Array.isArray(option) && option[0] ? option[0].$el : option.$el
+        if (this.$refs.popper && target) {
+          const menu = this.$refs.popper.$el.querySelector('.el-select-dropdown__wrap')
+          scrollIntoView(menu, target)
+        }
       }
       this.$refs.scrollbar && this.$refs.scrollbar.handleScroll()
     },
@@ -511,14 +512,15 @@ export default {
         this.$emit('change', val)
       }
     },
-
+    // TODO 需要修改option的获取方式
     getOption (value) {
       let option
+      let options = this.lightSpeed ? this.options : this.cachedOptions
       const isObject = Object.prototype.toString.call(value).toLowerCase() === '[object object]'
       const isNull = Object.prototype.toString.call(value).toLowerCase() === '[object null]'
 
-      for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
-        const cachedOption = this.cachedOptions[i]
+      for (let i = options.length - 1; i >= 0; i--) {
+        const cachedOption = this.options[i]
         const isEqual = isObject
           ? getValueByPath(cachedOption.value, this.valueKey) === getValueByPath(value, this.valueKey)
           : cachedOption.value === value
@@ -538,6 +540,32 @@ export default {
         newOption.hitState = false
       }
       return newOption
+    },
+
+    getOptionByIndex (index) {
+      if (isNumber(index)) {
+        if (this.lightSpeed) {
+          return this.scrollbar.getIndex()[index]
+        } else {
+          return this.options[index]
+        }
+      }
+    },
+
+    getOptionIndex (selected) {
+      if (selected) {
+        if (this.lightSpeed) {
+          let list = this.scrollbar.getIndex()
+          for (let i = list.length - 1; i > -1; i--) {
+            if (list[i].value === selected.value) {
+              return i
+            }
+          }
+          return -1
+        } else {
+          return this.options.indexOf(selected)
+        }
+      }
     },
 
     setSelected () {
@@ -594,10 +622,8 @@ export default {
       this.softFocus = false
     },
 
-    handleIconClick (event) {
-      if (this.iconClass.indexOf('circle-close') > -1) {
-        this.deleteSelected(event)
-      }
+    handleClearClick (event) {
+      this.deleteSelected(event)
     },
 
     doDestroy () {
@@ -650,14 +676,13 @@ export default {
         let inputChildNodes = this.$refs.reference.$el.childNodes
         let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
         const tags = this.$refs.tags
-        const sizeInMap = sizeMap[this.selectSize] || 40
+        const sizeInMap = this.initialInputHeight || 40
         input.style.height = this.selected.length === 0
           ? sizeInMap + 'px'
           : Math.max(
             tags ? (tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)) : 0,
             sizeInMap
           ) + 'px'
-        console.log('input.style.height', input.style.height)
         if (this.visible && this.emptyText !== false) {
           this.broadcast('ElSelectDropdown', 'updatePopper')
         }
@@ -667,10 +692,10 @@ export default {
     resetHoverIndex () {
       setTimeout(() => {
         if (!this.multiple) {
-          this.hoverIndex = this.options.indexOf(this.selected)
+          this.hoverIndex = this.getOptionIndex(this.selected)
         } else {
           if (this.selected.length > 0) {
-            this.hoverIndex = Math.min.apply(null, this.selected.map(item => this.options.indexOf(item)))
+            this.hoverIndex = Math.min.apply(null, this.selected.map(item => this.getOptionIndex(item)))
           } else {
             this.hoverIndex = -1
           }
@@ -751,16 +776,17 @@ export default {
       if (!this.visible) {
         this.toggleMenu()
       } else {
-        if (this.options[this.hoverIndex]) {
-          this.handleOptionSelect(this.options[this.hoverIndex])
+        if (this.getOptionByIndex(this.hoverIndex)) {
+          this.handleOptionSelect(this.getOptionByIndex(this.hoverIndex))
         }
       }
     },
 
     deleteSelected (event) {
       event.stopPropagation()
-      this.$emit('input', '')
-      this.emitChange('')
+      const value = this.multiple ? [] : ''
+      this.$emit('input', value)
+      this.emitChange(value)
       this.visible = false
       this.$emit('clear')
     },
@@ -866,12 +892,17 @@ export default {
       this.currentPlaceholder = ''
     }
     addResizeListener(this.$el, this.handleResize)
+
+    const reference = this.$refs.reference
+    if (reference && reference.$el) {
+      this.initialInputHeight = reference.$el.getBoundingClientRect().height
+    }
     if (this.remote && this.multiple) {
       this.resetInputHeight()
     }
     this.$nextTick(() => {
-      if (this.$refs.reference && this.$refs.reference.$el) {
-        this.inputWidth = this.$refs.reference.$el.getBoundingClientRect().width
+      if (reference && reference.$el) {
+        this.inputWidth = reference.$el.getBoundingClientRect().width
       }
     })
     this.setSelected()

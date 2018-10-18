@@ -16,5 +16,3407 @@
     "areaCode": "",
     "sort": 0,
     "description": "直属"
+  },
+  {
+    "id": "57681088-105f-19f9-8730-8106d2fa542e",
+    "name": "老君堂地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/老君堂地区直属派出所"
+  },
+  {
+    "id": "4bd8e7c8-cfd7-5a0f-1522-76ed10bb23a5",
+    "name": "黑桥地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/黑桥地区直属派出所"
+  },
+  {
+    "id": "5fe2c927-1b95-846c-ab4d-65f35c945305",
+    "name": "宝山直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/宝山直属派出所"
+  },
+  {
+    "id": "b892da84-a120-b0e1-a694-b39079071971",
+    "name": "双泉堡地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/双泉堡地区直属派出所"
+  },
+  {
+    "id": "48277880-5e38-cd91-9b55-25235daa0cc6",
+    "name": "分中寺地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/分中寺地区直属派出所"
+  },
+  {
+    "id": "fc376601-288c-1cb5-5335-a1fbd0f5054b",
+    "name": "五爱屯直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/五爱屯直属派出所"
+  },
+  {
+    "id": "23fa13f1-a06b-38cc-279f-126840957cb9",
+    "name": "南街地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/南街地区直属派出所"
+  },
+  {
+    "id": "51a72736-181b-8821-239f-3be2d3dcd654",
+    "name": "金桥地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/金桥地区直属派出所"
+  },
+  {
+    "id": "60b23f0b-7f20-b66a-9794-cf9964ba1f40",
+    "name": "南半壁店地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/南半壁店地区直属派出所"
+  },
+  {
+    "id": "7e3af6e5-e711-8fda-a8f6-2e25cd411ca7",
+    "name": "北四村直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/北四村直属派出所"
+  },
+  {
+    "id": "46532f41-39f6-4cfb-f050-ace283d272f0",
+    "name": "东三旗地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/东三旗地区直属派出所"
+  },
+  {
+    "id": "2bc8476b-293c-8034-b63f-d4a9a4d80ceb",
+    "name": "狼垡地区直属派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/狼垡地区直属派出所"
+  },
+  {
+    "id": "6cef08e1-6f62-93fc-c484-4a8c2db33a08",
+    "name": "长营地区派出所",
+    "parentId": "d0c5b7cf-249c-1368-30dc-27f8c3e025fa",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "直属/长营地区派出所"
+  },
+  {
+    "id": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "name": "东城分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城"
+  },
+  {
+    "id": "42b4b117-99a8-30fa-ec0f-4388c4596fd0",
+    "name": "朝阳门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/朝阳门派出所"
+  },
+  {
+    "id": "c03a232a-9ad2-94f7-8b59-a81d4ac5e157",
+    "name": "东四派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/东四派出所"
+  },
+  {
+    "id": "1071e995-577b-4b21-f60a-e96c04a73244",
+    "name": "东直门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/东直门派出所"
+  },
+  {
+    "id": "dac0ac13-2bc2-aef8-c73c-d5b8f98c46d0",
+    "name": "北新桥派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/北新桥派出所"
+  },
+  {
+    "id": "67621001-1456-306d-c348-7360b0df0798",
+    "name": "和平里派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/和平里派出所"
+  },
+  {
+    "id": "fe2949da-1987-c5c2-73a2-99dd0facce63",
+    "name": "安定门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/安定门派出所"
+  },
+  {
+    "id": "459802c8-89c1-b9cc-813f-14dce7268d2f",
+    "name": "交道口派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/交道口派出所"
+  },
+  {
+    "id": "4b6dcc9c-d39e-f015-1d5a-bc5e0c404fee",
+    "name": "景山派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/景山派出所"
+  },
+  {
+    "id": "6560b84f-a8cd-5aa0-4033-bda9e7cee156",
+    "name": "东华门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/东华门派出所"
+  },
+  {
+    "id": "c5f09ce6-bd93-632a-a0d0-e3980783beee",
+    "name": "建国门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/建国门派出所"
+  },
+  {
+    "id": "d4accad7-20f8-4cae-37bf-8e6fff411672",
+    "name": "东交民巷派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/东交民巷派出所"
+  },
+  {
+    "id": "640afec5-56ae-dd0d-3631-ea106a84ab38",
+    "name": "安外大街派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/安外大街派出所"
+  },
+  {
+    "id": "3790f94e-5bed-fcd0-29f8-b83e40954449",
+    "name": "北京站派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/北京站派出所"
+  },
+  {
+    "id": "46e4d974-583a-1233-6a8f-7ab40a26621b",
+    "name": "前门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/前门派出所"
+  },
+  {
+    "id": "5936f4c2-ec9d-5a7b-7e83-13db82bf24c7",
+    "name": "崇文门派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/崇文门派出所"
+  },
+  {
+    "id": "9deceff9-c80b-7bc2-eb0a-a79883cf54a1",
+    "name": "东花市派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/东花市派出所"
+  },
+  {
+    "id": "37450d0b-1498-bbcb-f60d-c75915caaadf",
+    "name": "天坛派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/天坛派出所"
+  },
+  {
+    "id": "28b2e024-38a4-7f6b-d751-6d0b687024a2",
+    "name": "体育馆路派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/体育馆路派出所"
+  },
+  {
+    "id": "3330962e-e654-ebb4-3a58-db8266c069b1",
+    "name": "龙潭派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/龙潭派出所"
+  },
+  {
+    "id": "ea938bd6-7e75-a59f-af94-5e0d27198b4e",
+    "name": "永外派出所",
+    "parentId": "eb208880-fc0e-ccf7-318d-72bce05becd1",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "东城/永外派出所"
+  },
+  {
+    "id": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "name": "西城分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城"
+  },
+  {
+    "id": "2c8940db-3567-2707-15ac-fe29d461112d",
+    "name": "二龙路派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/二龙路派出所"
+  },
+  {
+    "id": "a44a99a0-4293-62f6-2353-3cfcdc419d7b",
+    "name": "西长安街派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/西长安街派出所"
+  },
+  {
+    "id": "9c2a94fe-f62b-75bd-a4e3-50282a1ba85a",
+    "name": "丰盛派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/丰盛派出所"
+  },
+  {
+    "id": "83d634c1-2ac4-fea4-31f7-ffe246f769e6",
+    "name": "厂桥派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/厂桥派出所"
+  },
+  {
+    "id": "db7f2eda-44da-b396-7911-a415744a4fd6",
+    "name": "福绥境派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/福绥境派出所"
+  },
+  {
+    "id": "4d064471-79a9-7db3-13d8-f3567591d31a",
+    "name": "新街口派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/新街口派出所"
+  },
+  {
+    "id": "440ae240-7df2-598c-5caa-c76bbf6a9757",
+    "name": "月坛派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/月坛派出所"
+  },
+  {
+    "id": "f725d4de-4da9-c6d8-ebe4-5a31da8a577e",
+    "name": "展览路派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/展览路派出所"
+  },
+  {
+    "id": "28a11c38-4258-3b8c-3bc0-f859d085e9ef",
+    "name": "德胜门外派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/德胜门外派出所"
+  },
+  {
+    "id": "2d07693c-cad3-5d6d-8f99-9ba4f3c1f3cf",
+    "name": "阜外大街派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/阜外大街派出所"
+  },
+  {
+    "id": "94cfb370-963f-34de-f311-604b65020349",
+    "name": "天桥派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/天桥派出所"
+  },
+  {
+    "id": "13c45cc3-4aff-aa98-d4c1-d6d5dcb4bdc4",
+    "name": "椿树派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/椿树派出所"
+  },
+  {
+    "id": "21dc974b-90aa-3529-cc62-d522f7905e85",
+    "name": "大栅栏派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/大栅栏派出所"
+  },
+  {
+    "id": "2150857b-fb33-5be5-17f2-796dd14888d8",
+    "name": "陶然亭派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/陶然亭派出所"
+  },
+  {
+    "id": "418be0dc-837d-4579-f7db-2dcb345252fd",
+    "name": "白纸坊派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/白纸坊派出所"
+  },
+  {
+    "id": "a663d8fe-38bd-4691-ef4a-29b62d90bce0",
+    "name": "广内派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/广内派出所"
+  },
+  {
+    "id": "9a8fe07b-2b2f-daf4-ca6c-d7a3d507afad",
+    "name": "广外派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/广外派出所"
+  },
+  {
+    "id": "763dd694-5f6c-c1b5-da3a-24720e1f5208",
+    "name": "牛街派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/牛街派出所"
+  },
+  {
+    "id": "9946d873-5568-71bc-8e7c-d061ff7f8cce",
+    "name": "天宁寺派出所",
+    "parentId": "1ed30dc0-dd80-61ed-7df3-466a0c4fddd0",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "西城/天宁寺派出所"
+  },
+  {
+    "id": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "name": "朝阳分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳"
+  },
+  {
+    "id": "a1ce761a-d855-eacf-dd94-c64a5ea86dbf",
+    "name": "八里庄派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/八里庄派出所"
+  },
+  {
+    "id": "3b500130-a844-8278-e1e3-f504390f6685",
+    "name": "建国门外派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/建国门外派出所"
+  },
+  {
+    "id": "614aaaf9-b3bf-6f0d-dffb-a02eb0c40c51",
+    "name": "朝外大街派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/朝外大街派出所"
+  },
+  {
+    "id": "a9751be9-8e02-cfe5-fe1e-4664b77cbab2",
+    "name": "呼家楼派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/呼家楼派出所"
+  },
+  {
+    "id": "9be8f274-134b-f10e-5ba2-e48e054a1c76",
+    "name": "三里屯派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/三里屯派出所"
+  },
+  {
+    "id": "8c14b9f0-f58d-542c-7f6c-29788c1a25c1",
+    "name": "团结湖派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/团结湖派出所"
+  },
+  {
+    "id": "42c4608c-a520-2d4e-e9fe-339fb3d6b0ea",
+    "name": "双井派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/双井派出所"
+  },
+  {
+    "id": "649089d8-449f-4f88-ce28-7c1e89abe8c7",
+    "name": "南磨房派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/南磨房派出所"
+  },
+  {
+    "id": "16a4ec35-e355-838d-14c4-bfac9b1c5be3",
+    "name": "小红门派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/小红门派出所"
+  },
+  {
+    "id": "8c88419e-1e77-2f1d-e359-33624f88e0d6",
+    "name": "十八里店派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/十八里店派出所"
+  },
+  {
+    "id": "1eb495e7-c3eb-5c16-b3e3-99ec8c16dd67",
+    "name": "垡头派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/垡头派出所"
+  },
+  {
+    "id": "9d471cc9-ae1e-7381-53c6-c3266e65ed36",
+    "name": "高碑店派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/高碑店派出所"
+  },
+  {
+    "id": "7e3e81d3-37bd-4267-456e-ad95b81b628c",
+    "name": "王四营派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/王四营派出所"
+  },
+  {
+    "id": "e15088d6-dbb3-fcb6-ef1c-e7afd98feb19",
+    "name": "六里屯派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/六里屯派出所"
+  },
+  {
+    "id": "49e58ef5-39f5-6f2c-4ba1-ab203af019ab",
+    "name": "平房派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/平房派出所"
+  },
+  {
+    "id": "50bade43-af48-fb8c-983d-2e6452c0d227",
+    "name": "东坝派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/东坝派出所"
+  },
+  {
+    "id": "d9acdbf5-2566-248e-6622-728eff3d3567",
+    "name": "金盏派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/金盏派出所"
+  },
+  {
+    "id": "1196f31f-6491-680d-8ba7-ba71915c548f",
+    "name": "和平街派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/和平街派出所"
+  },
+  {
+    "id": "f2d42206-273c-b67c-1f96-72a1c2ef6264",
+    "name": "新源里派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/新源里派出所"
+  },
+  {
+    "id": "a7428268-adac-d339-5b49-95a4f6e08c1c",
+    "name": "将台派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/将台派出所"
+  },
+  {
+    "id": "514e9007-dff6-2c6c-c144-c82b91cdbc2e",
+    "name": "酒仙桥派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/酒仙桥派出所"
+  },
+  {
+    "id": "40826146-8c0b-1623-30e7-d5eeb8458b3e",
+    "name": "孙河派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/孙河派出所"
+  },
+  {
+    "id": "697a90aa-b16d-f03a-725c-dd94ae8db136",
+    "name": "太阳宫派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/太阳宫派出所"
+  },
+  {
+    "id": "25c18429-3700-c63e-d8ba-ac88b950d536",
+    "name": "机场派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/机场派出所"
+  },
+  {
+    "id": "904eae23-e6e1-438f-13c5-b560dacbbca7",
+    "name": "来广营派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/来广营派出所"
+  },
+  {
+    "id": "a8d493f3-3088-d3ca-e5ff-ed9fb456ef93",
+    "name": "潘家园派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/潘家园派出所"
+  },
+  {
+    "id": "a3eeafb5-35db-c158-1d0a-c36e58ab54f1",
+    "name": "楼梓庄派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/楼梓庄派出所"
+  },
+  {
+    "id": "b1e498dd-24bd-5060-8128-6bf515ff805c",
+    "name": "南湖派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/南湖派出所"
+  },
+  {
+    "id": "9c7a386a-4081-f1fa-1bf6-b988ef00a944",
+    "name": "管庄派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/管庄派出所"
+  },
+  {
+    "id": "6550ca00-e764-ba0d-2c74-de640d4c1b26",
+    "name": "豆各庄派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/豆各庄派出所"
+  },
+  {
+    "id": "d077ae40-b047-8b2d-c3f3-68ddd9a2405d",
+    "name": "劲松派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/劲松派出所"
+  },
+  {
+    "id": "8eb4c2cb-5c7a-b541-e96c-69b980f4686d",
+    "name": "花家地派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/花家地派出所"
+  },
+  {
+    "id": "c77758d5-c42b-1d7e-df41-497b450021c7",
+    "name": "大屯派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/大屯派出所"
+  },
+  {
+    "id": "a7a6eaa1-9ad3-4983-14fd-6b80a7df07fb",
+    "name": "小武基派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/小武基派出所"
+  },
+  {
+    "id": "3ad59991-59a4-b4ea-1d79-ba16ac50763d",
+    "name": "崔各庄派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/崔各庄派出所"
+  },
+  {
+    "id": "84170fdf-f9d5-381c-b31b-f6878697f904",
+    "name": "奥运村派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/奥运村派出所"
+  },
+  {
+    "id": "8b2f8cb7-ed1f-803b-1d12-f4359517b248",
+    "name": "小关派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/小关派出所"
+  },
+  {
+    "id": "d898dbcb-83b4-7b8b-75da-4260685572c9",
+    "name": "东风派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/东风派出所"
+  },
+  {
+    "id": "ac9e5a3c-6147-5587-f431-d103460f417c",
+    "name": "南皋派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/南皋派出所"
+  },
+  {
+    "id": "9d9ee62d-3058-25ff-baf5-ce49f96938bf",
+    "name": "黄港派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/黄港派出所"
+  },
+  {
+    "id": "ad373d59-54e0-d9b6-b694-bd1a17e3b677",
+    "name": "东湖派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/东湖派出所"
+  },
+  {
+    "id": "c90da184-6a37-ee76-ec7e-508d12a5637f",
+    "name": "亚运村派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/亚运村派出所"
+  },
+  {
+    "id": "5394670f-fc00-6c74-805b-1c6aa72d3c2a",
+    "name": "麦子店派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/麦子店派出所"
+  },
+  {
+    "id": "56701c92-1801-8bbb-f3f9-c0aec5227443",
+    "name": "黑庄户派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/黑庄户派出所"
+  },
+  {
+    "id": "6960b0cd-4967-b4c8-4b67-61913e31ac0e",
+    "name": "三间房派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/三间房派出所"
+  },
+  {
+    "id": "f3cca3c5-eeeb-cbfe-a9b9-dc88f172062b",
+    "name": "安贞里派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/安贞里派出所"
+  },
+  {
+    "id": "b7a05c16-2271-84bd-fe5b-710753b19ece",
+    "name": "常营派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/常营派出所"
+  },
+  {
+    "id": "7166a69a-c4fd-fee7-e3f0-10b499e98713",
+    "name": "香河园派出所",
+    "parentId": "53ebdd33-29e0-268f-c0f5-8cf51094537e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "朝阳/香河园派出所"
+  },
+  {
+    "id": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "name": "海淀分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀"
+  },
+  {
+    "id": "59cdd9e3-5923-3790-112e-4d2e31cb178f",
+    "name": "海淀镇派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/海淀镇派出所"
+  },
+  {
+    "id": "4fbcff44-81ec-9f14-e6ec-84c88d92b623",
+    "name": "农研派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/农研派出所"
+  },
+  {
+    "id": "f0aadc4d-d583-3d5c-a884-b9b75190e72e",
+    "name": "青龙桥派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/青龙桥派出所"
+  },
+  {
+    "id": "fa9bcf62-aadf-3c74-df8e-e38e7a7fe49a",
+    "name": "香山派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/香山派出所"
+  },
+  {
+    "id": "525572c0-d79b-92cd-b388-4d61b8e2246b",
+    "name": "东升派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/东升派出所"
+  },
+  {
+    "id": "1171a2ac-d74f-9584-58ed-4be6443c354c",
+    "name": "清河派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/清河派出所"
+  },
+  {
+    "id": "c3c71984-4b25-8e49-6491-488d2e95256d",
+    "name": "中关村派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/中关村派出所"
+  },
+  {
+    "id": "54273585-4c9b-2bc4-7142-41c8d5fbc975",
+    "name": "花园路派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/花园路派出所"
+  },
+  {
+    "id": "9c95e3d5-c3f5-6238-9f9d-93c2516a5225",
+    "name": "北太平庄派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/北太平庄派出所"
+  },
+  {
+    "id": "a009e280-d16b-2941-c687-7144b1a74802",
+    "name": "大钟寺派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/大钟寺派出所"
+  },
+  {
+    "id": "f8c4d42e-7c6a-47a8-2602-fef205daeea0",
+    "name": "双榆树派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/双榆树派出所"
+  },
+  {
+    "id": "919a822d-ae23-2e1c-17d0-7e0c824b34a5",
+    "name": "万寿寺派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/万寿寺派出所"
+  },
+  {
+    "id": "c90e76f4-3fbf-e87d-2e53-b096a73beba6",
+    "name": "羊坊店派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/羊坊店派出所"
+  },
+  {
+    "id": "7177baec-ca1f-8010-b577-f7aeeba7b3c0",
+    "name": "甘家口派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/甘家口派出所"
+  },
+  {
+    "id": "3094657d-d933-cd3d-1afb-a38e0862bf93",
+    "name": "永定路派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/永定路派出所"
+  },
+  {
+    "id": "a5388db6-3989-6349-9e4c-e62a25825d58",
+    "name": "恩济庄派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/恩济庄派出所"
+  },
+  {
+    "id": "234b33d8-3d7f-181f-3a63-e9cd8c09d185",
+    "name": "万寿路派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/万寿路派出所"
+  },
+  {
+    "id": "557c17ac-a1bd-402b-5015-284a1d5e42be",
+    "name": "四季青派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/四季青派出所"
+  },
+  {
+    "id": "7230bdef-ad7e-5c1c-3b83-76c13a91ee9d",
+    "name": "西北旺派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/西北旺派出所"
+  },
+  {
+    "id": "8ffabfc5-a2a3-d1aa-3bd5-c09592d69f6e",
+    "name": "永丰派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/永丰派出所"
+  },
+  {
+    "id": "e7b3ed51-9de6-5df8-8487-d25b261e4303",
+    "name": "田村派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/田村派出所"
+  },
+  {
+    "id": "4402b2a5-2564-6a9a-ee5e-91a7a8f6ac8d",
+    "name": "温泉派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/温泉派出所"
+  },
+  {
+    "id": "765516a7-e0d7-3773-2d7c-4b331e217a6f",
+    "name": "苏家坨派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/苏家坨派出所"
+  },
+  {
+    "id": "eed87a1b-d7c8-d74a-5a1c-4a6907322990",
+    "name": "红山口派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/红山口派出所"
+  },
+  {
+    "id": "c106d5fb-a991-79c7-9565-f2d920dba7a6",
+    "name": "曙光派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/曙光派出所"
+  },
+  {
+    "id": "666a0897-f218-cc98-3a48-2abe61d9d3a4",
+    "name": "育新花园派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/育新花园派出所"
+  },
+  {
+    "id": "70cc74d7-53d9-a24d-2b52-defb0d664615",
+    "name": "燕园派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/燕园派出所"
+  },
+  {
+    "id": "574d9b2d-4b62-563e-71af-6b66423ff49a",
+    "name": "上庄派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/上庄派出所"
+  },
+  {
+    "id": "54c7df2f-b4a0-8f21-8481-cd08675fa26e",
+    "name": "马连洼派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/马连洼派出所"
+  },
+  {
+    "id": "5be0101a-2294-f891-8ade-b530024d2424",
+    "name": "西山派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/西山派出所"
+  },
+  {
+    "id": "27ed7a2d-a273-3763-216e-e9b348c6ef91",
+    "name": "上地派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/上地派出所"
+  },
+  {
+    "id": "ffc27d9a-a912-cbd7-2c82-1f80ad7bcb1a",
+    "name": "遗光寺派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/遗光寺派出所"
+  },
+  {
+    "id": "803a9ce3-8a5d-3206-f734-f5bd253a6f41",
+    "name": "西三旗派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/西三旗派出所"
+  },
+  {
+    "id": "1941e959-7946-cb3c-a616-d333ea0d3b31",
+    "name": "农大派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/农大派出所"
+  },
+  {
+    "id": "86d0dde2-8c49-bb37-6a38-d65cfdf6a89e",
+    "name": "中关村西区派出所",
+    "parentId": "c3d62e63-c49b-1629-4c36-26062148d392",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "海淀/中关村西区派出所"
+  },
+  {
+    "id": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "name": "丰台分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台"
+  },
+  {
+    "id": "127e4283-16ac-7e8d-193d-c402daa7b5b5",
+    "name": "丰台镇派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/丰台镇派出所"
+  },
+  {
+    "id": "c2d16bf1-c381-e435-9786-2c87a0505d59",
+    "name": "看丹派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/看丹派出所"
+  },
+  {
+    "id": "d63c8dd4-71a5-ff2b-6b93-2814f27cb5fc",
+    "name": "樊家村派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/樊家村派出所"
+  },
+  {
+    "id": "6d3e3270-69ea-21e6-3047-36642e148da5",
+    "name": "岳各庄派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/岳各庄派出所"
+  },
+  {
+    "id": "ca9b87c3-aafb-a81b-5bf2-1e50b129a017",
+    "name": "西局派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/西局派出所"
+  },
+  {
+    "id": "b8f19081-8a3d-6936-8f91-9d755f8f42c6",
+    "name": "太平桥派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/太平桥派出所"
+  },
+  {
+    "id": "c50cc47d-532f-d2e7-97ff-b0d1f974b7fc",
+    "name": "卢沟桥派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/卢沟桥派出所"
+  },
+  {
+    "id": "d478fd78-784e-eb7b-380b-5660e982360d",
+    "name": "张郭庄派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/张郭庄派出所"
+  },
+  {
+    "id": "d89bc1fd-84b6-d09d-c979-6227ed675906",
+    "name": "长辛店派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/长辛店派出所"
+  },
+  {
+    "id": "380f0633-9c5d-71b1-2d4f-fb3cca453dae",
+    "name": "朱家坟派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/朱家坟派出所"
+  },
+  {
+    "id": "2a386360-b508-c477-3d6c-a77eb20e85a7",
+    "name": "南苑镇派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/南苑镇派出所"
+  },
+  {
+    "id": "d01dd3e6-c53a-3a34-7ad8-b572013a9598",
+    "name": "云岗派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/云岗派出所"
+  },
+  {
+    "id": "77899476-98ab-6553-c541-dcd91c28cacf",
+    "name": "大红门派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/大红门派出所"
+  },
+  {
+    "id": "60d45fae-dea4-fb1f-d760-d7a2d6727216",
+    "name": "东高地派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/东高地派出所"
+  },
+  {
+    "id": "71ca0b00-62e2-3070-23f1-9931c9bb6772",
+    "name": "右安门派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/右安门派出所"
+  },
+  {
+    "id": "729ad81a-33c9-990a-894f-59656e46521c",
+    "name": "东铁匠营派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/东铁匠营派出所"
+  },
+  {
+    "id": "8f7061d5-cacc-ecee-fd52-6f711d76c3ef",
+    "name": "方庄派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/方庄派出所"
+  },
+  {
+    "id": "37000fca-5105-64ff-116d-a167959f4b57",
+    "name": "芳城派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/芳城派出所"
+  },
+  {
+    "id": "c469919c-b34f-4fc3-6225-7124b9f62e4e",
+    "name": "西罗园派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/西罗园派出所"
+  },
+  {
+    "id": "aa653b06-ee90-31d2-1ddf-2447f483a537",
+    "name": "洋桥派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/洋桥派出所"
+  },
+  {
+    "id": "b6ec096a-21a8-2eb5-ab0d-f2fabc52489c",
+    "name": "青塔派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/青塔派出所"
+  },
+  {
+    "id": "167f7e40-b564-1826-449b-7092e84a8e0c",
+    "name": "四合庄派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/四合庄派出所"
+  },
+  {
+    "id": "fbeaf8fb-bad1-980d-8d56-4f810f8c77b5",
+    "name": "石榴园派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/石榴园派出所"
+  },
+  {
+    "id": "706f3b0b-3ccb-6408-7b48-1a9c73502736",
+    "name": "和义派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/和义派出所"
+  },
+  {
+    "id": "6971465d-6a2c-2455-ca84-e8df6bf83c5e",
+    "name": "六里桥派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/六里桥派出所"
+  },
+  {
+    "id": "68b3c594-4c15-87fd-c5a1-69f3e19d8b12",
+    "name": "马家堡派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/马家堡派出所"
+  },
+  {
+    "id": "a07d1d1c-1670-29fb-b6c4-73d27445da4e",
+    "name": "蒲黄榆派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/蒲黄榆派出所"
+  },
+  {
+    "id": "d6e3c0ff-8f8a-8c56-2fe4-6fde2ed57927",
+    "name": "玉泉营派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/玉泉营派出所"
+  },
+  {
+    "id": "7354dd5c-630f-afc4-d0e1-d71ffcb50f90",
+    "name": "科技园区派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/科技园区派出所"
+  },
+  {
+    "id": "be791e31-9fce-933a-7c36-6ba264bba65e",
+    "name": "成寿寺派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/成寿寺派出所"
+  },
+  {
+    "id": "4fc4071a-ffaf-b5bf-85ed-de2fd97f8b70",
+    "name": "新发地派出所",
+    "parentId": "72def839-b8cd-84bb-b81f-f430c5c1eb51",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "丰台/新发地派出所"
+  },
+  {
+    "id": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "name": "石景山分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山"
+  },
+  {
+    "id": "280cd54a-98db-3052-5c63-e09f5f8ef712",
+    "name": "八角派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/八角派出所"
+  },
+  {
+    "id": "3167c162-2be6-8d7f-a978-ccebd5e33d8b",
+    "name": "新古城派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/新古城派出所"
+  },
+  {
+    "id": "26f39972-f33e-292a-1b83-98c9d1c2939b",
+    "name": "苹果园派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/苹果园派出所"
+  },
+  {
+    "id": "e38101f5-a70e-777b-6914-c018ea7640db",
+    "name": "金顶街派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/金顶街派出所"
+  },
+  {
+    "id": "c45ae583-dffa-ca61-b98f-fde9c958d1aa",
+    "name": "八宝山派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/八宝山派出所"
+  },
+  {
+    "id": "1fbb87e7-7e0c-97f0-f59c-4d3811c30ecd",
+    "name": "老山派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/老山派出所"
+  },
+  {
+    "id": "eed27f61-8868-c528-9a79-7fcd9e9b125b",
+    "name": "五里坨派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/五里坨派出所"
+  },
+  {
+    "id": "2f9e95ea-73a9-4d0b-939f-479b293edeb9",
+    "name": "广宁派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/广宁派出所"
+  },
+  {
+    "id": "a15d79cc-45d0-50f8-7bb5-329a1de9d5e8",
+    "name": "鲁谷派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/鲁谷派出所"
+  },
+  {
+    "id": "ca2d5471-bfa8-d9da-60b6-9b9a2f7e1696",
+    "name": "模式口派出所",
+    "parentId": "e5ff59c9-d77b-617e-9b08-a7bd55676b90",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "石景山/模式口派出所"
+  },
+  {
+    "id": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "name": "门头沟分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟"
+  },
+  {
+    "id": "f0d1f8b2-af73-153c-d6e5-91088a12ba55",
+    "name": "大峪派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/大峪派出所"
+  },
+  {
+    "id": "e14b3522-29a9-5d4d-81c3-4fda3c0adccf",
+    "name": "东辛房派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/东辛房派出所"
+  },
+  {
+    "id": "882bca1b-b611-2059-e03e-f1ac622705db",
+    "name": "城子派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/城子派出所"
+  },
+  {
+    "id": "4e53914c-46ad-87b5-5e32-1b72de4bb408",
+    "name": "三家店派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/三家店派出所"
+  },
+  {
+    "id": "b28baf95-d4e3-2a8c-9d09-b438d872e4de",
+    "name": "永定派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/永定派出所"
+  },
+  {
+    "id": "90f1f8ab-139c-f2ae-7c27-26dcba786354",
+    "name": "潭柘寺派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/潭柘寺派出所"
+  },
+  {
+    "id": "6b9e930f-7d37-6504-32dc-6498a2cfdf45",
+    "name": "军庄派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/军庄派出所"
+  },
+  {
+    "id": "cec5b483-28d7-1fe5-93a7-af654bc909e9",
+    "name": "妙峰山派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/妙峰山派出所"
+  },
+  {
+    "id": "7f4000fa-582d-8939-b112-13fa0ec71a3b",
+    "name": "色树坟派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/色树坟派出所"
+  },
+  {
+    "id": "55a4906b-214b-67d8-ee66-e36ed2013742",
+    "name": "大台派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/大台派出所"
+  },
+  {
+    "id": "7de79a17-2d13-ca18-d514-1221a1d172ca",
+    "name": "雁翅派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/雁翅派出所"
+  },
+  {
+    "id": "a9205d9a-520c-360b-5241-5514c79056cd",
+    "name": "斋堂派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/斋堂派出所"
+  },
+  {
+    "id": "2e8597c3-a18a-a2db-ecab-24d115b60f18",
+    "name": "清水派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/清水派出所"
+  },
+  {
+    "id": "60217b0b-2510-59b0-689e-8a56de3de5d9",
+    "name": "月季园派出所",
+    "parentId": "8a9a5475-292c-143e-45cb-b8acdd92ee2e",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "门头沟/月季园派出所"
+  },
+  {
+    "id": "4a54839c-5359-93a6-48db-64225f969e65",
+    "name": "房山分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山"
+  },
+  {
+    "id": "675f7d01-2899-a3a1-ea6d-f10ff22d8d30",
+    "name": "良乡派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/良乡派出所"
+  },
+  {
+    "id": "5def513d-6e4c-6bf5-362f-94e2c9458bc4",
+    "name": "城关派出所　",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/城关派出所　"
+  },
+  {
+    "id": "25e92930-3d8c-e5b6-2d73-84fc0e04aae4",
+    "name": "石楼派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/石楼派出所"
+  },
+  {
+    "id": "2ec6a644-dd9e-48eb-ba53-f20b25d90792",
+    "name": "韩村河派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/韩村河派出所"
+  },
+  {
+    "id": "9956dcb3-f1d8-227d-3294-c51eb2adfd9a",
+    "name": "琉璃河派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/琉璃河派出所"
+  },
+  {
+    "id": "d6ce5b88-129f-247a-41d2-ed90bd9ecb39",
+    "name": "窦店派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/窦店派出所"
+  },
+  {
+    "id": "11c3a102-5d4f-7ede-7e8b-1f612f048baf",
+    "name": "官道派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/官道派出所"
+  },
+  {
+    "id": "b439d8e8-baf4-d46b-cf99-bb73bf709e71",
+    "name": "闫村派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/闫村派出所"
+  },
+  {
+    "id": "b209b504-3764-344e-12d6-7bcfaa7ecbc1",
+    "name": "周口店派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/周口店派出所"
+  },
+  {
+    "id": "2803e2c4-6f55-906d-1b8b-ceb16e9e6a4a",
+    "name": "青龙湖派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/青龙湖派出所"
+  },
+  {
+    "id": "dd07e82e-a097-59b9-f137-e26dfa627c56",
+    "name": "张坊派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/张坊派出所"
+  },
+  {
+    "id": "28bc8807-e2c5-fbcc-8f6e-b8f794bcb432",
+    "name": "长沟派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/长沟派出所"
+  },
+  {
+    "id": "9c01ad20-1617-ce19-4a0b-be93f4ba14a2",
+    "name": "十渡派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/十渡派出所"
+  },
+  {
+    "id": "1030cc3f-7348-462b-4b65-3985907546c4",
+    "name": "霞云岭派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/霞云岭派出所"
+  },
+  {
+    "id": "315eea37-de74-bdef-c43e-85b2bdbf9268",
+    "name": "大石窝派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/大石窝派出所"
+  },
+  {
+    "id": "4d7c57e7-a778-4204-fbc3-fc5c215fc04f",
+    "name": "史家营派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/史家营派出所"
+  },
+  {
+    "id": "35fcb557-9fa5-db3b-43c2-26c53dcc8780",
+    "name": "长阳派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/长阳派出所"
+  },
+  {
+    "id": "81a9c4cb-b0ea-4e64-d788-3f67118d1ed6",
+    "name": "大安山派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/大安山派出所"
+  },
+  {
+    "id": "ead89275-8dc0-e6d9-738a-942b5af5211d",
+    "name": "佛子庄派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/佛子庄派出所"
+  },
+  {
+    "id": "3d032627-d0b3-7983-2c69-abc23dd0429e",
+    "name": "河北派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/河北派出所"
+  },
+  {
+    "id": "60274ce3-9f80-9e3c-d9c9-671e7782d1a4",
+    "name": "北潞园派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/北潞园派出所"
+  },
+  {
+    "id": "9ab341d7-5455-d764-946e-6448f5acc4fd",
+    "name": "向阳路派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/向阳路派出所"
+  },
+  {
+    "id": "fd3f1e22-4c42-32d3-328b-f3c2d2c5b7b8",
+    "name": "东风街派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/东风街派出所"
+  },
+  {
+    "id": "d00d51e0-fd00-77f9-f281-b557570fd053",
+    "name": "迎风街派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/迎风街派出所"
+  },
+  {
+    "id": "9e2308a5-2b1d-8dda-4684-755131fb0189",
+    "name": "星城派出所",
+    "parentId": "4a54839c-5359-93a6-48db-64225f969e65",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "房山/星城派出所"
+  },
+  {
+    "id": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "name": "通州分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州"
+  },
+  {
+    "id": "66282abf-2631-b30f-d62c-df8aabe3d053",
+    "name": "中仓派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/中仓派出所"
+  },
+  {
+    "id": "4544ae02-6219-7cb8-9bd1-159b80f925fb",
+    "name": "北苑派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/北苑派出所"
+  },
+  {
+    "id": "9634b903-d967-442e-53a1-acc08ab731aa",
+    "name": "新华派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/新华派出所"
+  },
+  {
+    "id": "b69741aa-922f-de06-7320-8f292c26b6bb",
+    "name": "永顺派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/永顺派出所"
+  },
+  {
+    "id": "846c1131-39f8-7ea5-4314-d0a1e41d41ef",
+    "name": "宋庄派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/宋庄派出所"
+  },
+  {
+    "id": "e75bedd9-6491-7882-f87a-7f97893e910d",
+    "name": "徐辛庄派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/徐辛庄派出所"
+  },
+  {
+    "id": "e21bfb31-57ba-d149-5065-73620f06d250",
+    "name": "张家湾派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/张家湾派出所"
+  },
+  {
+    "id": "337bfcac-3d98-8c69-d5dd-a3ea32d0db95",
+    "name": "西集派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/西集派出所"
+  },
+  {
+    "id": "2bc9441f-c8ed-d7f5-800f-c6c740d0f36d",
+    "name": "牛堡屯派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/牛堡屯派出所"
+  },
+  {
+    "id": "1b546bf1-69d6-6917-7f13-14dfea8f0faa",
+    "name": "胡各庄派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/胡各庄派出所"
+  },
+  {
+    "id": "c5234a45-85db-ea24-ebf2-f030a88a6460",
+    "name": "马驹桥派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/马驹桥派出所"
+  },
+  {
+    "id": "12b5551f-970b-f05b-3c81-21679ac05c79",
+    "name": "次渠派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/次渠派出所"
+  },
+  {
+    "id": "84318acd-19e9-8a1a-3770-2936f0151ba3",
+    "name": "郎府派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/郎府派出所"
+  },
+  {
+    "id": "35668dbd-5f00-252b-2305-a3c28e1630c3",
+    "name": "漷县派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/漷县派出所"
+  },
+  {
+    "id": "e1720e57-5c4c-da6f-4c55-a98c49297119",
+    "name": "觅子店派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/觅子店派出所"
+  },
+  {
+    "id": "6d616fd9-2119-a5b3-f4c5-b6b8760f399d",
+    "name": "甘棠派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/甘棠派出所"
+  },
+  {
+    "id": "f7f4b97c-e305-6282-30fb-a230751e16d4",
+    "name": "梨园派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/梨园派出所"
+  },
+  {
+    "id": "398bded1-91ff-4ed0-17e2-f54e8404ac7a",
+    "name": "台湖派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/台湖派出所"
+  },
+  {
+    "id": "5e051523-6c3b-b92c-456a-a801dedd4b2f",
+    "name": "大杜社派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/大杜社派出所"
+  },
+  {
+    "id": "9e7988ee-8305-9ebd-932a-f02e1e07a65b",
+    "name": "永乐店派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/永乐店派出所"
+  },
+  {
+    "id": "f92f365e-190d-27a7-5178-70bf92a84e11",
+    "name": "玉桥派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/玉桥派出所"
+  },
+  {
+    "id": "f9942386-c748-e517-5c2b-17363f787078",
+    "name": "于家务派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/于家务派出所"
+  },
+  {
+    "id": "192a7754-94b8-2b00-b8c9-ce00abc2e76d",
+    "name": "焦王庄派出所",
+    "parentId": "8321dcf4-d0fc-a821-7deb-d18ada52c8c9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "通州/焦王庄派出所"
+  },
+  {
+    "id": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "name": "顺义分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义"
+  },
+  {
+    "id": "7f12394d-e1fd-b2a4-9ee0-50a78ce40d39",
+    "name": "杨镇派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/杨镇派出所"
+  },
+  {
+    "id": "43bea3da-c5cb-5050-c6bc-9dd81e079f15",
+    "name": "仁和派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/仁和派出所"
+  },
+  {
+    "id": "1147062c-6bb9-9bdc-4969-836713cac2ae",
+    "name": "胜利派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/胜利派出所"
+  },
+  {
+    "id": "f5fb1e6b-9aa5-9636-5df0-36149be8105a",
+    "name": "北石槽派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/北石槽派出所"
+  },
+  {
+    "id": "31b2400b-9835-be78-3fe8-1cf38ba7c1d7",
+    "name": "高丽营派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/高丽营派出所"
+  },
+  {
+    "id": "af0ae0e7-a436-e33e-f586-38d1d5d40ddb",
+    "name": "赵全营派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/赵全营派出所"
+  },
+  {
+    "id": "b2ab8d14-a5c2-3fab-77fc-4517b309fdb2",
+    "name": "后沙峪派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/后沙峪派出所"
+  },
+  {
+    "id": "852ba050-ab74-d5c8-e95c-9683acc96a90",
+    "name": "天竺派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/天竺派出所"
+  },
+  {
+    "id": "48ed72e4-54c4-530a-d3df-ce9063a3d9c2",
+    "name": "牛山派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/牛山派出所"
+  },
+  {
+    "id": "a4a4f69c-4fbf-9b4d-c534-5d6a403163af",
+    "name": "马坡派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/马坡派出所"
+  },
+  {
+    "id": "1aa89a9e-4e7e-dc47-a23d-1c717a58d3a9",
+    "name": "南法信派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/南法信派出所"
+  },
+  {
+    "id": "90caacaa-2c4f-79b2-bbb1-d33abe7b43e0",
+    "name": "北小营派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/北小营派出所"
+  },
+  {
+    "id": "eaca90eb-4264-87cc-8ac0-399333b618af",
+    "name": "李桥派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/李桥派出所"
+  },
+  {
+    "id": "9438d8c4-6151-c777-3fab-e12bd45dc9b8",
+    "name": "南彩派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/南彩派出所"
+  },
+  {
+    "id": "3daeb178-f4f9-7c18-8c84-dc2474c930a5",
+    "name": "李遂派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/李遂派出所"
+  },
+  {
+    "id": "a0582867-a5ec-8242-c1ca-81312161e2cd",
+    "name": "木林派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/木林派出所"
+  },
+  {
+    "id": "34f21c94-9a16-47cb-8cd0-5570e3c88b1d",
+    "name": "北务派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/北务派出所"
+  },
+  {
+    "id": "e2f50c8c-6578-f50d-a37b-c46d2e257639",
+    "name": "龙湾屯派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/龙湾屯派出所"
+  },
+  {
+    "id": "3b0102dd-bcad-bfcc-9d13-26b4816bd4a5",
+    "name": "张镇派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/张镇派出所"
+  },
+  {
+    "id": "c8efff4c-9742-c38c-8a68-6c621a5880b0",
+    "name": "大孙各庄派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/大孙各庄派出所"
+  },
+  {
+    "id": "75ddc27f-3da2-f2f1-caea-11e74b552f3a",
+    "name": "空港开发区派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/空港开发区派出所"
+  },
+  {
+    "id": "c912e346-4ea5-5911-f8ff-3daa343ff8e9",
+    "name": "光明派出所",
+    "parentId": "6a27137a-9710-2470-349f-fab7ecad5e36",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "顺义/光明派出所"
+  },
+  {
+    "id": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "name": "大兴分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴"
+  },
+  {
+    "id": "4e79b4bb-4239-af5b-f7b1-93dc24b007a3",
+    "name": "兴丰派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/兴丰派出所"
+  },
+  {
+    "id": "67eabc82-2c28-a4da-5a06-c691b5b90790",
+    "name": "红星派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/红星派出所"
+  },
+  {
+    "id": "a9ee37d7-b3ed-c21a-f925-d6f3f237a4aa",
+    "name": "亦庄派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/亦庄派出所"
+  },
+  {
+    "id": "8f6df2aa-d8fc-627e-4899-85741f3d3c42",
+    "name": "瀛海派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/瀛海派出所"
+  },
+  {
+    "id": "9174d7c0-3d57-8138-f715-59b0ddcf8fca",
+    "name": "西红门派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/西红门派出所"
+  },
+  {
+    "id": "e4e3ad51-a72c-bebd-477c-e419617f8789",
+    "name": "金星派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/金星派出所"
+  },
+  {
+    "id": "1db1fb52-161c-da27-e26d-2eb113b8a2be",
+    "name": "黄村派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/黄村派出所"
+  },
+  {
+    "id": "e80386a5-6482-6018-2c1e-8c9d607ae951",
+    "name": "北臧村派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/北臧村派出所"
+  },
+  {
+    "id": "e2796871-3862-fc6e-4238-fe05130e8049",
+    "name": "庞各庄派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/庞各庄派出所"
+  },
+  {
+    "id": "98ec936d-bce9-b5c6-7bd9-1ff7ec67da8e",
+    "name": "榆垡派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/榆垡派出所"
+  },
+  {
+    "id": "6e7a3a44-bd00-bf44-936b-7c4ba49c64a8",
+    "name": "礼贤派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/礼贤派出所"
+  },
+  {
+    "id": "b0e89bf3-3350-11b5-38b6-4b3f1b37f0e9",
+    "name": "安定派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/安定派出所"
+  },
+  {
+    "id": "b0d41681-463b-d20e-2b08-6d2185fd404d",
+    "name": "魏善庄派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/魏善庄派出所"
+  },
+  {
+    "id": "ba1298b1-d643-dec4-3237-892ed6a64180",
+    "name": "青云店派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/青云店派出所"
+  },
+  {
+    "id": "ca475928-aa28-c013-b313-336848bd05be",
+    "name": "采育派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/采育派出所"
+  },
+  {
+    "id": "478305bb-2c05-783d-8e23-490946a6e80d",
+    "name": "长子营派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/长子营派出所"
+  },
+  {
+    "id": "6c790d90-4e56-ccb1-5ae9-d0e539bcd3e7",
+    "name": "团河派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/团河派出所"
+  },
+  {
+    "id": "1f82aefc-b735-6911-4888-365a01f13c34",
+    "name": "清源路派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/清源路派出所"
+  },
+  {
+    "id": "d1032da1-ab21-2a30-abe5-59625e28a170",
+    "name": "林校路派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/林校路派出所"
+  },
+  {
+    "id": "1e542008-7762-f8ac-3fce-7df46445fee3",
+    "name": "孙村派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/孙村派出所"
+  },
+  {
+    "id": "de835606-b104-631a-7eab-f48dba90e7bb",
+    "name": "德茂派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/德茂派出所"
+  },
+  {
+    "id": "63c5eb67-f818-7397-a76f-9bbdea3f085b",
+    "name": "天宫院派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/天宫院派出所"
+  },
+  {
+    "id": "194162a8-c18f-d54c-8dbc-baeb2584a2fc",
+    "name": "观音寺派出所",
+    "parentId": "f1a65c54-695c-5d29-3abd-770f52416fa9",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "大兴/观音寺派出所"
+  },
+  {
+    "id": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "name": "昌平分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平"
+  },
+  {
+    "id": "44926971-88f7-c474-4d84-390c556a7038",
+    "name": "昌平派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/昌平派出所"
+  },
+  {
+    "id": "4f06825a-7b80-2041-5d8e-cbaea12b7b16",
+    "name": "南口派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/南口派出所"
+  },
+  {
+    "id": "47673b18-dbc1-da9c-385b-559f36eccba3",
+    "name": "沙河派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/沙河派出所"
+  },
+  {
+    "id": "ac41c5ff-8839-a229-7cd2-6a3d20cef150",
+    "name": "回龙观派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/回龙观派出所"
+  },
+  {
+    "id": "71570650-7169-c6f5-7c31-67a9f9bab563",
+    "name": "东小口派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/东小口派出所"
+  },
+  {
+    "id": "c90c71ba-39be-96a6-f4f4-b0eb1e2ad18e",
+    "name": "小汤山派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/小汤山派出所"
+  },
+  {
+    "id": "7acb9c7a-218e-e00d-bf47-c716c48fd7e5",
+    "name": "兴寿派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/兴寿派出所"
+  },
+  {
+    "id": "cfbe9162-445b-e1cf-92d0-17dd83c4f7c2",
+    "name": "南邵派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/南邵派出所"
+  },
+  {
+    "id": "cf5bdc2a-20a7-6de6-840c-33732e510e38",
+    "name": "百善派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/百善派出所"
+  },
+  {
+    "id": "6b0e8b4d-79b4-8fa8-d807-a64d7e545d9e",
+    "name": "十三陵农场派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/十三陵农场派出所"
+  },
+  {
+    "id": "7bf4b172-206b-5695-b2af-2daf6c9c3949",
+    "name": "马池口派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/马池口派出所"
+  },
+  {
+    "id": "dea4dd38-af6d-1909-f37b-938d85a6f6f3",
+    "name": "延寿派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/延寿派出所"
+  },
+  {
+    "id": "319c5209-4a8b-dac0-42ca-76180af0879b",
+    "name": "阳坊派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/阳坊派出所"
+  },
+  {
+    "id": "900bd248-d312-b83d-40cf-1b31f2eb0872",
+    "name": "北流村派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/北流村派出所"
+  },
+  {
+    "id": "c1df7790-cec4-2492-4a11-1c2c67901ebf",
+    "name": "松园派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/松园派出所"
+  },
+  {
+    "id": "2e001178-6868-982e-6bd2-c8a26bcc088c",
+    "name": "史各庄派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/史各庄派出所"
+  },
+  {
+    "id": "22f49b84-2f4a-a267-7d74-48ec6cfab448",
+    "name": "平西府派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/平西府派出所"
+  },
+  {
+    "id": "ab9e0f5b-d9e4-dcf6-829d-f535ff8aeace",
+    "name": "霍营派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/霍营派出所"
+  },
+  {
+    "id": "33410658-d1d3-77fd-ce17-c80d6f39fdda",
+    "name": "北七家派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/北七家派出所"
+  },
+  {
+    "id": "933c131f-b7dd-7597-6d63-808ce6de09c3",
+    "name": "龙园派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/龙园派出所"
+  },
+  {
+    "id": "6b8ff699-5e9a-7514-25a4-307100775bfe",
+    "name": "崔村派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/崔村派出所"
+  },
+  {
+    "id": "e33e88d6-4f16-32ef-b210-62bf0d427d69",
+    "name": "天通苑派出所",
+    "parentId": "bbe9d41e-8e4c-58f9-3e24-22203394fb15",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "昌平/天通苑派出所"
+  },
+  {
+    "id": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "name": "平谷分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷"
+  },
+  {
+    "id": "6f31c210-c858-5d09-d92c-eb21fcdf4e02",
+    "name": "滨河派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/滨河派出所"
+  },
+  {
+    "id": "cee76869-b5f4-bdb9-6370-de1c06747bfe",
+    "name": "王辛庄派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/王辛庄派出所"
+  },
+  {
+    "id": "159c846a-9d63-2dd3-9c43-e15ecc0c4766",
+    "name": "夏各庄派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/夏各庄派出所"
+  },
+  {
+    "id": "cd122970-8084-8f7d-f7af-e992c67d9fea",
+    "name": "东高村派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/东高村派出所"
+  },
+  {
+    "id": "92a6d535-cffa-3667-bc78-8a60ced062d3",
+    "name": "马坊派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/马坊派出所"
+  },
+  {
+    "id": "e40b508c-c0ff-ea1a-a634-80d21674b1e5",
+    "name": "峪口派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/峪口派出所"
+  },
+  {
+    "id": "463ecc00-c017-7ccc-e49f-a2322d860495",
+    "name": "大兴庄派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/大兴庄派出所"
+  },
+  {
+    "id": "1dd6d491-e23e-7e72-eea3-46c49b7e5349",
+    "name": "镇罗营派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/镇罗营派出所"
+  },
+  {
+    "id": "68a4e777-5199-b98a-ac6d-2fee1d3ea0df",
+    "name": "大华山派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/大华山派出所"
+  },
+  {
+    "id": "6fde35ef-1c8d-4e1d-23dc-12fbb2d283e3",
+    "name": "南独乐河派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/南独乐河派出所"
+  },
+  {
+    "id": "3667483b-c9e2-f9ca-6b15-83ee50648cd8",
+    "name": "渔阳派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/渔阳派出所"
+  },
+  {
+    "id": "73ea5480-f235-e402-cb12-252f741a943b",
+    "name": "金海湖派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/金海湖派出所"
+  },
+  {
+    "id": "287a1350-9cf9-ac86-f475-fde8a1d21b88",
+    "name": "兴谷派出所",
+    "parentId": "cc0f07a6-fa3a-c4a9-57bd-72999b3351ee",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "平谷/兴谷派出所"
+  },
+  {
+    "id": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "name": "怀柔分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔"
+  },
+  {
+    "id": "89df70f5-305a-19ae-1c84-e5875ebe0b44",
+    "name": "怀柔镇派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/怀柔镇派出所"
+  },
+  {
+    "id": "5a53fcc0-77dd-165a-c30f-c203cd245af9",
+    "name": "庙城派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/庙城派出所"
+  },
+  {
+    "id": "b16243cc-ad9b-3c56-4383-5729b05c80bb",
+    "name": "杨宋派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/杨宋派出所"
+  },
+  {
+    "id": "49ae2302-7bbd-4314-7de2-3a6562f7fdf3",
+    "name": "北房派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/北房派出所"
+  },
+  {
+    "id": "dd175c85-72a8-c462-e886-a2afb15fa5d0",
+    "name": "怀北派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/怀北派出所"
+  },
+  {
+    "id": "f1d1a75f-6aaa-2f12-10ab-bc8e91b5f9b1",
+    "name": "雁栖派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/雁栖派出所"
+  },
+  {
+    "id": "a51055a4-cf14-573a-d27e-edead7c28708",
+    "name": "桥梓派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/桥梓派出所"
+  },
+  {
+    "id": "78af5be8-8986-73d8-37fb-bc6189c9f1ff",
+    "name": "九渡河派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/九渡河派出所"
+  },
+  {
+    "id": "255cd336-48bd-8c35-ffdc-d1edbd51e08d",
+    "name": "渤海派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/渤海派出所"
+  },
+  {
+    "id": "527d08d2-72c0-93c2-5211-da95dd20c7d1",
+    "name": "汤河口派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/汤河口派出所"
+  },
+  {
+    "id": "dc6f3cc3-eef3-ac69-18b2-ff4f976b3f4c",
+    "name": "琉璃庙派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/琉璃庙派出所"
+  },
+  {
+    "id": "7cdd7641-4b04-e9e0-bb5a-4b9d172391ca",
+    "name": "龙山派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/龙山派出所"
+  },
+  {
+    "id": "f70c4569-59bc-a7ac-626e-a9245e0689ce",
+    "name": "泉河派出所",
+    "parentId": "482d8323-6137-23ce-ce04-f77d1ec38bbf",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "怀柔/泉河派出所"
+  },
+  {
+    "id": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "name": "密云分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云"
+  },
+  {
+    "id": "5d3a3876-e07c-929b-b9b1-78bd5541b821",
+    "name": "城关派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/城关派出所"
+  },
+  {
+    "id": "50d1cfde-aedf-194c-644e-40bb735d7e5d",
+    "name": "穆家峪派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/穆家峪派出所"
+  },
+  {
+    "id": "e99bad4b-d915-70df-efd5-be4920c24c45",
+    "name": "河南寨派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/河南寨派出所"
+  },
+  {
+    "id": "9e836a56-b0bf-a70e-681b-6832eb5e89ce",
+    "name": "十里堡派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/十里堡派出所"
+  },
+  {
+    "id": "807ad51b-1154-f0b1-373f-8a1f5b55005c",
+    "name": "西田各庄派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/西田各庄派出所"
+  },
+  {
+    "id": "e2ef3c0d-2f03-272e-5252-7095c62815b0",
+    "name": "溪翁庄派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/溪翁庄派出所"
+  },
+  {
+    "id": "3e94dcb9-e1cf-5b3c-3593-ab1103966b9c",
+    "name": "巨各庄派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/巨各庄派出所"
+  },
+  {
+    "id": "a55e4826-c570-d546-f73a-9ac57d360ddb",
+    "name": "东邵渠派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/东邵渠派出所"
+  },
+  {
+    "id": "958ade74-fc86-7390-9ecc-8dd36760c9f9",
+    "name": "北庄派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/北庄派出所"
+  },
+  {
+    "id": "457809de-a1e4-6ae1-a3a0-b7495b73ffd0",
+    "name": "大城子派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/大城子派出所"
+  },
+  {
+    "id": "17d42b50-9af9-184e-12e6-cca002fd528f",
+    "name": "太师屯派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/太师屯派出所"
+  },
+  {
+    "id": "ef74c768-9a49-8c21-36ab-fa1819fdb3f2",
+    "name": "新城子派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/新城子派出所"
+  },
+  {
+    "id": "e80d4901-bcc3-f6db-5c1f-a94595b07619",
+    "name": "古北口派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/古北口派出所"
+  },
+  {
+    "id": "4d0e55e4-fdfb-2f43-18d5-1a0096f096c4",
+    "name": "高岭派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/高岭派出所"
+  },
+  {
+    "id": "378b3dd6-add0-a887-a6bc-d599d2149e1f",
+    "name": "不老屯派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/不老屯派出所"
+  },
+  {
+    "id": "64e44ea7-c99e-7582-c904-4d33992eb070",
+    "name": "冯家峪派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/冯家峪派出所"
+  },
+  {
+    "id": "cede9f4d-b1df-f5cf-2cd4-65a5d78d8d0e",
+    "name": "石城派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/石城派出所"
+  },
+  {
+    "id": "fc6baeff-979b-d441-111a-2e49ea981118",
+    "name": "西滨河派出所",
+    "parentId": "3fef54f5-6520-bdf6-5132-bcb6e1f0ca11",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "密云/西滨河派出所"
+  },
+  {
+    "id": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "name": "延庆分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆"
+  },
+  {
+    "id": "718ace2a-85ef-2a8a-aff9-3e63b612010b",
+    "name": "延庆派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/延庆派出所"
+  },
+  {
+    "id": "f4f11847-ff72-fee7-9098-b3453a3b4b62",
+    "name": "康庄派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/康庄派出所"
+  },
+  {
+    "id": "732562d2-ef39-7802-befb-83ea3111e21a",
+    "name": "永宁派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/永宁派出所"
+  },
+  {
+    "id": "c83043ff-b48b-3473-70fd-67501f8788c7",
+    "name": "旧县派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/旧县派出所"
+  },
+  {
+    "id": "31a83f0e-c590-6c34-ad2b-3db7e606f10c",
+    "name": "张山营派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/张山营派出所"
+  },
+  {
+    "id": "60fb9592-d87d-6ea1-3052-89eda95dc14a",
+    "name": "沈家营派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/沈家营派出所"
+  },
+  {
+    "id": "5a9dee19-f8ea-d576-d4c0-bec6bfeb90f7",
+    "name": "大榆树派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/大榆树派出所"
+  },
+  {
+    "id": "84023ce2-a26a-14be-c0d9-4591e2b13852",
+    "name": "千家店派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/千家店派出所"
+  },
+  {
+    "id": "e97941e5-3eb0-33c3-97db-12b6b447a3fd",
+    "name": "四海派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/四海派出所"
+  },
+  {
+    "id": "423b7fb7-3c2b-40f1-8fa2-8cb9097003a7",
+    "name": "井庄派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/井庄派出所"
+  },
+  {
+    "id": "2dd36aa4-d81c-e707-5c10-5aff66048913",
+    "name": "夏都派出所",
+    "parentId": "5a2c47ed-8777-1db0-c054-7281578db3d2",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "延庆/夏都派出所"
+  },
+  {
+    "id": "f1218f22-492f-aa2e-e4d8-e411e7900239",
+    "name": "清河分局",
+    "parentId": "1db1977f-ca4c-71ac-b145-fa854936cce8",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "清河"
+  },
+  {
+    "id": "4cb654c9-e9f3-e544-8d03-6ab40f7e7acb",
+    "name": "清河派出所",
+    "parentId": "f1218f22-492f-aa2e-e4d8-e411e7900239",
+    "code": "",
+    "areaCode": "",
+    "sort": 0,
+    "description": "清河/清河派出所"
   }
 ]

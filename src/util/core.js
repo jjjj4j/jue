@@ -5,6 +5,7 @@ const UNDEFINED = 'undefined'
 const BOOLEAN = 'boolean'
 const FUNCTION = 'function'
 const STRING = 'string'
+const NUMBER = 'number'
 
 function type (value, type) {
   let type4value = typeof value
@@ -58,6 +59,10 @@ export function isChar (value) {
   return type(value, STRING)
 }
 
+export function isNumber (value) {
+  return type(value, NUMBER)
+}
+
 export function isArray (value) {
   return Array.isArray(value)
 }
@@ -90,14 +95,14 @@ function random (type, length, min, max) {
   let Range = isDefined(max) ? (max - Min) : (parseInt(StringBuffer([1, repeat(0, length)]).val(), type) - Min - 1)
   return (Min + Math.round(Math.random() * Range)).toString(type)
 }
-
 /**
- * 使用指定字符，扩展字符串的长度
- * @value 需要修改的字符串
- * @length 字符串最终长度
- * @prefix 补位字符
- * @index 补位字符的添加位置， 0 代表开头，1 代表结尾
- * */
+ * @description 使用指定字符，扩展字符串的长度
+ * @param value 需要修改的字符串
+ * @param length 字符串最终长度
+ * @param prefix 补位字符
+ * @param index 补位字符的添加位置， 0 代表开头，1 代表结尾
+ * @returns {string}
+ */
 function str2len (value, length, prefix = 0, index = 0) {
   let diff = length - value.length
   let list = [value]
@@ -119,6 +124,30 @@ export function random16 (length, min, max) {
 
 export function roll (max = 100, type = 10) {
   return random(type, 0, 0, max)
+}
+
+const AUTO_ID_CACHE = {}
+/**
+ * @description 自增长ID 辅助函数
+ * @param namespace ID命名空间
+ * @returns {number}
+ */
+const AUTO_INCREMENT = function (namespace) {
+  if (!AUTO_ID_CACHE[namespace]) {
+    AUTO_ID_CACHE[namespace] = 0
+  }
+  return AUTO_ID_CACHE[namespace]++
+}
+/**
+ * @description 自增长ID
+ * @param namespace ID命名空间
+ * @returns {string}
+ */
+export function AutoIncrementID (namespace) {
+  return [
+    namespace,
+    AUTO_INCREMENT(namespace)
+  ].join('-')
 }
 
 export function noop () {}

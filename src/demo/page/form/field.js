@@ -12,7 +12,7 @@ export default function (me) {
         /* reg.str64, */
         {
           validator (rule, value, callback) {
-            var reg = /^[\u0391-\uFFE50-9a-zA-Z]{1,64}$/
+            let reg = /^[\u0391-\uFFE50-9a-zA-Z]{1,64}$/
             if (!reg.test(value)) {
               callback(new Error('不符合输入规则，请重新输入！'))
             }
@@ -27,35 +27,20 @@ export default function (me) {
       tag: 'el-select',
       name: 'type',
       label: '类型',
+      default: '8321dcf4-d0fc-a821-7deb-d18ada52c8c9',
       data: {
         props: {
-          data: me.list
+          filterable: true,
+          multiple: false,
+          options: me.list
         }
       },
       tip: '选填，支持数字输入，长度为1~20位置数字',
       createFunction: 'formItem'
     },
     {
-      tag: 'el-input',
-      name: 'code',
-      label: '编号',
-      tip: '选填，支持数字输入，长度为1~20位置数字',
-      rules: [
-        reg.int20
-      ],
-      createFunction: 'formItem'
-    },
-    {
-      tag: 'el-input',
-      name: 'url',
-      label: '系统地址',
-      tip: '必填，第三方认证系统地址，支持IPv4校验规则',
-      rules: [
-        /* reg.uri */
-        reg.required,
-        reg.ip
-      ],
-      createFunction: 'formItem'
+      tag: 'div',
+      slot: 'exp'
     },
     {
       tag: 'el-input',

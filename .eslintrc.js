@@ -15,6 +15,7 @@ module.exports = {
     'vue/no-unused-vars': 'off',
     'vue/require-v-for-key': 'off',
     'prefer-promise-reject-errors': 'off', // 要求使用 Error 对象作为 Promise 拒绝的原因
+    'no-return-assign': 'off', // 禁止在 return 中使用赋值操作
     'no-mixed-operators': 'off', // 禁止混合使用不同的操作符
     'no-trailing-spaces': 'off', // 禁用行尾空白
     'no-sequences': 'off', // 不允许使用逗号操作符

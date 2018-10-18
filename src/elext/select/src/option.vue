@@ -1,6 +1,7 @@
 <template>
   <li
     @mouseenter="hoverItem"
+    @mousemove="mouseEvent"
     @click.stop="selectOptionClick"
     class="el-select-dropdown__item"
     v-show="visible"
@@ -18,6 +19,7 @@
 <script type="text/babel">
 import Emitter from 'element-ui/src/mixins/emitter'
 import { getValueByPath, escapeRegexpString } from 'element-ui/src/utils/util'
+import { isDefined } from '@/util/core'
 
 export default {
   mixins: [Emitter],
@@ -32,6 +34,12 @@ export default {
     value: {
       required: true
     },
+    lightSpeed: {
+      type: Boolean,
+      default () {
+        return this.select.lightSpeed
+      }
+    },
     label: [String, Number],
     created: Boolean,
     disabled: {
@@ -41,12 +49,21 @@ export default {
   },
 
   data () {
+    let hover = false
+
+    if (this.select.lightSpeed) {
+      let option = this.select.getOption(this.value)
+      if (isDefined(option.hover)) {
+        hover = option.hover
+      }
+    }
+
     return {
       index: -1,
       groupDisabled: false,
       visible: true,
       hitState: false,
-      hover: false
+      hover
     }
   },
 
@@ -122,9 +139,24 @@ export default {
       this.groupDisabled = val
     },
 
-    hoverItem () {
+    mouseEvent (e) {
+      this.select.prevX = e.screenX
+      this.select.prevY = e.screenY
+    },
+
+    hoverItem (e) {
+      let { prevX, prevY } = this.select
+      if (isDefined(prevX) && isDefined(prevY)) {
+        if (prevX === e.screenX && prevY === e.screenY) {
+          return false
+        }
+      }
+
+      this.select.prevX = e.screenX
+      this.select.prevY = e.screenY
+
       if (!this.disabled && !this.groupDisabled) {
-        this.select.hoverIndex = this.select.options.indexOf(this)
+        this.select.hoverIndex = this.select.getOptionIndex(this)
       }
     },
 
@@ -143,10 +175,12 @@ export default {
   },
 
   created () {
-    this.select.options.push(this)
-    this.select.cachedOptions.push(this)
-    this.select.optionsCount++
-    this.select.filteredOptionsCount++
+    if (!this.lightSpeed) {
+      this.select.options.push(this)
+      this.select.cachedOptions.push(this)
+      this.select.optionsCount++
+      this.select.filteredOptionsCount++
+    }
 
     this.$on('queryChange', this.queryChange)
     this.$on('handleGroupDisabled', this.handleGroupDisabled)

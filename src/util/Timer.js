@@ -1,5 +1,5 @@
 import { each } from './array'
-import { fire } from './core'
+import { fire, isChar } from './core'
 
 const cache = {}, win = window
 
@@ -24,7 +24,14 @@ class Timer {
 }
 
 TimerFactory.destroy = function (list = cache) {
-  each(list, (timer) => timer.destroy())
+  each(list, (timer) => {
+    if (isChar(timer)) {
+      timer = cache[timer]
+    }
+    if (timer) {
+      timer.destroy()
+    }
+  })
 }
 
 export default function TimerFactory (np, fn, step = 1000, immediately = !1, interval) {
