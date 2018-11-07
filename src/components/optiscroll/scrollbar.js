@@ -1,4 +1,4 @@
-import { extend, isDefined } from '@/util/core'
+import { extend, fire, isDefined, isUndefined } from '@/util/core'
 import { cssTransform, scrollbarSpec } from './globals'
 import { each } from '@/util/array'
 
@@ -63,22 +63,19 @@ export default {
   methods: {
     position (value, callback) {
       let { cache, scrollSize, clientSize, scrollbarCache, scrollProp } = this
-      let position = scrollbarCache[scrollProp]
-      if (isDefined(value)) {
-        let max = cache[scrollSize] - cache[clientSize], min = 0
-        if (value !== position) {
-          if (value < min) value = min
-          if (value > max) value = max
-          scrollbarCache[scrollProp] = value
-        }
-        if (callback) {
-          callback(value, position)
-        } else {
-          return value
-        }
-      } else {
-        return position || 0
+      let max = cache[scrollSize] - cache[clientSize], min = 0
+      
+      if (isUndefined(value)) {
+        value = scrollbarCache[scrollProp]
       }
+
+      if (value < min) value = min
+      if (value > max) value = max
+      if (value < 0) value = 0
+
+      fire(callback, scrollbarCache[scrollProp] = value)
+     
+      return value
     },
     update (size) {
       let {
@@ -144,7 +141,7 @@ export default {
       let sizeRatio = viewS / scrollS
       let sizeDiff = scrollS - viewS
       let positionRatio, percent
-      
+     
       if (sizeRatio >= 1 || !scrollS) {
         return { position: 0, size: 1, percent: 0 }
       }
@@ -160,7 +157,7 @@ export default {
       if (position >= sizeDiff - 1) {
         percent = 100
       }
-      
+
       sizeRatio = Math.max(sizeRatio, minTrackSize / 100)
       sizeRatio = Math.min(sizeRatio, maxTrackSize / 100)
       

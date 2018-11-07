@@ -34,7 +34,7 @@
                   :step="10"
                   :autoUpdate="false"
                   :realTimeRendering="true"
-                  :contentHeight="contentHeight" @scroll="scroll">
+                  :size="scrollHeight" @scroll="scroll">
         <code style="width: 700px; height: 100%; display: block;">滚动条高度: {{size}}</code>
       </optiscroll>
     </div>
@@ -52,8 +52,8 @@ export default {
     scroll (e) {
       this.size = e
     },
-    contentHeight () {
-      return this.height
+    scrollHeight () {
+      return { sH: this.height }
     }
   },
   mounted () {

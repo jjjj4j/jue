@@ -1,13 +1,13 @@
 import { isArray } from '@/util/core'
 
-let _REG_ = /{(.+?)}/g
-let _FN_REG_ = /^(fn:)(.+?)\((.*?)\)$/
-let _STR_PARAM_REG_ = /([''])(.+?)\1/
+const _REG_ = /{(.+?)}/g
+const _FN_REG_ = /^(fn:)(.+?)\((.*?)\)$/
+const _STR_PARAM_REG_ = /([''])(.+?)\1/
 
-let isFn = function (v) {
+const isFn = function (v) {
   return _FN_REG_.test(v)
 }
-let format = function (tpl, obj, tempFn) {
+const format = function (tpl, obj, tempFn) {
   return tpl.replace(_REG_, function () {
     let arg = arguments[1]
     if (isFn(arg)) {
@@ -39,30 +39,21 @@ let format = function (tpl, obj, tempFn) {
     return obj[arg] === undefined ? '' : obj[arg]
   })
 }
-let formatList = function (tpl, i, size, list, array, tempFn) {
+const formatList = function (tpl, i, size, list, array, tempFn) {
   while (--i >= 0) {
     let d = list[i]
     d.i = i + size + 1
     array[i] = format(tpl, d, tempFn)
   }
+  return array
 }
 
-export function tpl (tpl, obj, tempFn) {
-  if (!tpl && !obj) {
-    return ''
-  }
+export function tpl (tpl = '', obj = {}, tempFn) {
+  let result = ''
   if (isArray(obj)) {
-    if (obj.length > 0) {
-      let array = []
-      let list = obj
-      let i = list.length
-      let size = 0
-      
-      formatList(tpl, i, size, list, array, tempFn)
-      return array.join('')
-    } else {
-      return ''
-    }
+    result = formatList(tpl, obj.length, 0, obj, [], tempFn).join('')
+  } else {
+    result = format(tpl, obj, tempFn)
   }
-  return format(tpl, obj, tempFn)
+  return result
 }

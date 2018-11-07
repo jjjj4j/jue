@@ -1,4 +1,4 @@
-import final from '@/static/final.js'
+import * as final from '@/static/final.js'
 
 /**
  * 自定义时,必须初始化 handler

@@ -1,5 +1,10 @@
 import './optiscroll.css'
-import { extend, isDefined, AutoIncrementID } from '@/util/core'
+import {
+  extend,
+  isDefined,
+  AutoIncrementID,
+  fire
+} from '@/util/core'
 import { each } from '@/util/array'
 import Timer from '@/util/Timer'
 import Bar from './scrollbar.js'
@@ -26,12 +31,6 @@ function checkLoop () {
 
 export default {
   props: {
-    contentHeight: {
-      type: Function,
-      default () {
-        return this.scrollEl.scrollHeight
-      }
-    },
     realTimeRendering: { type: Boolean, default: false },
     preventParentScroll: { type: Boolean, default: false },
     forceScrollbars: { type: Boolean, default: false },
@@ -42,7 +41,9 @@ export default {
     autoUpdate: { type: Boolean, default: true },
     classPrefix: { type: String, default: 'optiscroll-' },
     rtl: { type: Boolean, default: false },
-    step: { type: Number, default: 40 }
+    step: { type: Number, default: 40 },
+    size: { type: Function },
+    tag: { type: String, default: 'div' }
   },
   data () {
     this.cache = {}
@@ -62,7 +63,7 @@ export default {
   render ($$) {
     let {
       $slots, classPrefix, cache, classes, realTimeRendering,
-      scroll, preventParentScroll, forceScrollbars, rtl
+      scroll, preventParentScroll, forceScrollbars, rtl, tag
     } = this
     let $root = { class: classes }
     let $div = { class: [classPrefix + 'content', 'real-time'] }
@@ -91,7 +92,7 @@ export default {
       $root.class.push(classPrefix + 'prevent')
     }
     
-    let children = [$$('div', $div, [$slots.default])]
+    let children = [$$(tag, $div, [$slots.default])]
     children.push($$(Bar, { ref: 'hBar',
       props: { cache, which: 'h' },
       on: {
@@ -130,20 +131,45 @@ export default {
     }
   },
   methods: {
-    update (height) {
+    content () {
       let {
         scrollEl: {
+          scrollHeight: sH,
           clientHeight: cH,
           scrollWidth: sW,
           clientWidth: cW
+        }
+      } = this
+      return {
+        sH, cH, sW, cW
+      }
+    },
+    update (height) {
+      let {
+        scrollEl: {
+          scrollHeight: sH, scrollWidth: sW,
+          clientHeight: cH, clientWidth: cW
         },
-        cache,
         cache: {
           scrollW, scrollH, clientW, clientH
         },
-        realTimeRendering
+        realTimeRendering, size, cache
       } = this
-      let sH = height || this.contentHeight()
+      
+      size = fire(size)
+      
+      // 调整 1px 误差
+      if (~~(sW - cW) === 1) {
+        sW = cW
+      }
+      
+      if (size) {
+        sH = size.sH || sH
+        sW = size.sW || sW
+        cH = size.cH || cH
+        cW = size.cW || cW
+      }
+      sH = height || sH
       
       if (sH !== scrollH || cH !== clientH ||
           sW !== scrollW || cW !== clientW) {
@@ -159,7 +185,7 @@ export default {
 
         if (sH !== scrollH && realTimeRendering) {
           let position = this.vBar.position
-          if (sH < position()) {
+          if (sH < position() + cH) {
             position(sH, () => {
               this.fireCustomEvent('scroll')
             })
@@ -223,24 +249,26 @@ export default {
           Timer(TimerName[2], () => {
             let { wheelDelta } = ev
             let { position, update } = vBar
-            position(position() - (wheelDelta > 0 ? step : -step), (v0, v1) => {
-              if (v0 !== v1) {
-                update() || this.fireCustomEvent('scroll')
-              }
+            position(position() - (wheelDelta > 0 ? step : -step), () => {
+              update() || this.fireCustomEvent('scroll')
             })
           }, 10)
         }
       }
     },
     fireCustomEvent (name) {
-      let { v, h, clientH, clientW, scrollH: sH, scrollW: sW } = this.cache
+      let {
+        realTimeRendering,
+        vBar: { position },
+        cache: { v, h, clientH, clientW, scrollH: sH, scrollW: sW }
+      } = this
       this.$emit(name, {
         // scrollbars data
         scrollbarV: extend({}, v),
         scrollbarH: extend({}, h),
   
         // scroll position
-        scrollTop: (v.position || 0) * sH,
+        scrollTop: realTimeRendering ? position() : (v.position || 0) * sH,
         scrollLeft: (h.position || 0) * sW,
         scrollBottom: (1 - v.position - v.size) * sH,
         scrollRight: (1 - h.position - h.size) * sW,
@@ -253,7 +281,7 @@ export default {
       })
     },
     scrollTo (destX, destY, duration) {
-      let cache = this.cache
+      let { vBar, hBar, cache } = this
       let startX, startY, endX, endY
     
       pauseCheck = true
@@ -274,6 +302,11 @@ export default {
       if (destY === false) { endY = startY }
 
       this.animateScroll(startX, endX, startY, endY, +duration)
+      
+      return {
+        X: hBar.position(endX),
+        Y: vBar.position(endY)
+      }
     },
     scrollIntoView (elem, duration, delta) {
       let scrollEl = this.scrollEl
@@ -333,6 +366,7 @@ export default {
           }
         })
       }
+
       if (endX === startX && endY === startY) {
         return
       }
@@ -361,7 +395,7 @@ export default {
         if (endX !== startX) {
           update(hBar, ~~(easedTime * (endX - startX)) + startX)
         }
-  
+
         self.scrollAnimation = time < 1 ? window.requestAnimationFrame(animate) : null
       }())
     },

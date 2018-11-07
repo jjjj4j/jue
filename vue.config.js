@@ -1,4 +1,4 @@
-const isDel = process.env.NODE_ENV !== 'production'
+const isDevelopment = process.env.NODE_ENV !== 'production'
 const index = {
   entry: 'src/main.js',
   chunks: ['index-vendors', 'index-common', 'index']
@@ -28,7 +28,7 @@ let delConf = {
   }
 }
 const configureWebpack = function () {
-  return Object.assign(isDel ? delConf : prodConf, conf)
+  return Object.assign(isDevelopment ? delConf : prodConf, conf)
 }
 
 const delChain = function (config) {
@@ -38,7 +38,7 @@ const prodChain = function (config) {
 }
 
 const chainWebpack = function (config) {
-  return isDel ? delChain(config) : prodChain(config)
+  return isDevelopment ? delChain(config) : prodChain(config)
 }
 
 let config = {
@@ -48,5 +48,5 @@ let config = {
   chainWebpack
 }
 
-config.pages = isDel ? { index, login, demo } : { index, login }
+config.pages = isDevelopment ? { index, login, demo } : { index, login }
 module.exports = config

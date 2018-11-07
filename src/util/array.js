@@ -1,4 +1,5 @@
-import { isArray, isUndefined } from './core'
+import { isArray, isBoolean, isChar, isUndefined } from './core'
+import { fire } from '@/util/core'
 
 export function each (obj, callback) {
   let length, i = 0
@@ -45,6 +46,38 @@ export function map (elems, callback, arg) {
   return [].concat(ret)
 }
 
+export function posterity (list, callback, recursive) {
+  each(list, (node) => {
+    fire(callback, node)
+    if (recursive) {
+      posterity(recursive(node), callback, recursive)
+    }
+  })
+}
+
+export function findInTree (tree, filter, result = [], attr = 'children') {
+  let i, node
+  let isFindFirst = isBoolean(result)
+
+  if (isArray(tree)) {
+    for (i = tree.length; i > 0;) {
+      node = tree[--i]
+      if (filter(node)) {
+        if (isFindFirst) {
+          return node
+        }
+        result.push(node)
+      }
+      node = findInTree(node[attr], filter, result, attr)
+      if (isFindFirst && node) {
+        return node
+      }
+    }
+  }
+  
+  return isFindFirst ? undefined : result
+}
+
 export function array2tree (
   list,
   filter,
@@ -59,6 +92,14 @@ export function array2tree (
   }
   
   let tree = [], tmp = {}
+  
+  if (isChar(filter)) {
+    parent = children
+    children = pId
+    pId = id
+    id = filter
+    filter = !1
+  }
   
   if (filter) {
     for (i = 0; i < l; i++) {
@@ -117,10 +158,10 @@ export function tree2array (
 }
 
 /**
- * @param array Array
- * @param items Array
- * @param start Number
- * @param delNum Number
+ * @param array {Array}
+ * @param items {Array}
+ * @param start {Number}
+ * @param delNum {Number}
  *
  * 1, 只有 `array` 将清空 `array`
  * 2, 只有 `array`, `items` ，清空 `array` 之后，将items的值插入 `array` 中

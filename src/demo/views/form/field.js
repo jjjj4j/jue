@@ -5,11 +5,11 @@ export default function (me) {
     {
       tag: 'el-input',
       name: 'name',
+      disabled: !1,
       label: '名称',
       tip: '必填，支持中文、英文、数字输入，长度为1~64个字符',
       rules: [
         reg.required,
-        /* reg.str64, */
         {
           validator (rule, value, callback) {
             let reg = /^[\u0391-\uFFE50-9a-zA-Z]{1,64}$/
@@ -25,17 +25,22 @@ export default function (me) {
     },
     {
       tag: 'el-select',
-      name: 'type',
-      label: '类型',
-      default: '8321dcf4-d0fc-a821-7deb-d18ada52c8c9',
+      name: 'groupId',
+      label: '所属分组',
+      emptyOption: !0,
       data: {
         props: {
-          filterable: true,
-          multiple: false,
+          filterable: false,
+          multiple: true,
           options: me.list
         }
       },
-      tip: '选填，支持数字输入，长度为1~20位置数字',
+      createFunction: 'formItem'
+    },
+    {
+      tag: 'el-select',
+      name: 'position',
+      label: '安装位置',
       createFunction: 'formItem'
     },
     {

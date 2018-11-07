@@ -69,7 +69,7 @@ export default {
     setting: Object
   },
   methods: {
-    isSearch (success = () => !0, fail = () => !1) {
+    searching (success = () => !0, fail = () => !1) {
       if (this.search) {
         return success.call(this)
       } else if (this.filter) {
@@ -100,7 +100,7 @@ export default {
       return node
     },
     get (cache, cache2) {
-      let flag = this.isSearch() && !this.pagination
+      let flag = this.searching() && !this.pagination
       let value = (v) => {
         return $.isFunction(v) ? v() : v
       }
@@ -478,7 +478,7 @@ export default {
           this.loading = !1
           setTimeout(() => {
             ajaxAfter.call(this)
-            this.setScrollTop(0)
+            this.scrollTo(0)
           }, 250)
         })
       }
@@ -525,7 +525,7 @@ export default {
               top = this.scrollTop
             }
             setTimeout(() => {
-              this.setScrollTop(top)
+              this.scrollTo(top)
             }, 250)
           })
         }
@@ -671,7 +671,7 @@ export default {
           node.jtype !== _FOLDER_ &&
           !node.open && !$.isUndefined(node.open) &&
           !node.ajaxed && !$.isUndefined(node.ajaxed) &&
-          (!this.isSearch() || this.pagination)
+          (!this.searching() || this.pagination)
       ) {
         openAjax()
       } else {
@@ -705,7 +705,7 @@ export default {
             this.init()
           } else {
             setTimeout(() => {
-              this.setScrollTop()
+              this.scrollTo()
             }, 250)
           }
         }
@@ -729,7 +729,7 @@ export default {
         }
         getSearchResult(this.list)
         this.search = search
-        this.setScrollTop(this.scrollTop = scrollTop || 0)
+        this.scrollTo(this.scrollTop = scrollTop || 0)
         this.initIndex($.array2tree(list, 'id', 'pId', 'children2'), 0, !0, !0)
       }
       let ajaxEvent = () => {
@@ -817,7 +817,7 @@ export default {
           setTimeout(() => {
             this.loading = !1
           }, 100)
-          this.setScrollTop(this.scrollTop = scrollTop || 0)
+          this.scrollTo(this.scrollTop = scrollTop || 0)
           this.initIndex(array, 0, !0, !0)
         })
       }
@@ -914,7 +914,7 @@ export default {
     },
     wheelEvent (e) {
       $.timer('wheelEvent', () => {
-        this.setScrollTop(-e.wheelDelta, !0)
+        this.scrollTo(-e.wheelDelta, !0)
       }, 10)
     },
     scrollEvent (e) {
@@ -922,7 +922,7 @@ export default {
         this.scrollTop = e.target.scrollTop
       }, 10)
     },
-    setScrollTop (top, delta) {
+    scrollTo (top, delta) {
       let isPermitTree = !!this.defaultStatus
       let $js = this.$el.children[isPermitTree ? 0 : 1].children[1]
       top = $.isUndefined(top) ? this.scrollTop : top
@@ -944,7 +944,7 @@ export default {
     },
     isHideArrow (node) {
       let flag = this.ajax && this.ajax.open && node.ajaxed === !1
-      return this.isSearch(() => {
+      return this.searching(() => {
         if (this.pagination) {
           if (flag) {
             return !1
@@ -1034,10 +1034,10 @@ export default {
     },
     scrollTop: {
       get () {
-        return this.isSearch(() => this.searchTop, () => this.normalTop)
+        return this.searching(() => this.searchTop, () => this.normalTop)
       },
       set (top) {
-        this.isSearch(() => {
+        this.searching(() => {
           this.searchTop = top
         }, () => {
           this.normalTop = top

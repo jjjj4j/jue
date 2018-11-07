@@ -1,7 +1,7 @@
 <template>
   <div class="form-render">
     <factory-render :init="renderInit">
-      <el-form-item label="活动区域" slot="exp">
+      <el-form-item label="监控区域" slot="exp">
         <el-select v-model="model.area" :lightSpeed="false" :filterable="true" placeholder="请选择活动区域">
           <el-option label="区域一" value="area1"></el-option>
           <el-option label="区域二" value="area2"></el-option>
@@ -24,8 +24,9 @@
 <script>
 import fieldFactory from './field'
 import { formFactoryRender } from '@/util/render'
-import ElOption from '@/elext/select/src/option'
-import { map } from '@/util/array'
+import { array2tree } from '@/util/array'
+import { formatFinal } from '@/util/form'
+import { camera as final } from '@/static/final'
 
 export default {
   data () {
@@ -33,25 +34,25 @@ export default {
       model: {
         area: 'area5'
       },
-      list: []
+      option: {}
     }
   },
-  components: { ElOption },
   created () {
     Service.pageGroup({
       id: '1db1977f-ca4c-71ac-b145-fa854936cce8'
     }).then((r) => {
-      this.list = map(r.data.list, (item) => {
-        return {
-          value: item.id,
-          label: item.name
+      this.option = {
+        groupId: {
+          name: 'name',
+          value: 'id',
+          list: array2tree(r.data.list, 'id', 'parentId').list
         }
-      })
+      }
     })
   },
   computed: {
     fields () {
-      return fieldFactory(this)
+      return formatFinal(fieldFactory(this), final, this.option)
     },
     renderInit () {
       return formFactoryRender.bind(this, this.fields, {})

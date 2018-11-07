@@ -2,9 +2,9 @@
   <optiscroll ref="ops"
               :style="{height: getIndex().length > 7 ? (257 + 'px') : (getIndex().length * 34 + 12 + 'px')}"
               :step="34"
+              :size="scrollHeight" @scroll="scrollEvent"
               :autoUpdate="false"
               :realTimeRendering="true"
-              :contentHeight="contentHeight" @scroll="scrollEvent"
               v-show="getIndex().length > 0">
     <el-scrollbar
         tag="ul"
@@ -49,10 +49,10 @@ export default {
   computed: {
     scrollTop: {
       get () {
-        return this.isSearch(() => this.searchTop, () => this.normalTop)
+        return this.searching(() => this.searchTop, () => this.normalTop)
       },
       set (top) {
-        this.isSearch(() => {
+        this.searching(() => {
           this.searchTop = top
         }, () => {
           this.normalTop = top
@@ -100,8 +100,11 @@ export default {
     scrollEvent (e) {
       this.draw(this.scrollTop = e.scrollTop)
     },
-    contentHeight () {
-      return this.getIndex().length > 1 ? this.getIndex().length * 34 + 19 : 46
+    scrollHeight () {
+      let sH = nodeHeight * this.getIndex().length || 1
+      return {
+        sH: sH += sH <= nodeHeight * step ? 12 : 19
+      }
     },
     handleScroll () {
       let val = this.select.value
@@ -122,14 +125,14 @@ export default {
         })
       }
     },
-    isSearch (success = () => !0, fail = () => !1) {
+    searching (success = () => !0, fail = () => !1) {
       if (this.search) {
         return success.call(this)
       }
       return fail.call(this)
     },
     get (cache, cache2) {
-      let flag = this.isSearch()
+      let flag = this.searching()
       let value = (v) => {
         return isFunction(v) ? v() : v
       }

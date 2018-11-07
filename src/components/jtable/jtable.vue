@@ -6,13 +6,7 @@
         <form @submit.prevent="searchEvent">
           <div>
             <input type="search"/>
-            <el-tooltip ref="tooltip"
-                        effect="light"
-                        placement="top-end"
-                        :content="getSearchTip()"
-                        @input="hackIE9">
-              <a @click="searchEvent"><span class="el-icon-search"></span></a>
-            </el-tooltip>
+            <a @click="searchEvent"><span class="el-icon-search"></span></a>
           </div>
         </form>
       </div>
@@ -74,13 +68,17 @@
             </thead>
           </table>
         </div>
-        <div @mousewheel.stop.prevent="wheelEvent" class='jb-c' v-loading="loading">
+        <optiscroll ref="opt" class='jb-c' v-loading="loading"
+                    :step="40"
+                    :autoUpdate="false"
+                    :realTimeRendering="true"
+                    :size="scrollHeight" @scroll="scrollEvent">
           <table :width="tableWidth" v-if="blockList.length > 0">
             <colgroup>
               <col :width="col[1]" v-for='col in colVis'>
             </colgroup>
             <tbody class="no-line">
-            <tr v-for='(node, index) in blockList'>
+            <tr v-for='node in blockList'>
               <td v-for='col in colVis' :class="column[col[0]].id">
                 <slot :name="column[col[0]].id" v-if="column[col[0]].slot" :node="node"></slot>
                 <div class="name-old ellipsis"
@@ -127,10 +125,7 @@
               <div>尚未检索到任何数据</div>
             </div>
           </div>
-        </div>
-      </div>
-      <div @scroll="scrollEvent" class='js'>
-        <div :style="scrollHeight()"></div>
+        </optiscroll>
       </div>
       <div class="jl">
         <table width="100%">
@@ -162,42 +157,40 @@
 </template>
 
 <script>
-import Clickoutside from '../clickoutside'
+import clickoutside from 'element-ui/src/utils/clickoutside'
+import { each, map, splice, array2tree, posterity as findPosterity } from '@/util/array'
+import { _PARENT_, _FOLDER_, _CHILD_ } from '../jtree/util'
+import {
+  AutoIncrementID,
+  extend,
+  fire,
+  inspect,
+  isArray,
+  isChar,
+  isDefined,
+  isFunction, isNumber,
+  isPlainObject,
+  isUndefined,
+  noop, random16
+} from '@/util/core'
+import Timer from '@/util/Timer'
 
-let _PARENT_ = 'parent'
-let _FOLDER_ = 'folder'
-let _CHILD_ = 'child'
-
-let posterity = (list, callback, isRecursive = !0) => {
-  $.for(list, (node) => {
-    callback(node)
-    if (isRecursive && node.children) {
-      posterity(node.children, callback, isRecursive)
-    }
-  })
+const posterity = function (list, callback, isRecursive = !0) {
+  return findPosterity(
+    list, callback,
+    isRecursive ? (node) => node.children : isRecursive
+  )
 }
 
-let isSearch = (search, success = () => !0, fail = () => !1) => {
-  if (search) {
-    return success.call(this)
-  } else if (this.filter) {
-    if (this.filter.isExist()) {
-      return success.call(this)
-    }
-  }
-  return fail.call(this)
-}
-
-let isChecked = (node) => {
+const isChecked = (node) => {
   let validate = (list) => {
-    for (let i in list) {
-      let item = list[i]
-      if (item.checked) {
-        return !0
-      }
-      let children = item.children
-      if (children && children.length > 0) {
-        if (validate(children)) {
+    if (list && list.length > 0) {
+      for (let i in list) {
+        let item = list[i]
+        if (item.checked) {
+          return !0
+        }
+        if (validate(item.children)) {
           return !0
         }
       }
@@ -229,6 +222,9 @@ export default {
       filter
     } = me.setting
 
+    me.TimerName = AutoIncrementID('TableResize')
+
+    me.jid = random16(8)
     me.list = list || []
     me.currentPage = 1
     me.pageSize = 10
@@ -237,7 +233,7 @@ export default {
     me.step = step || 10
     me.autoStep = !step
 
-    $.extend(me, {
+    extend(me, {
       autoInit,
       search,
       folder,
@@ -265,19 +261,16 @@ export default {
   methods: {
     startA (callback) {
       this.loading = !0
-      $.fire(callback)
+      fire(callback)
     },
     closeA (callback) {
-      $.fire(callback)
+      fire(callback)
       setTimeout(() => {
         this.loading = !1
       }, 100)
     },
     hideFilter () {
       this.showFilter = !1
-    },
-    isSearch (success = () => !0, fail = () => !1) {
-      return isSearch.call(this, this.search, success, fail)
     },
     getActive () {
       return this.active
@@ -288,7 +281,7 @@ export default {
       } else {
         this.active = node
       }
-      this.$nextTick(this.draw)
+      this.update(!1)
     },
     setDefActive () {
       if (!this.active) {
@@ -309,18 +302,18 @@ export default {
       }
     },
     cacheParent (node) {
-      return $.isPlainObject(node) ? (this.cache[node.id + node.jtype] = node) : this.cache[node + _PARENT_]
+      return isPlainObject(node) ? (this.cache[node.id + node.jtype] = node) : this.cache[node + _PARENT_]
     },
     cacheGroup (node) {
-      return $.isPlainObject(node) ? (this.cache[node.id] = node) : this.cache[node]
+      return isPlainObject(node) ? (this.cache[node.id] = node) : this.cache[node]
     },
     cacheChild (node, attr) {
-      if ($.isPlainObject(node)) {
+      if (isPlainObject(node)) {
         let child = this.cache[node.id + node.jtype]
         if (child) {
-          attr ? attr.forEach((v) => {
+          attr ? each(attr, (v) => {
             child[v] = node[v]
-          }) : $.extend(child, node)
+          }) : extend(child, node)
         } else {
           this.cache[node.id + node.jtype] = child = node
         }
@@ -356,7 +349,7 @@ export default {
         return !1
       }
       let status = node['isIndeterminate']
-      if (!$.isUndefined(status)) {
+      if (isDefined(status)) {
         return status
       }
       return (node['isIndeterminate'] = this.getCheckedNum(node) === !0)
@@ -418,16 +411,16 @@ export default {
           }
         }
       } else {
-        $.for(cache, (node) => {
+        each(cache, (node) => {
           node.checked = !1
           delete cache[node.id + node.jtype]
         })
-        $.splice(cache)
+        splice(cache)
       }
     },
     uncheck (node, fail, success) {
       let column, uncheck
-      $.for(this.column, (col) => {
+      each(this.column, (col) => {
         if (col.keyCol) {
           return !(column = col)
         }
@@ -462,13 +455,12 @@ export default {
         me.setTopChecked()
 
         /* 执行回调函数 */
-        $.fire(me.checked, node)
+        fire(me.checked, node)
 
-        me.$forceUpdate()
+        me.update(!1)
       })
     },
     clear (callback) {
-      $('input[type=search]', this.$el.children[0]).val('')
       this.cache = {}
       this.list = []
       this.active = {}
@@ -477,15 +469,13 @@ export default {
       this.scrollTop = 0
       this.currentPage = 1
       this.totalSize = 0
-      this.search = ''
-      if (this.selectable) {
-        this.checkedCache = []
-      }
-      $.fire(callback)
+      this.searchValue('')
+      this.selectable && (this.checkedCache = [])
+      fire(callback)
     },
     delNode (id, jtype = _PARENT_) {
-      if ($.isArray(id)) {
-        $.for(id, (_id_) => {
+      if (isArray(id)) {
+        each(id, (_id_) => {
           this.delNode(_id_, jtype)
         })
       } else {
@@ -516,14 +506,15 @@ export default {
           }
 
           this.removeCacheNode(node)
+          this.update()
         }
       }
     },
-    init (arg = {}) {
+    init (arg = {}, callback) {
       let me = this
       let { init, initAfter } = me.ajax || {}
       let initNode = (list, jtype, flag) => {
-        $.for(list, (obj) => {
+        each(list, (obj) => {
           if (flag) {
             initNode(obj.children, jtype, flag)
           } else {
@@ -543,12 +534,12 @@ export default {
                 attr.ajaxing = !1
               }
             }
-            $.extend(obj, attr)
+            extend(obj, attr)
           }
           this.cacheNode(obj, obj.jtype)
         })
         if (!flag) {
-          return $.array2tree(list)
+          return array2tree(list).list
         }
         return list
       }
@@ -560,11 +551,11 @@ export default {
           search: this.search
         }).then((data) => {
           me.totalSize = data.totalSize
-          return $.splice(me.list, initNode(data.list, _PARENT_))
+          return splice(me.list, initNode(data.list, _PARENT_))
         })
       }
       let staticEvent = () => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           setTimeout(() => {
             let start = (me.currentPage - 1) * me.pageSize
             let list = (me.data = me.data || {
@@ -579,7 +570,7 @@ export default {
                   if (col.data) {
                     result = col.data(node).indexOf(me.search) >= 0
                   } else {
-                    result = col.id && node[col.id] && $.isStr(node[col.id]) && node[col.id].indexOf(me.search) >= 0
+                    result = col.id && node[col.id] && isChar(node[col.id]) && node[col.id].indexOf(me.search) >= 0
                   }
                   if (result) {
                     return result
@@ -591,17 +582,18 @@ export default {
               me.totalSize = me.data.totalSize
             }
             list = list.slice(start, start + me.pageSize)
-            resolve($.splice(me.list, initNode(list, _PARENT_, list.length > 0 && !$.isUndefined(list[0].deep))))
+            resolve(splice(me.list, initNode(list, _PARENT_, list.length > 0 && isDefined(list[0].deep))))
           }, 200)
         })
       }
 
-      $.extend(me, arg)
+      extend(me, arg)
       me.startA(() => {
         (init ? ajaxEvent : staticEvent)().then(() => {
           me.setDefActive()
           me.initIndex(me.list, 0, !0, !0)
-          $.fire.call(me, initAfter)
+          fire.call(me, initAfter)
+          fire.call(me, callback)
         }).then(() => {
           if (me.selectable) {
             let cache = me.cache
@@ -612,7 +604,7 @@ export default {
             })
 
             if (me.ajax && me.ajax.open) {
-              $.for(cache, (node) => {
+              each(cache, (node) => {
                 if (node.jtype === _CHILD_) {
                   let isChecked = checkedCache[node.id + node.jtype]
                   let parent = me.cacheParent(node.parent.id)
@@ -628,14 +620,8 @@ export default {
           }
         }).then(() => {
           me.closeA(() => {
-            $('input[type=search]', me.$el.children[0]).val(me.search)
-            if (me.scrollTop === 0) {
-              me.draw()
-            } else if (arg.top0 === !1) {
-              me.draw()
-            } else {
-              me.setScrollTop(0)
-            }
+            me.searchValue(me.search)
+            me.update(arg.top0 ? me.scrollTop = 0 : me.scrollTop, 0)
           })
         })
       })
@@ -645,13 +631,11 @@ export default {
         this.indexList,
         array, deep, isOpen, delFlag
       )
-      if (callback) {
-        callback()
-      }
+      fire(callback)
     },
     initIndexPrototype (list, array, deep, isOpen, delFlag) {
       delFlag && list.splice(0, list.length)
-      $.each(array, (i, obj) => {
+      each(array, (obj) => {
         let children = obj.children
         obj.deep = deep
         isOpen && list.push(obj)
@@ -667,7 +651,7 @@ export default {
         if (child) {
           child.name = node.name
         } else {
-          child = $.extend(node, tpl)
+          child = extend(node, tpl)
           me.cacheChild(child)
         }
         return child
@@ -675,7 +659,7 @@ export default {
       let ajaxEvent = () => {
         let promise = me.ajax.open(node), ajax = promise
         let handle = (list) => {
-          $.splice(node.children, list.map((obj) => {
+          splice(node.children, map(list, (obj) => {
             let tpl = {
               pId: node.id,
               deep: node.deep + 1,
@@ -710,12 +694,12 @@ export default {
         })
       }
       let staticEvent = () => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
           resolve(!0)
         })
       }
       let findList = (list, result = []) => {
-        $.for(list, (node) => {
+        each(list, (node) => {
           result.push(node)
           if (node.open) {
             findList(node.children, result)
@@ -728,36 +712,59 @@ export default {
         me.ajax &&
             me.ajax.open &&
             node.jtype !== _FOLDER_ &&
-            !node.open && !$.isUndefined(node.open) &&
-            !node.ajaxed && !$.isUndefined(node.ajaxed) &&
-            !me.isSearch()
+            !node.open && isDefined(node.open) &&
+            !node.ajaxed && isDefined(node.ajaxed) &&
+            !me.searching()
       ) ? ajaxEvent : staticEvent)().then((flag) => {
         let indexList = me.indexList
         let openList = findList(node.children)
         let length = openList.length
 
         if (node.open) {
-          $.splice(indexList, 0, node.j + 1, length)
+          splice(indexList, 0, node.j + 1, length)
         } else {
-          $.splice(indexList, openList, node.j + 1)
+          splice(indexList, openList, node.j + 1)
         }
         node.open = !node.open
 
         if (!flag && me.selectable && node.checked) {
-          $.for(node.children, (child) => {
+          each(node.children, (child) => {
             me.setCheckedCache(child, !0)
           })
         }
 
-        me.draw()
+        me.update()
       })
     },
-    searchEvent (e, scrollTop) {
+    searching (search, success, fail) {
+      let me = this
+      let isExist = me.filter && me.filter.isExist()
+
+      if (isFunction(search)) {
+        fail = success
+        success = search
+        search = me.search
+      } else if (isUndefined(search)) {
+        search = me.search
+      }
+
+      return inspect.call(this, () => !!search || isExist, success, fail)
+    },
+    searchValue (data) {
+      let $search = $('input[type=search]', this.$el)
+      if (isDefined(data)) {
+        $search.val(this.search = data)
+      } else {
+        data = $search.val()
+      }
+      return data
+    },
+    searchEvent (e) {
       let me = this, search
 
       if (e) {
         if (e.target) {
-          search = $('input[type=search]:first', me.$el).val()
+          search = this.searchValue()
         } else {
           search = e
         }
@@ -774,19 +781,71 @@ export default {
         }, 300)
       })
     },
-    wheelEvent (e) {
-      this.setScrollTop(-e.wheelDelta, !0)
+    resizeColumn () {
+      let { colVis } = this
+      let isMenu = $('.iod-service,.iod-dict').length > 0
+      let isEc = $('.ui-center>.ui-center-content>.ec:first').length > 0
+      let dw = $(window).width()
+      let ow = 82
+      if (isEc) {
+        ow = 352
+      } else if (isMenu) {
+        ow = ((dw - 82) / 8) + 122
+      }
+      let tw = dw - ow
+      let aw = 0
+      let rw = 0
+
+      each(colVis, (col) => {
+        if (isNumber(col[1])) {
+          aw += col[1]
+        } else {
+          aw = '100%'
+          return !1
+        }
+      })
+
+      if (isNumber(aw)) {
+        if (aw <= tw) {
+          each(colVis, (col) => {
+            let cw = parseInt((col[1] * tw / aw).toFixed())
+            rw += cw
+            col.splice(1, 1, cw)
+          })
+          colVis[0].splice(1, 1, colVis[0][1] - rw + tw - 1)
+        }
+      }
+    },
+    resizeEvent () {
+      let {
+        $el, update, scrollHeight,
+        scrollTop, nodeHeight
+      } = this
+      let sH, cH, $jb = $('.jb', $el)
+      let $float, $int, top = 0
+
+      if ($jb.is(':visible')) {
+        sH = scrollHeight().sH
+        cH = $jb.height()
+        $float = cH / nodeHeight
+        $int = parseInt($float)
+
+        this.step = $float > $int ? $int + 1 : $int
+
+        if ((cH + scrollTop) > sH) {
+          top = sH - cH > 0 ? sH - cH : 0
+        } else {
+          top = scrollTop
+        }
+
+        update(top)
+      }
     },
     scrollEvent (e) {
-      $.timer('scrollEvent', () => {
-        this.scrollTop = e.target.scrollTop
-        this.draw()
-      }, 10)
+      this.draw(e.scrollTop)
     },
-    setScrollTop (top, delta) {
-      let $js = this.$el.children[1].children[1]
-      top = $.isUndefined(top) ? this.scrollTop : top
-      $js.scrollTop = top + (delta ? $js.scrollTop : 0)
+    scrollTo (top, duration) {
+      return this.$refs.opt.scrollTo(0, isUndefined(top) ? this.scrollTop : top, duration)
     },
     getLine (node) {
       let str = [],
@@ -805,16 +864,15 @@ export default {
       return node.open ? 'el-icon-arrow-down' : 'el-icon-arrow-right'
     },
     setIcon (node) {
-      let icon = this.icon
-      if ($.isFunction(icon)) {
-        return icon(node)
-      } else {
+      let icon = fire.call(this, this.icon, node)
+      if (isPlainObject(icon)) {
         if (node.deep === 0) {
-          return icon.root || icon[node.jtype]
+          icon = icon.root || icon[node.jtype]
         } else {
-          return icon[node.jtype]
+          icon = icon[node.jtype]
         }
       }
+      return icon
     },
     getCheckboxClass (node) {
       let me = this, name = []
@@ -825,9 +883,7 @@ export default {
         name = ['is-checked']
       }
       if (node) {
-        this.uncheck(node, $.noop, () => {
-          name.push('is-disabled')
-        })
+        this.uncheck(node, noop, () => name.push('is-disabled'))
       }
       return name.join(' ')
     },
@@ -835,29 +891,11 @@ export default {
       let nodeHeight = this.nodeHeight
       let length = this.indexList.length
       return {
-        height: (length + (length > this.step ? 3 : 2)) * nodeHeight + 'px'
+        sH: (length + (length > this.step ? 3 : 2)) * nodeHeight
       }
     },
-    getSearchTip () {
-      let list = []
-      $.for(this.column, (col) => {
-        if (
-          col.id &&
-              col.id !== 'i' &&
-              !col.closeSearchTip
-        ) {
-          list.push(col.name)
-        }
-      })
-      return $.tpl('可检索：{text}', {
-        text: list.join('、')
-      })
-    },
     sizeChange (size) {
-      this.init({
-        currentPage: 1,
-        pageSize: size
-      })
+      this.init({ currentPage: 1, pageSize: size })
     },
     currentChange (num) {
       if (this.currentPage !== num) {
@@ -867,15 +905,15 @@ export default {
       }
     },
     hasSort (sort) {
-      return !$.isUndefined(sort)
+      return isDefined(sort)
     },
     sortEvent (col) {
       let cols = this.column
       let sort = col.sort
 
-      $.for(cols, (_col_) => {
+      each(cols, (_col_) => {
         if (_col_ !== col) {
-          if (!$.isUndefined(_col_.sort)) {
+          if (isDefined(_col_.sort)) {
             _col_.sort = ''
           }
         }
@@ -912,112 +950,79 @@ export default {
         case 'desc': {
           return 'descending'
         }
-        default: {
-          return ''
-        }
+      }
+      return ''
+    },
+    update (top, duration) {
+      let { draw, scrollTo } = this
+      if (top === false) {
+        this.$forceUpdate()
+      } else {
+        draw(scrollTo(top, duration).Y)
       }
     },
-    hackIE9: $.hack.tooltips,
-    draw () {
-      let step = this.step
-      let nodeHeight = this.nodeHeight
-      let indexList = this.indexList
-      let scrollTop = this.scrollTop
+    draw (top) {
+      let { step, nodeHeight, indexList, blockList, currentPage, pageSize } = this
+      let scrollTop = isDefined(top) ? (this.scrollTop = top) : this.scrollTop
       let index = ~~Math.round(scrollTop / nodeHeight)
 
-      $.splice(
-        this.blockList,
-        $.for(indexList.slice(index, index + step + 1), (node) => {
+      splice(
+        blockList,
+        each(indexList.slice(index, index + step + 1), (node) => {
           node.j = index
-          node.i = (this.currentPage - 1) * this.pageSize + ++index
+          node.i = (currentPage - 1) * pageSize + ++index
         })
       )
 
-      this.$forceUpdate()
+      this.update(!1)
     }
   },
   computed: {
     tableWidth () {
-      let width = 0
-      if (this.colVis) {
-        this.colVis.forEach((obj) => {
+      let { colVis } = this, width = 0
+      if (colVis) {
+        colVis.forEach((obj) => {
           width += obj[1]
         })
       } else {
         width = '100%'
       }
-      return $.isNumeric(width) ? width : '100%'
+      return isNumber(width) ? width : '100%'
     }
   },
   created () {
     this.cache = {}
     this.indexList = []
     this.blockList = []
-    if (this.selectable) {
-      this.checkedCache = []
-    }
+    this.selectable && (this.checkedCache = [])
   },
   mounted () {
-    let me = this
-    let $win = $(window)
+    let callback
+    const {
+      jid, autoInit, autoStep, TimerName,
+      init, resizeEvent, resizeColumn
+    } = this
+    const $win = $(window)
 
-    if (me.autoInit !== !1) {
-      me.init()
+    const timer = (T) => {
+      return Timer(TimerName, resizeEvent, T)
     }
 
-    if (me.autoStep !== !1) {
-      me.jid = $.uuid()
-      me.$nextTick(() => {
-        setTimeout(() => {
-          $win.trigger('resize.' + me.jid)
-        }, 200)
-      })
-      $win.bind('resize.' + me.jid, () => {
-        let $jb = $('.jb', me.$el)
-        if ($jb.is(':visible')) {
-          let $float = $jb.height() / me.nodeHeight
-          let $int = $.int($float)
-          me.step = $float > $int ? $int + 1 : $int
-          me.draw()
-        }
-      })
+    this.cache = {}
+
+    if (autoStep !== !1) {
+      callback = () => timer(200)
+      $win.bind('resize.' + jid, () => timer(25))
     }
 
-    let isMenu = $('.iod-service,.iod-dict').length > 0
-    let isEc = $('.ui-center>.ui-center-content>.ec:first').length > 0
-    let dw = $win.width()
-    let ow = 82
-    if (isEc) {
-      ow = 352
-    } else if (isMenu) {
-      ow = ((dw - 82) / 8) + 122
+    if (autoInit !== !1) {
+      init({}, callback)
     }
-    let tw = dw - ow
-    let aw = 0
-    let rw = 0
 
-    $.map(me.colVis, (col) => {
-      if ($.isNumeric(col[1])) {
-        aw += col[1]
-      } else {
-        aw = '100%'
-        return !1
-      }
-    })
-
-    if ($.isNumeric(aw)) {
-      if (aw <= tw) {
-        $.map(me.colVis, (col) => {
-          let cw = $.int((col[1] * tw / aw).toFixed())
-          rw += cw
-          col.splice(1, 1, cw)
-        })
-        me.colVis[0].splice(1, 1, me.colVis[0][1] - rw + tw - 1)
-      }
-    }
+    resizeColumn()
   },
   directives: {
-    Clickoutside,
+    clickoutside,
     drag: {
       bind (el, binding) {
         let data = {
@@ -1041,7 +1046,7 @@ export default {
           e.preventDefault()
 
           data.width = binding.value[1]
-          Object.assign(data, {
+          extend(data, {
             left: e.target.offsetLeft,
             x: e.pageX
           })

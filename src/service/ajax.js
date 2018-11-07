@@ -1,7 +1,10 @@
 import { each } from '@/util/array'
 import { URL } from './data'
 
+import './entity/user'
+import './entity/camera'
 import './entity/group'
+import './entity/org'
 
 let ajax = function (method, url, data, success, error) {
   url = method ? method + '|' + url : url

@@ -96,7 +96,8 @@ function random (type, length, min, max) {
   return (Min + Math.round(Math.random() * Range)).toString(type)
 }
 /**
- * @description 使用指定字符，扩展字符串的长度
+ * 使用指定字符，扩展字符串的长度
+ *
  * @param value 需要修改的字符串
  * @param length 字符串最终长度
  * @param prefix 补位字符
@@ -128,7 +129,8 @@ export function roll (max = 100, type = 10) {
 
 const AUTO_ID_CACHE = {}
 /**
- * @description 自增长ID 辅助函数
+ * 自增长ID 辅助函数
+ *
  * @param namespace ID命名空间
  * @returns {number}
  */
@@ -139,7 +141,8 @@ const AUTO_INCREMENT = function (namespace) {
   return AUTO_ID_CACHE[namespace]++
 }
 /**
- * @description 自增长ID
+ * 自增长ID
+ *
  * @param namespace ID命名空间
  * @returns {string}
  */
@@ -152,10 +155,20 @@ export function AutoIncrementID (namespace) {
 
 export function noop () {}
 
-export function fire (fn, ...args) {
-  if (fn) {
-    return fn.apply(this, args)
+export function fire (event, ...args) {
+  if (isFunction(event)) {
+    return event.apply(this, args)
   }
+  return event
+}
+
+export function inspect (handle, success, fail) {
+  handle = fire.call(this, handle)
+  success = fire.call(
+    this,
+    handle ? success : fail
+  )
+  return isDefined(success) ? success : handle
 }
 
 let rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g

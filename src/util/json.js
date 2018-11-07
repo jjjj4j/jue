@@ -18,20 +18,20 @@ export function len4json (json) {
 }
 
 export function l2b (json, key = 'id', value = 'value') {
-  let ret = {}
   if (isPlainObject(json)) {
-    each(json, (v, k) => {
-      ret[key] = k
-      ret[value] = v
-    })
+    for (let k in json) {
+      return {
+        [key]: json[k],
+        [value]: k
+      }
+    }
   }
-  return ret
 }
 
 export function b2l (json, key = 'id', value = 'value') {
-  let ret = {}
   if (isPlainObject(json)) {
-    ret[json[key]] = json[value]
+    return {
+      [json[key]]: json[value]
+    }
   }
-  return ret
 }

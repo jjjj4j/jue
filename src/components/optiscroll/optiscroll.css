@@ -44,7 +44,8 @@
   bottom: 0
 }
 
-.optiscroll.has-vtrack > .optiscroll-v, .optiscroll.has-htrack > .optiscroll-h {
+.optiscroll.has-vtrack > .optiscroll-v,
+.optiscroll.has-htrack > .optiscroll-h {
   visibility: visible
 }
 
@@ -56,7 +57,6 @@
 .optiscroll-vtrack, .optiscroll-htrack {
   display: block;
   position: absolute;
-  opacity: 1;
   -ms-transform: translate(0%, 0%);
   transform: translate(0%, 0%);
   transition: height 0.2s ease 0s, width 0.2s ease 0s, opacity 0.2s ease 0s;
@@ -87,7 +87,7 @@
   background: rgba(0, 0, 0, 0.3);
   border-radius: 1px;
   box-shadow: 0 0 1px #FFF;
-  opacity: 1
+  opacity: 0
 }
 
 .optiscroll-vtrack {
@@ -100,7 +100,8 @@
   bottom: 2px
 }
 
-.optiscroll:hover > .optiscroll-v .optiscroll-vtrack, .optiscroll:hover > .optiscroll-h .optiscroll-htrack {
+.optiscroll:hover > .optiscroll-v .optiscroll-vtrack,
+.optiscroll:hover > .optiscroll-h .optiscroll-htrack {
   opacity: 1
 }
 
