@@ -49,7 +49,7 @@ export default {
         icon: {
           parent: 'ico ico-org'
         },
-        colVis: [[0, 40], [1, '30%', !0], [2, 150], [3, 150], [4, 50]],
+        colVis: [[0, 40], [1, 200, !0], [2, 150], [3, 150], [4, 50]],
         ajax: {
           init (pageInfo) {
             pageInfo.id = '1db1977f-ca4c-71ac-b145-fa854936cce8'

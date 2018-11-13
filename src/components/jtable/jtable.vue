@@ -23,7 +23,12 @@
       </div>
     </div>
     <div class="jt jp">
-      <div class='jb'>
+      <optiscroll ref="opt" class='jb'
+                  :step="40"
+                  :vBlank="44"
+                  :autoUpdate="false"
+                  :realTimeRendering="true"
+                  :size="scrollHeight" @scroll="scrollEvent">
         <div class='jb-h'>
           <table :width="tableWidth">
             <colgroup>
@@ -68,11 +73,7 @@
             </thead>
           </table>
         </div>
-        <optiscroll ref="opt" class='jb-c' v-loading="loading"
-                    :step="40"
-                    :autoUpdate="false"
-                    :realTimeRendering="true"
-                    :size="scrollHeight" @scroll="scrollEvent">
+        <div class='jb-c' v-loading="loading">
           <table :width="tableWidth" v-if="blockList.length > 0">
             <colgroup>
               <col :width="col[1]" v-for='col in colVis'>
@@ -125,8 +126,8 @@
               <div>尚未检索到任何数据</div>
             </div>
           </div>
-        </optiscroll>
-      </div>
+        </div>
+      </optiscroll>
       <div class="jl">
         <table width="100%">
           <thead>
@@ -1024,7 +1025,7 @@ export default {
   directives: {
     clickoutside,
     drag: {
-      bind (el, binding) {
+      bind (el, binding, vNode) {
         let data = {
           width: 0,
           x: 0,
@@ -1037,6 +1038,7 @@ export default {
           }
         }
         let up = () => {
+          vNode.context.$refs.opt.update()
           window.removeEventListener('mousemove', move)
           window.removeEventListener('mouseup', up)
         }

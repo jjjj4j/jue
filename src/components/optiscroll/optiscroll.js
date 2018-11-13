@@ -43,7 +43,9 @@ export default {
     rtl: { type: Boolean, default: false },
     step: { type: Number, default: 40 },
     size: { type: Function },
-    tag: { type: String, default: 'div' }
+    tag: { type: String, default: 'div' },
+    vBlank: Number,
+    hBlank: Number
   },
   data () {
     this.cache = {}
@@ -63,27 +65,28 @@ export default {
   render ($$) {
     let {
       $slots, classPrefix, cache, classes, realTimeRendering,
-      scroll, preventParentScroll, forceScrollbars, rtl, tag
+      scroll, preventParentScroll, forceScrollbars, rtl, tag,
+      vBlank, hBlank
     } = this
     let $root = { class: classes }
-    let $div = { class: [classPrefix + 'content', 'real-time'] }
+    let $content = { class: [classPrefix + 'content', 'real-time'] }
     let size = scrollbarSpec.width
-
+  
     if (size || forceScrollbars) {
       if (size === 0) {
-        $div.class.push('data-scroll')
+        $content.class.push('data-scroll')
       } else {
-        $div.style = {
+        $content.style = {
           [rtl ? 'left' : 'right']: -size + 'px',
           bottom: -size + 'px'
         }
-        $div.on = {
+        $content.on = {
           scroll: throttle(scroll.bind(this), scrollMinUpdateInterval),
           mousewheel: this.wheel
         }
         if (isTouch) {
-          $div.on.touchstart = this.touchStart
-          $div.on.touchend = this.touchEnd
+          $content.on.touchstart = this.touchStart
+          $content.on.touchend = this.touchEnd
         }
       }
     }
@@ -92,17 +95,21 @@ export default {
       $root.class.push(classPrefix + 'prevent')
     }
     
-    let children = [$$(tag, $div, [$slots.default])]
+    let children = [$$(tag, $content, [$slots.default])]
+    
     children.push($$(Bar, { ref: 'hBar',
-      props: { cache, which: 'h' },
+      props: { cache, which: 'h', blank: hBlank },
       on: {
         draw: (size) => {
           this.scrollEl.scrollLeft = size
+          if (this.hasHeader) {
+            this.$el.lastElementChild.firstElementChild.scrollLeft = size
+          }
         }
       }
     }))
     children.push($$(Bar, { ref: 'vBar',
-      props: { cache, which: 'v' },
+      props: { cache, which: 'v', blank: vBlank },
       on: {
         draw: (size) => {
           if (!realTimeRendering) {
@@ -112,6 +119,11 @@ export default {
         }
       }
     }))
+  
+    if ($slots.header) {
+      this.hasHeader = !!children.push($slots.header)
+    }
+    
     return $$('div', $root, children)
   },
   mounted () {

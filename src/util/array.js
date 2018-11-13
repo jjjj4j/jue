@@ -194,3 +194,25 @@ export function splice (array, items, start, delNum) {
   }
   return array
 }
+
+export function last (array) {
+  if (isArray(array)) {
+    return array[array.length - 1]
+  }
+}
+
+export function push (array, item) {
+  if (isArray(array)) {
+    array.push(item)
+  }
+}
+
+export function remove (array, item) {
+  if (isArray(array)) {
+    let index = array.indexOf(item)
+    if (index > -1) {
+      splice(array, null, index, 1)
+    }
+    return index
+  }
+}

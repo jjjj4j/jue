@@ -8,6 +8,7 @@ let rtlMode = scrollbarSpec.rtl
 
 export default {
   props: {
+    blank: Number,
     which: {
       type: String,
       default: 'v'
@@ -43,7 +44,7 @@ export default {
     }
   },
   render ($$) {
-    let { which, classPrefix, style } = this
+    let { blank, which, classPrefix, style } = this
     let $div = {
       class: classPrefix + which
     }
@@ -51,6 +52,12 @@ export default {
       style,
       on: {},
       class: classPrefix + which + 'track'
+    }
+    
+    if (blank) {
+      $div.style = {
+        [this.isVertical ? 'top' : 'left']: blank + 'px'
+      }
     }
     
     each(evTypes, (evType) => {

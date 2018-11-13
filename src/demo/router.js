@@ -76,6 +76,18 @@ export default new Router({
     {
       path: '/jtable-2',
       component: () => import('@/demo/views/table/jtable-2')
+    },
+    {
+      path: '/upload',
+      component: () => import('@/demo/views/upload')
+    },
+    {
+      path: '/dialog',
+      component: () => import('@/demo/views/dialog')
+    },
+    {
+      path: '/edit-table',
+      component: () => import('@/demo/views/edit-table')
     }
   ]
 })

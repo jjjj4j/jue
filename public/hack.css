@@ -1,0 +1,16 @@
+.el-loading-spinner {
+  height: 40px;
+  background: transparent url(/img/horizontal-loading.gif) center center no-repeat;
+}
+
+.el-loading-spinner .circular {
+  display: none;
+}
+
+div.name.ellipsis {
+  text-overflow: clip !important;
+}
+
+.jb-c > table .el-loading-spinner {
+  background-position-x: right;
+}

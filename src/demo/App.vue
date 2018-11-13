@@ -10,6 +10,8 @@
       <router-link to="/keyboard">Keyboard</router-link>
       <router-link to="/scrollbar">ScrollBar</router-link>
       <router-link to="/date-time">DateTime</router-link>
+      <router-link to="/dialog">Dialog</router-link>
+      <router-link to="/upload">FileUpload</router-link>
       <router-link to="/jtree">树(基础)</router-link>
       <router-link to="/jtree-0">树(基础-勾选)</router-link>
       <router-link to="/jtree-1">树(ajax)</router-link>
@@ -19,6 +21,7 @@
       <router-link to="/jtable-0">表格(基础-子项)</router-link>
       <router-link to="/jtable-1">表格(树)</router-link>
       <router-link to="/jtable-2">表格(树-ajax子项)</router-link>
+      <router-link to="/edit-table">可编辑表格</router-link>
     </div>
     <router-view class="ui-center"></router-view>
   </div>

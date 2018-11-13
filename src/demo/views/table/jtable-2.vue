@@ -47,7 +47,7 @@ export default {
           child: 'ico ico-gun-camera',
           folder: 'ico ico-folder'
         },
-        colVis: [[0, 40], [1, '30%', !0], [2, 150], [3, 150]],
+        colVis: [[0, 40], [1, 200, !0], [2, 150], [3, 150]],
         colGroup: [1],
         ajax: {
           init () {
