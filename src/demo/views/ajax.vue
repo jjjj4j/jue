@@ -20,8 +20,6 @@ export default {
             resolve(rst.push('3') && rst)
             this.text = rst.join()
           })
-        }).then((rst) => {
-          return rst
         }),
         (rst) => new Promise((resolve, reject) => {
           Timer('4', () => {
@@ -31,8 +29,7 @@ export default {
         }),
         (rst) => new Promise((resolve, reject) => {
           Timer('5', () => {
-            resolve(rst.push('5') && rst)
-            this.text = rst.join()
+            reject(rst.push('5') && rst)
           })
         })
       ],
@@ -48,6 +45,8 @@ export default {
       })
     ).then((rst) => {
       this.text = rst.join()
+    }).catch((e) => {
+      this.text = `错误：${e}`
     })
   },
   destroyed () {

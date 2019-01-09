@@ -3,8 +3,10 @@ import { each } from './array'
 import { json2str, str2json } from './json'
 
 const SN = 'pvm3-'
-const db = window.DB = {}
+const db = {}
 const store = window.localStorage
+
+window.DB = db
 
 let getName = function (name) {
   return name.replace(SN, '')

@@ -81,10 +81,10 @@ export function findInTree (tree, filter, result = [], attr = 'children') {
 export function array2tree (
   list,
   filter,
-  id = 'id',
-  pId = 'parentId',
-  children = 'children',
-  parent = 'parent'
+  id,
+  pId,
+  children,
+  parent
 ) {
   let i = 0, l = list.length
   if (!list || l === 0) {
@@ -100,6 +100,11 @@ export function array2tree (
     id = filter
     filter = !1
   }
+  
+  id = id || 'id'
+  pId = pId || 'parentId'
+  children = children || 'children'
+  parent = parent || 'parent'
   
   if (filter) {
     for (i = 0; i < l; i++) {
@@ -157,6 +162,13 @@ export function tree2array (
   return list
 }
 
+export function index4tree (list, name = 'children', cache = []) {
+  each(list, (item) => {
+    cache.push(item) && index4tree(item[name], name, cache)
+  })
+  return cache
+}
+
 /**
  * @param array {Array}
  * @param items {Array}
@@ -184,7 +196,7 @@ export function splice (array, items, start, delNum) {
       if (length > step) {
         let count = length / step + (length % step > 0 ? 1 : 0)
         for (let i = 0; i < count; i++) {
-          splice(array, items.slice(i * step, (i + 1) * step), start + step * i)
+          splice(array, items.slice(i * step, (i + 1) * step), start + step * i, 0)
         }
       } else {
         items.splice(0, 0, start, 0)

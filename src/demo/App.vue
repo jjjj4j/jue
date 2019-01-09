@@ -12,6 +12,7 @@
       <router-link to="/date-time">DateTime</router-link>
       <router-link to="/dialog">Dialog</router-link>
       <router-link to="/upload">FileUpload</router-link>
+      <router-link to="/web-sql">Web SQL</router-link>
       <router-link to="/jtree">树(基础)</router-link>
       <router-link to="/jtree-0">树(基础-勾选)</router-link>
       <router-link to="/jtree-1">树(ajax)</router-link>

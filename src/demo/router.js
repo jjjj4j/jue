@@ -87,7 +87,11 @@ export default new Router({
     },
     {
       path: '/edit-table',
-      component: () => import('@/demo/views/edit-table')
+      component: () => import('@/demo/views/editTable')
+    },
+    {
+      path: '/web-sql',
+      component: () => import('@/demo/views/webSql')
     }
   ]
 })

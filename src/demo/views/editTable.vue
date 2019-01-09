@@ -7,6 +7,7 @@
           :setting="etConfig">
         <template slot="btnCol" slot-scope="{node}">
           <el-button type="primary" size="mini" icon="edit" @click="link(node)"></el-button>
+          <el-button type="primary" size="mini" icon="delete" @click="del(node)"></el-button>
         </template>
       </edit-table>
     </div>
@@ -100,6 +101,9 @@ export default {
     }
   },
   methods: {
+    del (node) {
+      this.editTable.delNode(node)
+    },
     link (node) {
       console.log(node)
     }
