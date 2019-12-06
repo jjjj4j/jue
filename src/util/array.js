@@ -173,13 +173,6 @@ export function le4Tree (tree) {
   return le
 }
 
-export function index4tree (list, name = 'children', cache = []) {
-  each(list, (item) => {
-    cache.push(item) && index4tree(item[name], name, cache)
-  })
-  return cache
-}
-
 /**
  * @param array {Array}
  * @param items {Array}
@@ -207,7 +200,7 @@ export function splice (array, items, start, delNum) {
       if (length > step) {
         let count = length / step + (length % step > 0 ? 1 : 0)
         for (let i = 0; i < count; i++) {
-          splice(array, items.slice(i * step, (i + 1) * step), start + step * i, 0)
+          splice(array, items.slice(i * step, (i + 1) * step), start + step * i)
         }
       } else {
         items.splice(0, 0, start, 0)

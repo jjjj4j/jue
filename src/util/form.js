@@ -12,7 +12,6 @@ import {
   isPlainObject, isUndefined, isBoolean, repeat
 } from '@/util/core'
 import Service from '@/service/controller'
-import { camera as final } from '@/static/final'
 
 const tagFormat = {
   'el-select': 'el-option',

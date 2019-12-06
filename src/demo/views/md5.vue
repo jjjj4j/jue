@@ -25,16 +25,7 @@ export default {
     return {
       md5: '123456',
       psw: '123456',
-      base64: '123456',
-      json: {
-        a: 1,
-        children: [{
-          b: 2,
-          children: [{
-            c: 4
-          }]
-        }]
-      }
+      base64: '123456'
     }
   },
   computed: {

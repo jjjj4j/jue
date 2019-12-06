@@ -25,10 +25,6 @@ export default {
     this.scrollProp = `scroll${this.isVertical ? 'Top' : 'Left'}`
     this.scrollbarCache = this.cache[this.which] = { [this.scrollProp]: 0 }
     return {
-      className: {
-        [this.classPrefix + this.which]: true,
-        hover: false
-      },
       style: {
         marginRight: 0,
         [cssTransform]: '',
@@ -48,9 +44,9 @@ export default {
     }
   },
   render ($$) {
-    let { blank, className, which, classPrefix, style } = this
+    let { blank, which, classPrefix, style } = this
     let $div = {
-      class: className
+      class: classPrefix + which
     }
     let $p = {
       style,
@@ -197,7 +193,6 @@ export default {
       scrollbarCache.enabled = bool
     },
     dragEnd () {
-      this.className.hover = !1
       this.bind(false, this.evType)
     },
     dragStart (ev) {
@@ -212,7 +207,6 @@ export default {
       })
 
       this.scroll = position()
-      this.className.hover = !0
       this.bind(true, evType)
     },
     dragMove (ev) {
