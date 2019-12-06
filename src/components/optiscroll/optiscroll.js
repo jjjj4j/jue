@@ -292,7 +292,7 @@ export default {
         clientHeight: clientH
       })
     },
-    scrollTo (destX, destY, duration) {
+    scrollTo (destX, destY, duration = 100) {
       let { vBar, hBar, cache } = this
       let startX, startY, endX, endY
     

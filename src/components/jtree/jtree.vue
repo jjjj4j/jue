@@ -24,8 +24,19 @@
             <thead>
             <tr>
               <th v-for='col in colVis'>
+                <label class="el-checkbox" size="small"
+                       @click="changeTopChecked()"
+                       v-if="selectable && col[2]">
+                  <span class="el-checkbox__input" :class="getCheckboxClass()">
+                    <span class="el-checkbox__inner"></span>
+                  </span>
+                  <span class="el-checkbox__label">
+                    {{column[col[0]].name}} (已选中{{checkedCache.length}}个)
+                  </span>
+                </label>
                 <span class="ellipsis"
-                      :class="{'text-right': column[col[0]].btnCol}">{{column[col[0]].name}}</span>
+                      :class="{'text-right': column[col[0]].btnCol}"
+                      v-else>{{column[col[0]].name}}</span>
                 <div class="drag"
                      v-if="column[col[0]].drag !== !1 && !column[col[0]].btnCol"
                      v-drag="col"></div>
@@ -54,8 +65,8 @@
                       <i :class="cssArrows(node)"></i>
                   </span>
                   <a :style="`width:calc(100% - ${node.deep * 10 + 20}px)`" v-if="selectable" @click.stop>
-                    <label class="el-checkbox" size="small" @click="changeChecked(node)">
-                      <span class="el-checkbox__input" :class="getCheckboxClass(node)">
+                    <label class="el-checkbox" size="small">
+                      <span class="el-checkbox__input" @click="changeChecked(node)" :class="getCheckboxClass(node)">
                         <span class="el-checkbox__inner"></span>
                       </span>
                       <span class="el-checkbox__label">
@@ -127,6 +138,23 @@ import {
 } from '@/util/core'
 import Timer from '@/util/Timer'
 
+const isChecked = (node) => {
+  let validate = (list) => {
+    if (list && list.length > 0) {
+      for (let i in list) {
+        let item = list[i]
+        if (item.checked) {
+          return !0
+        }
+        if (validate(item.children)) {
+          return !0
+        }
+      }
+    }
+  }
+  return validate(node.children) || !1
+}
+
 export default {
   name: 'jtree',
   data: function () {
@@ -145,6 +173,7 @@ export default {
       icon,
       ajax,
       click,
+      topCheckedEvent,
       check,
       search,
       scrollTop,
@@ -168,11 +197,13 @@ export default {
       selectable,
       ajax,
       click: click || noop,
+      topCheckedEvent,
       check,
       filter
     })
 
     return {
+      topChecked: !1,
       search,
       loading: !1,
       normalTop: scrollTop || 0,
@@ -342,6 +373,66 @@ export default {
         delete node['isIndeterminate2']
       }
     },
+    isTopIndeterminate () {
+      return this.getCheckedNum({ children: this.getIndexList }) === !0
+    },
+    setTopChecked () {
+      this.topChecked = isChecked({ children: this.getIndexList() })
+    },
+    changeTopChecked () {
+      let me = this
+      let checked = !me.topChecked
+      let result = fire(me.topCheckedEvent, checked)
+      let success = function () {
+        me.topChecked = checked
+        posterity(me.list, (node) => {
+          me.uncheck(node, () => {
+            me.setCheckedCache(node, node.checked = checked)
+          })
+        })
+        me.$forceUpdate()
+      }
+      if (result && result.then) {
+        result.then(() => {
+          success()
+        })
+      } else {
+        success()
+      }
+    },
+    setCheckedCache (node, flag) {
+      let cache = this.checkedCache
+      if (node) {
+        let obj = cache[node.id + node.jtype]
+        if (flag) {
+          if (!obj) {
+            cache.push(node)
+            cache[node.id + node.jtype] = node
+          }
+        } else {
+          if (obj) {
+            delete cache[node.id + node.jtype]
+            cache.splice(cache.indexOf(obj), 1)
+          }
+        }
+      } else {
+        each(cache, (node) => {
+          node.checked = !1
+          delete cache[node.id + node.jtype]
+        })
+        splice(cache)
+      }
+    },
+    uncheck (node, fail, success) {
+      let column, uncheck
+      each(this.column, (col) => {
+        if (col.keyCol) {
+          return !(column = col)
+        }
+      })
+      column && (uncheck = column.uncheck)
+      uncheck ? (uncheck(node) ? success && success() : fail()) : (!success && fail())
+    },
     removeCacheNode (node) {
       delete this.cache[node.id + node.jtype]
       delete this.cache[node.id]
@@ -363,6 +454,7 @@ export default {
       return isPlainObject(node) ? (this.cache[node.id + node.jtype] = node) : this.cache[node + _PARENT_]
     },
     cacheGroup (node) {
+      debugger
       return isPlainObject(node) ? (this.cache[node.id] = node) : this.cache[node]
     },
     cacheChild (node, attr) {
@@ -387,6 +479,7 @@ export default {
       this.normalIndex = []
       this.blockList = []
       this.normalTop = 0
+      this.selectable && (this.checkedCache = [])
       this.clearSearchValue(callback)
     },
     delNode (id, jtype = _PARENT_, isDraw = !0) {
@@ -556,7 +649,11 @@ export default {
               jtype: node.jtype || jtype
             }
             if (this.selectable) {
-              attr.checked = attr.checked2 = !1
+              let checked = node.checked
+              if (isUndefined(checked)) {
+                checked = !1
+              }
+              attr.checked = attr.checked2 = checked
             }
             if (attr.jtype !== _CHILD_) {
               attr.open = !!node.open
@@ -572,6 +669,7 @@ export default {
             extend(node, attr)
           }
           this.cacheNode(node, node.jtype)
+          this.setCheckedCache(node, node.checked)
         })
         if (!flag) {
           return array2tree(list).list
@@ -608,6 +706,7 @@ export default {
             me.searchEvent(search, me.scrollTop)
             me.searchValue(search)
           }, () => {
+            me.setTopChecked()
             me.closeA(() => me.update())
           })
         })
@@ -942,25 +1041,73 @@ export default {
       })
     },
     getCheckboxClass (node) {
-      let me = this, name
-      let isIndeterminate = me.isIndeterminate(node)
+      let me = this, name = []
+      let isIndeterminate = node ? me.isIndeterminate(node) : me.isTopIndeterminate()
       if (isIndeterminate) {
-        name = 'is-indeterminate'
-      } else if (me.getChecked(node)) {
-        name = 'is-checked'
+        name = ['is-indeterminate']
+      } else if (node ? me.getChecked(node) : me.topChecked) {
+        name = ['is-checked']
       }
-      return name
+      if (node) {
+        this.uncheck(node, noop, () => name.push('is-disabled'))
+      } else {
+        this.uncheck(node, noop, () => name.push('is-disabled'))
+      }
+      return name.join(' ')
     },
     changeChecked (node) {
       let me = this
       let checked = me.getChecked(node)
       let isIndeterminate = me.isIndeterminate(node)
+      let success = () => {
+        // 设置当前节点的选中状态
+        // 删除半选状态， 在页面执行 draw() 的时候会重新计算
+        me.setPermit(node, checked)
+        me.setCheckedCache(node, checked)
+        me.clearIndeterminate(node)
+
+        // 批量设置下级节点的选中状态
+        posterity(
+          me.getChildren(node),
+          (node) => {
+            me.setPermit(node, checked)
+            me.setCheckedCache(node, checked)
+            me.clearIndeterminate(node)
+          },
+          (node) => me.getChildren(node)
+        )
+
+        // 递归设置上级节点的选中状态
+        me.setParentPermit(node.parent, checked)
+        me.setTopChecked()
+
+        me.update(!1)
+      }
 
       checked = !(checked || isIndeterminate)
+
+      if (me.check) {
+        let result = fire(me.check, node, checked) // 执行回调函数
+        if (result && result.then) {
+          result.then(() => {
+            success()
+          })
+        } else {
+          success()
+        }
+      } else {
+        success()
+      }
+    },
+    changeChecked2 (node, checked) {
+      let me = this
+
+      checked = checked || me.getChecked(node)
 
       // 设置当前节点的选中状态
       // 删除半选状态， 在页面执行 draw() 的时候会重新计算
       me.setPermit(node, checked)
+      me.setCheckedCache(node, checked)
       me.clearIndeterminate(node)
 
       // 批量设置下级节点的选中状态
@@ -968,6 +1115,7 @@ export default {
         me.getChildren(node),
         (node) => {
           me.setPermit(node, checked)
+          me.setCheckedCache(node, checked)
           me.clearIndeterminate(node)
         },
         (node) => me.getChildren(node)
@@ -975,11 +1123,7 @@ export default {
 
       // 递归设置上级节点的选中状态
       me.setParentPermit(node.parent, checked)
-
-      // 执行回调函数
-      fire(me.check, node)
-
-      me.update(!1)
+      me.setTopChecked()
     },
     resizeEvent () {
       let {
@@ -1122,6 +1266,7 @@ export default {
   created () {
     this.cache = {}
     this.blockList = []
+    this.checkedCache = []
   },
   mounted () {
     const {

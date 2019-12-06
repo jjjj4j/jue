@@ -148,7 +148,7 @@
     <el-pagination
         layout="total, sizes, prev, pager, next, jumper"
         :current-page="currentPage"
-        :page-sizes="[10, 20, 50, 100, 1000, 2000, 5000]"
+        :page-sizes="[10, 20, 50, 100, 500]"
         :page-size="pageSize"
         :total="totalSize"
         @size-change="sizeChange"
@@ -217,6 +217,7 @@ export default {
       colVis,
       colGroup,
       click,
+      topCheckedEvent,
       checked,
       search,
       scrollTop,
@@ -239,14 +240,15 @@ export default {
       search,
       folder,
       icon,
-      selectable,
       ajax,
       click,
       checked,
+      topCheckedEvent,
       filter
     })
 
     return {
+      selectable,
       loading: !1,
       width,
       scrollTop: scrollTop || 0,
@@ -373,6 +375,7 @@ export default {
           this.setCheckedCache(node, node.checked = this.topChecked)
         })
       })
+      fire(this.topCheckedEvent, this.topChecked)
       this.$forceUpdate()
     },
     getCheckedList () {
@@ -784,14 +787,11 @@ export default {
     },
     resizeColumn () {
       let { colVis } = this
-      let isMenu = $('.iod-service,.iod-dict').length > 0
-      let isEc = $('.ui-center>.ui-center-content>.ec:first').length > 0
+      let isEc = $('.ui-center>.ec:first').length > 0
       let dw = $(window).width()
       let ow = 82
       if (isEc) {
         ow = 352
-      } else if (isMenu) {
-        ow = ((dw - 82) / 8) + 122
       }
       let tw = dw - ow
       let aw = 0
@@ -897,6 +897,7 @@ export default {
     },
     sizeChange (size) {
       this.init({ currentPage: 1, pageSize: size })
+      this.resizeEvent()
     },
     currentChange (num) {
       if (this.currentPage !== num) {

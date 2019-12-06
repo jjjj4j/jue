@@ -9,7 +9,9 @@ export function chain (...args) {
     if (isArray(event)) {
       let next = function (rst) {
         if (event.length > 0) {
-          (event.shift())(rst).then(next)
+          return (event.shift())(rst).then(next.bind(this)).catch((e) => { this[1](e) })
+        } else {
+          this[0](rst)
         }
       }
       sync.push(next)
@@ -21,8 +23,11 @@ export function chain (...args) {
   })
 
   return Promise.all(list).then((rst) => {
-    return each(sync, (event) => event(rst)), rst
-  }).catch((error) => {
-    throw error
+    if (sync.length > 0) {
+      return new Promise((resolve, reject) => {
+        sync[0].call([resolve, reject], rst)
+      })
+    }
+    return rst
   })
 }

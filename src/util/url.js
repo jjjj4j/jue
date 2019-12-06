@@ -1,4 +1,4 @@
-import { each } from './ajax'
+import { each } from './array'
 import { setNavHistory, setUrlHistory } from './storage'
 import { isChar, isDefined } from '@/util/core'
 

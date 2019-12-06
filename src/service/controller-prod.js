@@ -48,7 +48,7 @@ each(URLS, function (v) {
       }
       return param
     }
-    each(arguments, function (i, obj) {
+    each(arguments, function (obj) {
       if (isFunction(obj)) {
         fnList.push(obj)
       } else if (obj instanceof log) {

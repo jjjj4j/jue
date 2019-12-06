@@ -9,3 +9,28 @@
 .el-checkbox {
   margin-right: 15px;
 }
+
+.el-form {
+  .el-form-item {
+    &.has-tip {
+      margin-bottom: 0 !important;
+    }
+
+    &.is-error {
+      margin-bottom: 0 !important;
+
+      .el-form-item__error {
+        position: static;
+        padding: 4px 0 6px;
+      }
+    }
+  }
+
+  span.tip{
+    display: block!important;
+    padding: 8px 0;
+    font-size: 12px;
+    color: #8e8e8e;
+    line-height: 20px;
+  }
+}

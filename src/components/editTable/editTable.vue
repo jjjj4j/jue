@@ -141,12 +141,13 @@
 </template>
 
 <script>
-import { extend, fire, parseInt, isDefined, isNumber, isPlainObject, isUndefined } from '@/util/core'
+import { extend, fire, isDefined, isNumber, isPlainObject, isUndefined } from '@/util/core'
 import { each, map } from '@/util/array'
 import { increment } from '@/util/form'
 import { json2str } from '@/util/json'
 import { tooltips } from '@/util/hack'
 import FixBlock from '@/components/optiscroll/fix'
+import { remove } from '../../util/array'
 
 let cache = {}
 export default {
@@ -189,7 +190,7 @@ export default {
   },
   computed: {
     isPage () {
-      return this.list.length > 100
+      return this.list.length > 20
     },
     pageClass () {
       if (this.isPage) {
@@ -201,15 +202,15 @@ export default {
       if (height) {
         return height
       } else if (isPage) {
-        return '489px'
+        return nodeHeight * 11 + 48 + 'px'
       } else {
         if (totalSize) {
           if (totalSize > 10) {
-            return '441px'
+            return nodeHeight * 11 + 'px'
           }
           return (totalSize + 1) * nodeHeight + 1 + 'px'
         }
-        return '112px'
+        return nodeHeight + 70 + 1 + 'px'
       }
     },
     totalSize () {
@@ -242,31 +243,50 @@ export default {
   },
   methods: {
     hackIE9: tooltips,
-    getList () {
+    data (callback) {
+      if (callback) {
+        return each(this.list, callback)
+      }
       return this.list
     },
+    update () {
+      this.$refs.opt.update()
+    },
+    startA (callback) {
+      this.loading = !0
+      fire(callback)
+    },
+    closeA (callback) {
+      fire(callback)
+      setTimeout(() => {
+        this.loading = !1
+      }, 100)
+    },
     init (callback) {
-      let ajax = this.ajax
-      let hasInitAjax = ajax && ajax.init
-      let ajaxAfter = ajax && ajax.initAfter
+      let me = this
+      let { init, initAfter } = me.ajax || {}
       let formatData = (list) => {
-        return each(list, (obj) => this.cacheNode(obj))
+        return each(list, (obj) => me.cacheNode(obj))
       }
-      let initAjax = () => {
-        ajax.init().then((data) => {
-          this.loading = !1
+      let ajaxEvent = () => {
+        return init().then((data) => {
           this.list = formatData(data.list)
-          setTimeout(() => {
-            fire(ajaxAfter)
-            fire(callback)
-            this.setScrollTop(this.$el.children[0].children[1].scrollTop = 0)
-          }, 250)
         })
       }
-      if (hasInitAjax) {
-        this.loading = !0
-        initAjax()
+      let staticEvent = () => {
+        return new Promise((resolve) => {
+          setTimeout(() => resolve(!0), 200)
+        })
       }
+
+      me.startA(() => {
+        (init ? ajaxEvent : staticEvent)().then(() => {
+          fire.call(me, initAfter)
+          fire.call(me, callback)
+        }).then(() => {
+          me.closeA(() => me.update())
+        })
+      })
     },
     cacheNode (node) {
       return isPlainObject(node) ? (this.cache[node.id] = node) : this.cache[node]
@@ -296,7 +316,7 @@ export default {
         if (length > 0) {
           lastNode = this.list[length - 1]
         }
-        $.each(column, (i, col) => {
+        each(column, (col) => {
           let id = col.id
           if (isDefined(id)) {
             if (isUndefined(tplNode[id])) {
@@ -314,13 +334,13 @@ export default {
         this.cacheNode(tplNode)
       }
       this.list.push(tplNode)
+      this.update()
     },
     delNode (node) {
-      let index = this.list.indexOf(node)
-      if (index >= 0) {
-        this.list.splice(index, 1)
+      if (remove(this.list, node) >= 0) {
+        delete cache[node.id]
       }
-      delete cache[node.id]
+      this.update()
     },
     $addEvent (e) {
       this.$nextTick(() => {
@@ -328,7 +348,7 @@ export default {
           if (this.isPage) {
             this.currentPage = -(Math.floor(-(this.totalSize / this.pageSize)))
           } else {
-            $(this.$el.children[0].children[1]).scrollTop(this.list.length * 40 + 40)
+            this.$refs.opt.scrollTo(0, this.list.length * 40 + 40)
           }
         }, 100)
       })
@@ -383,15 +403,6 @@ export default {
           me.options(attr)
         })
       }
-    },
-    scrollEvent (e) {
-    },
-    setScrollTop (top, delta) {
-      let $js = this.$el.children[0].children[0].children[1]
-      let $jsTop = parseInt($js.style.top)
-
-      top = isUndefined(top) ? 0 : top
-      $js.style.top = (delta ? $jsTop - top : -top) + 'px'
     }
   },
   directives: {
@@ -409,7 +420,7 @@ export default {
           }
         }
         let up = () => {
-          vNode.context.$refs.opt.update()
+          vNode.context.update()
           window.removeEventListener('mousemove', move)
           window.removeEventListener('mouseup', up)
         }

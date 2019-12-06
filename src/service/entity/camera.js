@@ -17,3 +17,11 @@ GO('/npconfig/v1/cameras/group/{id}', function (url, args) {
 GO('/npconfig/v1/cameras/{id}', function (url, args) {
   return T.page('camera', args, [['groupId', args.id]])
 })
+
+GO('/npconfig/v1/camera/{id}', function (url, args) {
+  return T.get('camera', args.id)
+})
+
+GO('/npconfig/v1/camera/{id}', function (url, args) {
+  return T.save('camera', args)
+}, 'post')

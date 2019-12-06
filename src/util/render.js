@@ -49,18 +49,21 @@ export function init ($$, $factory, data = {}, customRender) {
         return $factory.$scopedSlots[slot.name || 'default'](slot.data)
       }
     }
+  
+    let node
+    let renderFunction = customRender[createFunction] || tplFunction[createFunction]
+    if (renderFunction) {
+      node = renderFunction.call(this, $$, $factory, data, customRender)
+    } else {
+      node = tplFunction.default.call(this, $$, $factory, data, customRender)
+    }
     
     show = fire(show)
     if (show === !1) {
-      attr(data, 'style.display', 'none')
+      attr(node.data, 'style.display', 'none')
     }
     
-    let renderFunction = customRender[createFunction] || tplFunction[createFunction]
-    if (renderFunction) {
-      return renderFunction.call(this, $$, $factory, data, customRender)
-    } else {
-      return tplFunction.default.call(this, $$, $factory, data, customRender)
-    }
+    return node
   }
 }
 
@@ -96,14 +99,16 @@ const tplFunction = {
     let props = { value: model[name] }
     let itemData = { props: { label, prop: name } }
     let childData = extend(true, { props, on: event }, data)
-    
+  
     if (tag === 'el-select') {
       props['multiple'] = !!multiple
+    } else if (tag === 'el-cascader') {
+      props['changeOnSelect'] = !0
     } else if (tag === 'el-switch') {
       props['on-text'] = props['off-text'] = ''
     } else if (['el-input', 'el-date-picker'].includes(tag)) {
       props.type = type || 'text'
-      props.rows = 6
+      props.rows = props.rows || 6
     }
   
     if (name) {

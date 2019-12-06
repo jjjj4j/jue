@@ -66,13 +66,13 @@
 .optiscroll-v {
   top: 4px;
   bottom: 4px;
-  width: 0
+  width: 7px
 }
 
 .optiscroll-h {
   left: 4px;
   right: 4px;
-  height: 0
+  height: 7px;
 }
 
 .optiscroll.has-vtrack.has-htrack > .optiscroll-v {
@@ -87,22 +87,24 @@
   background: rgba(0, 0, 0, 0.3);
   border-radius: 1px;
   box-shadow: 0 0 1px #FFF;
-  opacity: 0
 }
 
 .optiscroll-vtrack {
-  width: 6px;
+  width: 2px;
   right: 2px
 }
 
 .optiscroll-htrack {
-  height: 6px;
+  height: 2px;
   bottom: 2px
 }
 
-.optiscroll:hover > .optiscroll-v .optiscroll-vtrack,
 .optiscroll:hover > .optiscroll-h .optiscroll-htrack {
-  opacity: 1
+  height: 7px;
+}
+
+.optiscroll:hover > .optiscroll-v .optiscroll-vtrack {
+  width: 7px;
 }
 
 .optiscroll.has-vtrack.has-htrack.is-rtl > .optiscroll-h {

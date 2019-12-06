@@ -1,5 +1,5 @@
 import Prefix from '@/service/prefix'
-import { each, map } from '@/util/array'
+import { each, findInTree, map } from '@/util/array'
 import { l2b } from '@/util/json'
 import {
   parseFloat,
@@ -9,8 +9,10 @@ import {
   isArray,
   isDefined, isEmpty,
   isFunction,
-  isPlainObject, isUndefined, isBoolean
+  isPlainObject, isUndefined, isBoolean, repeat
 } from '@/util/core'
+import Service from '@/service/controller'
+import { camera as final } from '@/static/final'
 
 const tagFormat = {
   'el-select': 'el-option',
@@ -59,7 +61,7 @@ export function initForm (setting) {
   
   createAjax(ajax).then((rst) => {
     each(events, (event) => {
-      if (fire(event) === event) {
+      if (fire(event, rst) === event) {
         if (event.method === method) {
           event.fn.call(model, rst)
         }
@@ -114,6 +116,19 @@ export function increment (value) {
   return value
 }
 
+function format (list, name, value, type) {
+  return map(list, (data) => {
+    let item = {
+      label: data[name],
+      value: Number === type ? parseFloat(data[value]) : data[value]
+    }
+    if (data.children) {
+      item.children = format(data.children, name, value, type)
+    }
+    return item
+  })
+}
+
 /**
  * 格式化fields数据
  *
@@ -134,7 +149,7 @@ export function formatFinal (fields, final, prop) {
   return each(fields, (field) => {
     let { tag, name, children, emptyOption } = field
     let list, setting
-    let isSelect = tag === 'el-select'
+    let isSelect = ['el-select', 'el-cascader'].includes(tag)
     
     tag = tagFormat[field.tag]
     
@@ -175,12 +190,7 @@ export function formatFinal (fields, final, prop) {
       if (isSelect) {
         field.data = extend(true, field.data, {
           props: {
-            options: map(list, (item) => {
-              return {
-                label: item[name],
-                value: Number === type ? parseFloat(item[value]) : item[value]
-              }
-            })
+            options: format(list, name, value, type)
           }
         })
       } else {
@@ -212,6 +222,37 @@ export function formatFinal (fields, final, prop) {
   })
 }
 
+export function destroyCascadeValue (value) {
+  if (isArray(value)) {
+    return value.slice(-1).join()
+  }
+  return ''
+}
+
+export function createCascadeValue (value, tree) {
+  if (value) {
+    let node = findInTree(tree, (node) => node.id === value, !0)
+    let result = []
+    let getParent = (node) => {
+      if (node) {
+        result.push(node.id)
+        getParent(node.parent)
+      }
+    }
+    getParent(node)
+    return result.reverse()
+  }
+  return []
+}
+
+/**
+ * SAVE OR UPDATE
+ * 根据 model.id 执行数据持久化动作
+ * */
+export function persist (model, addApi, editApi, ...args) {
+  return Service[model.id ? editApi : addApi].apply(this, [].concat(model, args))
+}
+
 export function modelTpl (fields, tpl) {
   if (isPlainObject(tpl)) {
     tpl = extend(true, {}, tpl)
@@ -230,4 +271,87 @@ export function modelTpl (fields, tpl) {
     }
   })
   return tpl
+}
+
+export function ip (value) {
+  if (!value) {
+    value = '192.168.1.0'
+  }
+  let av = ass(value, '.', 256, 10)
+  return {
+    add: av.add,
+    sub (ip) {
+      if (ip) {
+        let list = value.split('.').reverse()
+        let minuend = ip.split('.').reverse()
+        let result = 0
+        each(list, (num, i) => {
+          result += (num - minuend[i]) * Math.pow(2, 8 * i)
+        })
+        return result
+      }
+      return 0
+    },
+    val () {
+      return av.val(!1)
+    }
+  }
+}
+
+export function mac (value) {
+  if (!value) {
+    value = '00:00:00:00:00:00'
+  }
+  return ass(value, ':')
+}
+
+export function ass (value, separate, max = 256, bit = 16) {
+  let list = value.split(separate)
+  
+  list = map(list, (num) => {
+    return ~~((bit === 16 ? '0x' : '') + num)
+  }).reverse()
+  
+  return {
+    add (num) {
+      list = map(list, (n, i) => {
+        if (i === 0) {
+          n += num
+        }
+        if (n / max >= 1) {
+          let next = list[i + 1]
+          if (isDefined(next)) {
+            list[i + 1] = next + ~~(n / max)
+          }
+          n = n % max
+        }
+        return n
+      })
+      return this
+    },
+    val (isRepeat0 = !0, length = 2) {
+      let result = map(list, (n) => {
+        n = n.toString(bit)
+        if (isRepeat0 && n.length < length) {
+          n = repeat('0', length - n.length) + n
+        }
+        return n
+      })
+      return result.reverse().join(separate)
+    }
+  }
+}
+
+export function v2s (final, attrName, v, _f_) {
+  let map = _f_ || final
+  let list = map[attrName]['list']
+  
+  for (let i in list) {
+    for (let j in list[i]) {
+      if (j === v) {
+        return list[i][j]
+      }
+    }
+  }
+  return ''
 }

@@ -50,3 +50,7 @@ GO('/npconfig/nodes/self', function (url, args) {
 GO('/npconfig/v1/common/adjust/groups/sort', function (url, args) {
   return T.fr()
 }, 'put')
+
+GO('/npconfig/v1/group/name/check', function () {
+  return T.fr()
+}, 'post')

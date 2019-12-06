@@ -16,8 +16,8 @@ class StringBuffer {
     return this.cache.push(value), this
   }
 
-  concat (value) {
-    return this.cache.concat(value), this
+  concat (...item) {
+    return (this.cache = [].concat.apply(this.cache, item)), this
   }
 
   val () {

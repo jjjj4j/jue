@@ -29,7 +29,7 @@ $(window).bind('keyup.esc', (e) => {
 })
 
 export default {
-  name: 'dialog',
+  name: 'i-dialog',
   data () {
     return {
       visible: !1,
@@ -159,6 +159,7 @@ export default {
         top: 30px;
         width: 100%;
         height: ~'calc(100% - 30px)';
+        overflow: auto;
       }
     }
 

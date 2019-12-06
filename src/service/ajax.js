@@ -5,6 +5,7 @@ import './entity/user'
 import './entity/camera'
 import './entity/group'
 import './entity/org'
+import './entity/encoder'
 
 let ajax = function (method, url, data, success, error) {
   url = method ? method + '|' + url : url

@@ -24,7 +24,7 @@ let prodConf = {
 }
 let delConf = {
   devServer: {
-    proxy: 'http://192.168.12.56:9102'
+    proxy: 'http://192.168.12.49:9102'
   }
 }
 const configureWebpack = function () {

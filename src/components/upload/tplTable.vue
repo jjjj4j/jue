@@ -58,101 +58,101 @@
   </div>
 </template>
 <script>
-  export default {
-    name: 'tpl-table',
-    data () {
-      return {
-        list: [],
-        column: [],
-        colVis: []
-      }
-    },
-    props: {
-      name: String,
-      system: String
-    },
-    directives: {
-      drag: {
-        bind (el, binding) {
-          let data = {
-            width: 0,
-            x: 0,
-            y: 0
-          }
-          let move = (e) => {
-            let width = data.width + e.pageX - data.x
-            if (width > 100 && width < 400) {
-              binding.value.splice(1, 1, width)
-            }
-          }
-          let up = () => {
-            window.removeEventListener('mousemove', move)
-            window.removeEventListener('mouseup', up)
-          }
-
-          el.addEventListener('mousedown', function (e) {
-            e.stopPropagation()
-            e.preventDefault()
-
-            data.width = binding.value[1]
-            Object.assign(data, {
-              left: e.target.offsetLeft,
-              x: e.pageX
-            })
-
-            window.addEventListener('mousemove', move)
-            window.addEventListener('mouseup', up)
-          })
+export default {
+  name: 'tpl-table',
+  data () {
+    return {
+      list: [],
+      column: [],
+      colVis: []
+    }
+  },
+  props: {
+    name: String,
+    system: String
+  },
+  directives: {
+    drag: {
+      bind (el, binding) {
+        let data = {
+          width: 0,
+          x: 0,
+          y: 0
         }
+        let move = (e) => {
+          let width = data.width + e.pageX - data.x
+          if (width > 100 && width < 400) {
+            binding.value.splice(1, 1, width)
+          }
+        }
+        let up = () => {
+          window.removeEventListener('mousemove', move)
+          window.removeEventListener('mouseup', up)
+        }
+
+        el.addEventListener('mousedown', function (e) {
+          e.stopPropagation()
+          e.preventDefault()
+
+          data.width = binding.value[1]
+          Object.assign(data, {
+            left: e.target.offsetLeft,
+            x: e.pageX
+          })
+
+          window.addEventListener('mousemove', move)
+          window.addEventListener('mouseup', up)
+        })
       }
-    },
-    computed: {
-      tableWidth () {
-        let width = 0
-        if (this.colVis) {
-          this.colVis.forEach((obj) => {
-            width += obj[1]
+    }
+  },
+  computed: {
+    tableWidth () {
+      let width = 0
+      if (this.colVis) {
+        this.colVis.forEach((obj) => {
+          width += obj[1]
+        })
+      } else {
+        width = '100%'
+      }
+      return $.isNumeric(width) ? width : '100%'
+    }
+  },
+  mounted () {
+    let tw = $(window).width() - 364
+    Service.tplInfo({
+      system: this.system,
+      name: this.name
+    }).then((r) => {
+      let list = r.data.list
+      $.each(list, (i, tr) => {
+        if (i === 0) {
+          let width = 150
+          let flag = !1
+          if (tr.length * 150 <= tw) {
+            flag = !0
+            width = $.int((tw / tr.length).toFixed())
+          }
+          let rw = width * tr.length
+          $.each(tr, (j, td) => {
+            this.column.push({
+              id: 'col-' + j,
+              name: td
+            })
+            this.colVis.push([j, (flag && j === 0) ? width - rw + tw - 1 : width])
           })
         } else {
-          width = '100%'
+          let obj = {}
+          this.list.push(obj)
+          $.each(tr, (j, td) => {
+            obj['col-' + j] = td
+          })
         }
-        return $.isNumeric(width) ? width : '100%'
-      }
-    },
-    mounted () {
-      let tw = $(window).width() - 364
-      Service.tplInfo({
-        system: this.system,
-        name: this.name
-      }).then((r) => {
-        let list = r.data.list
-        $.each(list, (i, tr) => {
-          if (i === 0) {
-            let width = 150
-            let flag = !1
-            if (tr.length * 150 <= tw) {
-              flag = !0
-              width = $.int((tw / tr.length).toFixed())
-            }
-            let rw = width * tr.length
-            $.each(tr, (j, td) => {
-              this.column.push({
-                id: 'col-' + j,
-                name: td
-              })
-              this.colVis.push([j, (flag && j === 0) ? width - rw + tw - 1 : width])
-            })
-          } else {
-            let obj = {}
-            this.list.push(obj)
-            $.each(tr, (j, td) => {
-              obj['col-' + j] = td
-            })
-          }
-        })
       })
-    }
+    })
   }
+}
 </script>
 <style lang="less">
   .tpl {

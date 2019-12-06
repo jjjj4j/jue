@@ -46,7 +46,7 @@ export function listService (prefix) {
 
     /* 用户 */
     ['allUser', '/npauth/v1/users', 'get'], // 查询所有用户
-    ['pageUser', '/npauth/v1/recursion/organization/users/{currentPage}/{pageSize}', 'get'], // 分页查询组织下用户
+    ['pageUser', '/npauth/v1/recursion/organization/users/{id}', 'get'], // 分页查询组织下用户
     ['listUser', '/npauth/v1/organization/{id}/users', 'get'], // 查询组织下所有用户
     ['addUser', '/npauth/v1/config/user', 'post'], // 添加用户
     ['delUser', '/npauth/v1/delete/users', 'post'], // 批量删除用户
@@ -64,7 +64,13 @@ export function listService (prefix) {
     ['editRes', '/npconfig/v1/permission/v2/{id}', 'post'], // 资源权限保存(包含用户和角色)
     ['editUserFun', '/npauth/v1/users/{id}/config/function_permissions', 'post'], // 用户功能权限保存
     ['editRoleFun', '/npauth/v1/roles/{id}/config/function_permissions', 'post'], // 角色功能权限保存
-
+  
+    ['listGroupPermit', '/npauth/v1/list', 'get'], // 资源权限查询(包含用户和角色)
+    ['getSelfPermit', '/npconfig/v1/{id}/self/{userId}', 'get'], // 资源权限保存(包含用户和角色)
+    ['editGroupRes', '/npauth/v1/{id}/{userId}/{checked}', 'put'], // 资源权限保存(包含用户和角色)
+    ['listCameraPermit', '/npconfig/v1/auth/{id}/{userId}', 'get'], // 资源权限保存(包含用户和角色)
+    ['saveResPermit', '/npauth/v1/camera/permission', 'post'], // 资源权限保存(包含用户和角色)
+    
     /* 资源屏蔽 */
     ['pageShield', '/npconfig/v1/emergency/events', 'get'], // 查询所有屏蔽事件
     ['getShield', '/npconfig/v1/emergency/event/{id}', 'get'], // 查询屏蔽事件

@@ -1,3 +1,5 @@
+import { protocol } from '@/util/protocol'
+
 export const oNode = {
   status: {
     default: 'ask',
@@ -26,6 +28,14 @@ export const iNode = {
   }
 }
 export const user = {
+  type: {
+    default: 0,
+    type: Number,
+    list: [
+      { 0: '普通用户' },
+      { 1: '键盘用户' }
+    ]
+  },
   status: {
     default: 0,
     type: Number,
@@ -238,6 +248,7 @@ export const service = {
   }
 }
 export const encode = {
+  protocol,
   useType: {
     default: 'camera',
     list: [

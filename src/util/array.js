@@ -81,10 +81,10 @@ export function findInTree (tree, filter, result = [], attr = 'children') {
 export function array2tree (
   list,
   filter,
-  id = 'id',
-  pId = 'parentId',
-  children = 'children',
-  parent = 'parent'
+  id,
+  pId,
+  children,
+  parent
 ) {
   let i = 0, l = list.length
   if (!list || l === 0) {
@@ -100,6 +100,11 @@ export function array2tree (
     id = filter
     filter = !1
   }
+  
+  id = id || 'id'
+  pId = pId || 'parentId'
+  children = children || 'children'
+  parent = parent || 'parent'
   
   if (filter) {
     for (i = 0; i < l; i++) {
@@ -155,6 +160,17 @@ export function tree2array (
     delete node[parent]
   })
   return list
+}
+
+export function le4Tree (tree) {
+  let le = 0
+  let getLe = (list) => {
+    map(list, (obj) => {
+      ++le && obj.children && getLe(obj.children)
+    })
+  }
+  getLe(tree)
+  return le
 }
 
 /**
