@@ -1,4 +1,4 @@
-import './optiscroll.css'
+import './optiscroll.less'
 import {
   extend,
   isDefined,
@@ -71,7 +71,7 @@ export default {
     let $root = { class: classes }
     let $content = { class: [classPrefix + 'content', 'real-time'] }
     let size = scrollbarSpec.width
-  
+    
     if (size || forceScrollbars) {
       if (size === 0) {
         $content.class.push('data-scroll')
@@ -90,7 +90,7 @@ export default {
         }
       }
     }
-
+    
     if (isTouch && preventParentScroll) {
       $root.class.push(classPrefix + 'prevent')
     }
@@ -119,7 +119,7 @@ export default {
         }
       }
     }))
-  
+    
     if ($slots.header) {
       this.hasHeader = !!children.push($slots.header)
     }
@@ -189,12 +189,12 @@ export default {
         cache.clientH = cH
         cache.scrollW = sW
         cache.clientW = cW
-
+        
         // only fire if cache was defined
         if (isDefined(clientH)) {
           this.fireCustomEvent('sizechange')
         }
-
+        
         if (sH !== scrollH && realTimeRendering) {
           let position = this.vBar.position
           if (sH < position() + cH) {
@@ -224,7 +224,7 @@ export default {
         vBar.update(scrollTop)
       }
       hBar.update(scrollLeft)
-
+      
       fireCustomEvent('scroll')
       
       cache.timerStop = Timer(TimerName[1], scrollStop, scrollStopDelay, !0)
@@ -278,13 +278,13 @@ export default {
         // scrollbars data
         scrollbarV: extend({}, v),
         scrollbarH: extend({}, h),
-  
+        
         // scroll position
         scrollTop: realTimeRendering ? position() : (v.position || 0) * sH,
         scrollLeft: (h.position || 0) * sW,
         scrollBottom: (1 - v.position - v.size) * sH,
         scrollRight: (1 - h.position - h.size) * sW,
-  
+        
         // element size
         scrollWidth: sW,
         scrollHeight: sH,
@@ -295,24 +295,24 @@ export default {
     scrollTo (destX, destY, duration = 100) {
       let { vBar, hBar, cache } = this
       let startX, startY, endX, endY
-    
+      
       pauseCheck = true
       // force update
       this.update()
-    
+      
       startX = this.scrollEl.scrollLeft
       startY = this.vBar.position()
-    
+      
       endX = +destX
       if (destX === 'left') { endX = 0 }
       if (destX === 'right') { endX = cache.scrollW - cache.clientW }
       if (destX === false) { endX = startX }
-    
+      
       endY = +destY
       if (destY === 'top') { endY = 0 }
       if (destY === 'bottom') { endY = cache.scrollH - cache.clientH }
       if (destY === false) { endY = startY }
-
+      
       this.animateScroll(startX, endX, startY, endY, +duration)
       
       return {
@@ -326,41 +326,41 @@ export default {
       let leftEdge, topEdge, rightEdge, bottomEdge
       let offsetX, offsetY
       let startX, startY, endX, endY
-    
+      
       pauseCheck = true
       // force update
       this.update()
-    
+      
       if (typeof elem === 'string') { // selector
         elem = scrollEl.querySelector(elem)
       } else if (elem.length && elem.jquery) { // jquery element
         elem = elem[0]
       }
-    
+      
       if (typeof delta === 'number') { // same delta for all
         delta = { top: delta, right: delta, bottom: delta, left: delta }
       }
-    
+      
       delta = delta || {}
       eDim = elem.getBoundingClientRect()
       sDim = scrollEl.getBoundingClientRect()
-    
+      
       startX = endX = scrollEl.scrollLeft
       startY = endY = scrollEl.scrollTop
       offsetX = startX + eDim.left - sDim.left
       offsetY = startY + eDim.top - sDim.top
-    
+      
       leftEdge = offsetX - (delta.left || 0)
       topEdge = offsetY - (delta.top || 0)
       rightEdge = offsetX + eDim.width - this.cache.clientW + (delta.right || 0)
       bottomEdge = offsetY + eDim.height - this.cache.clientH + (delta.bottom || 0)
-    
+      
       if (leftEdge < startX) { endX = leftEdge }
       if (rightEdge > startX) { endX = rightEdge }
-    
+      
       if (topEdge < startY) { endY = topEdge }
       if (bottomEdge > startY) { endY = bottomEdge }
-
+      
       this.animateScroll(startX, endX, startY, endY, +duration)
     },
     animateScroll (startX, endX, startY, endY, duration) {
@@ -378,11 +378,11 @@ export default {
           }
         })
       }
-
+      
       if (endX === startX && endY === startY) {
         return
       }
-    
+      
       if (duration === 0) {
         vBar.update(endY)
         hBar.update(endX)
@@ -391,23 +391,23 @@ export default {
         }
         return
       }
-    
+      
       if (isNaN(duration)) { // undefined or auto
         // 500px in 430ms, 1000px in 625ms, 2000px in 910ms
         duration = Math.pow(Math.max(Math.abs(endX - startX), Math.abs(endY - startY)), 0.54) * 15
       }
-    
+      
       (function animate () {
         let time = Math.min(1, ((Date.now() - startTime) / duration))
         let easedTime = easingFunction(time)
-      
+        
         if (endY !== startY) {
           update(vBar, ~~(easedTime * (endY - startY)) + startY)
         }
         if (endX !== startX) {
           update(hBar, ~~(easedTime * (endX - startX)) + startX)
         }
-
+        
         self.scrollAnimation = time < 1 ? window.requestAnimationFrame(animate) : null
       }())
     },
